@@ -19,7 +19,7 @@ prompt_template_base['查询项目结构'] = Template(
     ''')
 
 prompt_template_base['query the architecture'] = Template(
-    '''Here are some relevant code fragments from files of a repo:${reference}\n\n
+    '''Here are some relevant code fragments from files of a repo:${resources}\n\n
     Please answer the question according to above code fragments:${query}\n\n
     You can answer the question by following the steps below:
     1. Overview of the Repository Structure: Begin by providing a high-level overview of the repository's structure. 
