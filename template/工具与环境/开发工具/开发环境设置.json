@@ -2,6 +2,7 @@
     {
       "templateName": "开发环境设置",
       "applicableCategory": "工具与环境 > 开发工具",
+      "intenType":"Global",
       "keywords": ["开发环境设置", "IDE配置", "依赖安装", "项目配置"],
       "templateContent": [
         "问题背景：新加入的开发人员需要设置该JAVA项目的开发环境，关注IDE配置、依赖安装、项目配置等方面。",
