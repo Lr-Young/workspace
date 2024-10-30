@@ -4,21 +4,12 @@ prompt_template_base: dict[str, Template] = dict()
 
 prompt_template_base['查询全局配置'] = Template(
     '''问题背景：开发人员需要了解某个全局配置文件的作用，并了解如何通过修改它来调整项目的行为。\n\n
-    1. 配置文件概述：该全局配置文件为：${config_file}\n
-       - 文件路径：${file_path}
-       - 主要作用：${file_purpose}
-       - 典型配置项：${key_settings}\n\n
-    2. 配置项详解及其作用：
-       - 配置项分析：${setting_details}
-       - 示例配置及用途说明：
-         - ${example_setting1}: 用于${setting1_usage}
-         - ${example_setting2}: 用于${setting2_usage}\n\n
-    3. 修改配置以改变项目行为：
-       - 描述如何调整配置项来实现不同的项目行为。
-       - 例如：${example_setting_modification1} 会导致 ${behavior_change1}
-       - 例如：${example_setting_modification2} 会导致 ${behavior_change2}\n\n
-    4. 参考文档（如项目手册、配置说明等）：${documents}\n\n
-    5. 根据以上分析步骤，生成关于该全局配置文件的详细说明，包括其作用、关键配置项及其对项目行为的影响。
-
+    1. 确定全局配置文件的名称及路径，配置文件名称为：${config_file_name}，路径为：${config_file_path}。\n\n
+    2. 分析配置文件的主要内容，包括配置文件的关键参数及其默认值。\n\n
+    3. 理解配置文件的作用，描述该配置文件对项目运行的影响及其目的。\n\n
+    4. 识别可修改的参数及其影响，列出可以调整的参数及其对项目行为的影响。\n\n
+    5. 阅读相关参考文档（如官方文档、使用指南等）：${documents}。\n\n
+    6. 总结：根据以上分析步骤，生成关于全局配置文件作用及修改方法的详细报告，包括文件内容、作用及调整方法。\n
     '''
 )
+

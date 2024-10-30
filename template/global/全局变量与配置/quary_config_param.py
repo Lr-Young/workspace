@@ -3,26 +3,15 @@ from string import Template
 prompt_template_base: dict[str, Template] = dict()
 
 prompt_template_base['查询配置参数'] = Template(
-    '''问题背景：开发人员需要了解全局配置参数是如何定义和使用的。\n\n
-    1. 全局配置参数的定义方式：
-       - 配置参数定义文件位置：${config_file_location}
-       - 主要配置文件的格式（如 `properties`、`yaml`、`xml` 等）：${config_file_format}
-       - 示例配置参数：
-         - ${param1}: 用于${param1_usage}
-         - ${param2}: 用于${param2_usage}\n\n
-    2. 全局配置参数的加载和初始化：
-       - 加载配置的模块或方法：${load_module_or_method}
-       - 配置初始化的时机和顺序：${initialization_timing}
-       - 参数的默认值及其处理方式：${default_value_handling}\n\n
-    3. 全局配置参数的使用方式：
-       - 配置参数在项目中被引用的位置或模块：${usage_locations}
-       - 具体使用场景（如控制某些功能、启用日志记录等）：${usage_scenarios}
-       - 修改配置参数对项目行为的影响：${modification_impact}\n\n
-    4. 配置管理和安全性：
-       - 配置管理策略（如版本控制、环境变量）：${config_management_strategy}
-       - 安全性措施（如敏感参数加密、环境隔离）：${security_measures}\n\n
-    5. 参考文档（如配置手册、API 文档等）：${documents}\n\n
-    6. 根据以上分析步骤，生成关于项目全局配置参数的详细报告，包括参数定义、加载方式、使用场景及管理策略。
-
+    '''问题背景：开发人员需要了解在全局配置中的参数是如何定义和使用的。\n\n
+    1. 确定全局配置文件的名称及路径，配置文件名称为：${config_file_name}，路径为：${config_file_path}。\n\n
+    2. 列出配置文件中的关键参数，包括关键参数及其默认值。\n\n
+    3. 分析参数的定义方式，描述参数在配置文件中的定义格式及语法。\n\n
+    4. 理解参数的使用场景，列出在代码中如何引用和使用这些参数的示例。\n\n
+    5. 识别参数的依赖关系，分析这些参数在项目中的依赖情况及对其他模块的影响。\n\n
+    6. 提供参数修改的影响，讨论修改这些参数对项目行为的潜在影响。\n\n
+    7. 阅读参考文档（如官方文档、使用指南等）：${documents}。\n\n
+    8. 总结：根据以上分析步骤，生成关于全局配置参数定义和使用的详细报告，包括参数的定义、使用场景及影响。\n
     '''
 )
+
