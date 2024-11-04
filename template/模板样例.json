@@ -1,0 +1,50 @@
+{
+    "name": "",
+    "type": "",
+    "content": "",
+    "background": "",
+    "example": {
+        "repo": "",
+        "query": ""
+    },
+    "steps": [
+        {
+            "step": "",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "",
+                    "query_keys": [
+                        "",
+                        ""
+                    ],
+                    "example_ref": ""
+                }
+            ]
+        },
+        {
+            "step": "",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "",
+                    "query_keys": [
+                        "",
+                        ""
+                    ],
+                    "example_ref": ""
+                },
+                {
+                    "place_holder": "",
+                    "query_type": "",
+                    "query_keys": [
+                        "",
+                        ""
+                    ],
+                    "example_ref": ""
+                }
+            ]
+        }
+    ],
+    "example_answer": ""
+}
