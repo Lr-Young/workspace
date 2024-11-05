@@ -1,0 +1,213 @@
+{
+    "name": "项目依赖和库管理",
+    "type": "依赖分析",
+    "content": [
+        "问题背景：开发人员希望了解项目中使用的依赖和第三方库，包括它们的功能、版本、使用场景等信息。",
+        "1. 构建工具识别：确定项目使用的构建工具(如Maven、Gradle等)，查看构建配置文件。构建工具：${build_tool}",
+        "2. 核心依赖分析：识别项目的核心依赖库，这些库对项目的基础功能至关重要。核心依赖：${core_dependencies}",
+        "3. 功能性依赖分析：识别用于特定功能实现的依赖库，如数据库访问、缓存、消息队列等。功能依赖：${feature_dependencies}",
+        "4. 工具类依赖分析：识别用于提升开发效率的工具类库，如日志、测试、代码生成等。工具依赖：${utility_dependencies}",
+        "5. 依赖使用情况：分析各个依赖在项目中的实际使用情况，识别可能的无用依赖。使用情况：${dependency_usage}",
+        "6. 总结：总结项目的依赖管理状况，包括主要依赖、潜在问题和优化建议。"
+    ],
+    "background": "开发人员需要了解项目的依赖结构和管理状况，以便进行维护、升级和优化。",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "项目中使用了哪些核心依赖库？它们各自的作用是什么？"
+    },
+    "steps": [
+        {
+            "step": "构建工具识别",
+            "refs": [
+                {
+                    "place_holder": "build_tool",
+                    "query_type": "构建配置",
+                    "query_keys": [
+                        "pom.xml",
+                        "build.gradle"
+                    ],
+                    "example_ref": "项目使用Maven作为构建工具，配置文件为pom.xml"
+                }
+            ]
+        },
+        {
+            "step": "核心依赖分析",
+            "refs": [
+                {
+                    "place_holder": "core_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "spring相关",
+                        "数据库相关"
+                    ],
+                    "example_ref": [
+                        "spring-boot-starter-web: Web应用程序的核心依赖，提供Spring MVC支持",
+                        "spring-boot-starter-data-jpa: 数据持久化层的核心依赖，提供JPA支持",
+                        "mybatis-spring-boot-starter: MyBatis的Spring Boot集成支持"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "功能性依赖分析",
+            "refs": [
+                {
+                    "place_holder": "feature_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "数据库驱动",
+                        "缓存",
+                        "消息队列",
+                        "HTTP客户端",
+                        "Json处理"
+                    ],
+                    "example_ref": [
+                        "mysql-connector-java: MySQL数据库驱动",
+                        "spring-boot-starter-cache: 缓存支持",
+                        "spring-boot-starter-amqp: RabbitMQ消息队列支持",
+                        "OkHttp: HTTP客户端",
+                        "FastJson: Json处理"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "工具类依赖分析",
+            "refs": [
+                {
+                    "place_holder": "dependency_usage",
+                    "query_type": "文件",
+                    "query_keys": [
+                        "开发工具",
+                        "日志工具",
+                        "API文档生成"
+
+                    ],
+                    "example_ref": [
+                        "Lombok: 简化Java开发工具,Hutool: Java工具类库",
+                        "Logback: 日志框架",
+                        "Swagger: API文档生成工具"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "依赖使用情况分析",
+            "refs": [
+                {
+                    "place_holder": "utility_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "前面识别到的依赖"
+                    ],
+                    "example_ref": [
+
+                        "Spring Boot Web：用于构建 Web 应用和 REST API",
+                        "Spring Security：实现认证和授权",
+                        "JPA：数据库访问层",
+                        "Flyway：数据库版本控制和迁移",
+                        "AWS S3 SDK：实现 S3 协议的存储源支持",
+                        "OkHttp：处理 HTTP 请求，如在 ZFileOkHttp3ClientHttpRequestFactory 中使用",
+                        "FastJSON：JSON 序列化和反序列化，如在 SharePointHelperController 中使用",
+                        "Hutool：提供通用工具方法，如在 StringUtils 中使用",
+                        "Lombok：简化代码，自动生成 getter/setter 等",
+                        "Swagger：生成 API 文档"
+                    ]
+                }
+            ]
+        }
+    ],
+    "example_answer": [
+        "### 1. 构建工具识别",
+        "项目使用 **Maven** 作为构建工具，通过 pom.xml 管理项目依赖。",
+        "### 2. 核心依赖分析",
+        "1. **Spring 相关**：",
+        "<dependency>",
+        "<groupId>org.springframework.boot</groupId>",
+        "<artifactId>spring-boot-starter-web</artifactId>",
+        "</dependency>",
+        "<dependency>",
+        "<groupId>org.springframework.boot</groupId>",
+        "<artifactId>spring-boot-starter-security</artifactId>",
+        "</dependency>",
+        "2. **数据库相关**：",
+        "<dependency>",
+        "<groupId>org.springframework.boot</groupId>",
+        "<artifactId>spring-boot-starter-data-jpa</artifactId>",
+        "</dependency>",
+        "<dependency>",
+        "<groupId>org.flywaydb</groupId>",
+        "<artifactId>flyway-core</artifactId>",
+        "</dependency>",
+        "### 3. 功能性依赖分析",
+        "1. **存储相关**：",
+        "<dependency>",
+        "<groupId>com.amazonaws</groupId>",
+        "<artifactId>aws-java-sdk-s3</artifactId>",
+        "</dependency>",
+        "<dependency>",
+        "<groupId>commons-net</groupId>",
+        "<artifactId>commons-net</artifactId>",
+        "</dependency>",
+        "<dependency>",
+        "<groupId>com.jcraft</groupId>",
+        "<artifactId>jsch</artifactId>",
+        "</dependency>",
+        "2. **HTTP 客户端**：",
+        "<dependency>",
+        "<groupId>com.squareup.okhttp3</groupId>",
+        "<artifactId>okhttp</artifactId>",
+        "</dependency>",
+        "3. **JSON 处理**：",
+        "<dependency>",
+        "<groupId>com.alibaba</groupId>",
+        "<artifactId>fastjson</artifactId>",
+        "</dependency>",
+        "### 4. 工具类依赖分析",
+        "1. **开发工具**：",
+        "<dependency>",
+        "<groupId>org.projectlombok</groupId>",
+        "<artifactId>lombok</artifactId>",
+        "</dependency>",
+        "<dependency>",
+        "<groupId>cn.hutool</groupId>",
+        "<artifactId>hutool-all</artifactId>",
+        "</dependency>",
+        "2. **日志工具**：",
+        "<dependency>",
+        "<groupId>ch.qos.logback</groupId>",
+        "<artifactId>logback-classic</artifactId>",
+        "</dependency>",
+        "3. **API 文档**：",
+        "<dependency>",
+        "<groupId>io.springfox</groupId>",
+        "<artifactId>springfox-swagger2</artifactId>",
+        "</dependency>",
+        "### 5. 依赖使用情况",
+        "1. **核心使用场景**：",
+        "- Spring Boot Web：用于构建 Web 应用和 REST API",
+        "- Spring Security：实现认证和授权",
+        "- JPA：数据库访问层",
+        "- Flyway：数据库版本控制和迁移",
+        "2. **功能组件使用**：",
+        "- AWS S3 SDK：实现 S3 协议的存储源支持",
+        "- OkHttp：处理 HTTP 请求，如在 ZFileOkHttp3ClientHttpRequestFactory 中使用",
+        "- FastJSON：JSON 序列化和反序列化，如在 SharePointHelperController 中使用",
+        "3. **工具库使用**：",
+        "- Hutool：提供通用工具方法，如在 StringUtils 中使用",
+        "- Lombok：简化代码，自动生成 getter/setter 等",
+        "- Swagger：生成 API 文档",
+        "### 6. 总结",
+        "1. **依赖管理现状**：",
+        "- 项目依赖结构清晰，分层合理",
+        "- 核心功能依赖稳定，版本选择合适",
+        "- 工具类依赖丰富，提高开发效率",
+        "2. **优化建议**：",
+        "- 考虑引入缓存框架（如 Caffeine）优化性能",
+        "- 可以考虑使用更轻量级的 JSON 库（如 Jackson）替代 FastJSON",
+        "- 建议升级到 SpringDoc OpenAPI 替代已停止维护的 Springfox Swagger",
+        "3. **安全建议**：",
+        "- 定期检查依赖版本，及时修复安全漏洞",
+        "- 考虑引入依赖分析工具（如 OWASP Dependency-Check）"
+      ]
+}
