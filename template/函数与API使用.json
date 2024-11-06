@@ -13,13 +13,13 @@
     },
     "steps": [
         {
-            "step": "1. 确定要查找的特定函数名称的实现位置，函数位置为：${function_location}",
+            "step": "1. 确定要查找的特定函数名称的实现位置，函数位置为：${function_name}",
             "refs": [
                 {
-                    "place_holder": "function_location",
+                    "place_holder": "function_name",
                     "query_type": "函数",
                     "query_keys": [
-                        "function_location"
+                        "function_name"
                     ],
                     "example_ref": "zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java"
                 }
