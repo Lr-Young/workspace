@@ -13,13 +13,13 @@
     },
     "steps": [
         {
-            "step": "1. 确定要查找的特定函数名称的实现位置，函数位置为：${function_name}",
+            "step": "1. 确定要查找的特定函数名称的实现位置，函数名称为：${function_name}",
             "refs": [
                 {
                     "place_holder": "function_name",
                     "query_type": "函数",
                     "query_keys": [
-                        "function_name"
+                        "function_location"
                     ],
                     "example_ref": "zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java"
                 }
@@ -56,10 +56,6 @@
             "refs": []
         }
     ],
-    "example_answer": [
-        "函数名称: findEnumValueFieldName",
-        "实现位置: 该函数位于文件 zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java 中。",
-        "输入参数:  参数名称: clazz, 参数类型: Class<?>, 描述: 该参数表示一个类对象，用于查找枚举值字段的名称。",
-        "输出参数: 返回类型: String,  描述: 该函数返回一个字符串，表示枚举值字段的名称。"
-    ]
+    "example_answer": "函数findEnumValueFieldName的作用是查找并返回指定类对象中枚举值字段的名称。它通过传入一个类对象clazz，在该类中查找符合条件的枚举值字段，并返回其名称作为字符串。该函数通常用于处理枚举类型的字段映射或序列化等操作。\n你可以在文件zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java中找到该函数的具体实现"
+
 }
