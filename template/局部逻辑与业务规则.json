@@ -1,0 +1,72 @@
+{
+    "name": "局部逻辑与业务规则",
+    "type": "local",
+    "content": [
+        "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
+        "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_name}",
+        "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
+        "4. 总结：根据以上分析，概述该代码段的功能，业务流程"
+    ],
+    "background": "问题背景：开发人员需要分析在文件中选中的代码段的业务逻辑",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "选中部分代码的业务逻辑是什么 ",
+        "code": [
+            "public MybatisEnumTypeHandler(Class<E> enumClassType) {",
+                "if (enumClassType == null) {",
+                    "throw new IllegalArgumentException('Type argument cannot be null');",
+                "}",
+                "this.enumClassType = enumClassType;",
+                "MetaClass metaClass = MetaClass.forClass(enumClassType, REFLECTOR_FACTORY);",
+                "String name = 'value';",
+                "if (!IEnum.class.isAssignableFrom(enumClassType)) {",
+                    "name = findEnumValueFieldName(this.enumClassType).orElseThrow(() -> new IllegalArgumentException(String.format('Could not find @EnumValue in Class: %s.', this.enumClassType.getName())));",
+                "}",
+                "this.propertyType = ReflectionKit.resolvePrimitiveIfNecessary(metaClass.getGetterType(name));",
+                "this.getInvoker = metaClass.getGetInvoker(name);",
+            "}"
+        ]
+    },
+    "steps": [
+        {
+            "step": "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
+            "refs": []
+        },
+        {
+            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_names}",
+            "refs": [
+                {
+                    "place_holder": "var_names",
+                    "query_type": "局部变量",
+                    "query_keys": [
+                        "定义使用"
+                    ],
+                    "example_ref": [
+                        "enumClassType 变量：enumClassType 是一个类的实例变量，在类的定义中被声明为 private final，表示它是一个不可变的类类型。",
+                        "REFLECTOR_FACTORY 变量：REFLECTOR_FACTORY 是一个静态常量，表示一个 ReflectorFactory 实例，用于创建 MetaClass 实例。",
+                        "propertyType 变量：propertyType 是一个类的实例变量，在类的定义中被声明为 private final，表示它是一个不可变的类类型。",
+                        "getInvoker 变量：getInvoker 是一个类的实例变量，在类的定义中被声明为 private final，表示它是一个不可变的 Invoker 实例。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
+            "refs": []
+        },
+        {
+            "step": "4. 总结：根据以上分析，概述该代码段的功能，业务流程",
+            "refs": []
+        }
+    
+    ],
+    "example_answer": [
+        "1. 参数校验：检查传入的 enumClassType 参数是否为 null，如果是 null，则抛出 IllegalArgumentException 异常。这一步确保了传入的枚举类类型是有效的。",
+        "2. **初始化 enumClassType**：将传入的 enumClassType 赋值给类的实例变量 this.enumClassType，以便在类的其他方法中使用。",
+        "3. 创建 MetaClass 实例：使用 enumClassType 创建一个 MetaClass 实例。MetaClass 是 MyBatis 提供的一个工具类，用于反射操作。",
+        "4. 设置默认字段名：初始化字段名 name 为 'value'。这是一个默认值，表示枚举类中的一个字段。",
+        "5. 检查是否实现 IEnum 接口：检查 enumClassType 是否实现了 IEnum 接口。如果没有实现，则调用 findEnumValueFieldName 方法查找枚举值字段名。如果找不到，则抛出 IllegalArgumentException 异常。这一步确保了枚举类中有一个字段可以用作枚举值。",
+        "6. 解析属性类型：使用 metaClass 获取字段 name 的类型，并通过 ReflectionKit.resolvePrimitiveIfNecessary 方法解析其原始类型。这一步确定了枚举值字段的类型。",
+        "7. **获取字段的 Invoker**：使用 metaClass 获取字段 name 的 Invoker，用于后续的反射调用。这一步为后续操作提供了一个反射调用的入口。"
+    ]
+}

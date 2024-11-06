@@ -1,0 +1,76 @@
+{
+    "name": "局部依赖和导入",
+    "type": "local",
+    "content": [
+        "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
+        "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
+        "3. 分析每个导入的模块及其作用${modules}",
+        "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
+        "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。"
+    ],
+    "background": "问题背景：开发人员需要分析在文件中导入的模块或库的作用",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "这个文件中导入的模块或库的作用是什么"
+    },
+    "steps": [
+        {
+            "step": "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
+            "refs": []
+        },
+        {
+            "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "query_type": "外部依赖库",
+                    "query_keys": [
+                        "dependency"
+                    ],
+                    "example_ref": [
+                        "org.springframework: 提供依赖注入功能,支持 RESTful 风格的 Web 服务等",
+                        "io.swagger.annotations：自动生成详细的 API 文档，方便开发者和用户理解和使用 API",
+                        "cn.dev33.satoken.st: 主要用于处理用户的登录状态和权限验证"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "3. 分析每个导入的模块，找到相关代码实现.${modules}",
+            "refs": [
+                {
+                    "place_holder": "modules",
+                    "query_type": "摘要信息",
+                    "query_keys": [
+                        "module"
+                    ],
+                    "example_ref": [
+                        "config: 包含应用程序的全局配置",
+                        "login: 处理用户登录、认证和相关操作"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
+            "refs": []
+        },
+        {
+            "step": "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。",
+            "refs": []
+        }
+ 
+    ],
+    "example_answer": [
+        "###依赖库的作用###",
+        "Spring 框架",
+        "提供了依赖注入（DI）和控制反转（IoC）功能，使得 LoginController 可以轻松注入 LoginService。",
+        "Spring MVC",
+        "提供了注解如 @Controller、@RequestMapping 和 @ResponseBody，用于处理 HTTP 请求和响应。",
+        "数据库连接池和 ORM 框架",
+        "如 MyBatis 或 Hibernate，用于管理数据库连接和执行 SQL 查询。",
+        "###项目自定义模块###",
+        "im.zhaojun.zfile.module.login: 处理用户登录的业务逻辑，包括控制器、服务类和数据访问对象（DAO）。",
+        "总结: 通过这种方式，导入的模块或库共同协作，处理用户登录的业务逻辑，影响数据流和程序执行。"
+    ]
+}
