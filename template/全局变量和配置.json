@@ -1,0 +1,293 @@
+{
+    "name": "全局变量和配置",
+    "type": "配置分析",
+    "content": [
+        "问题背景：开发人员希望了解项目中全局变量和配置参数的定义及使用情况，包括它们的作用、来源、管理方式等信息。",
+        "1. 识别配置文件：确定项目中使用的配置文件（如`application.properties`、`application.yml`、`config.xml`等）。配置文件列表：${config_files}",
+        "2. 识别全局变量：查找项目中定义的全局变量，包括常量类中的静态变量、配置类中的变量等。全局变量列表：${global_variables}",
+        "3. 分析配置参数：详细分析每个配置参数的作用、默认值及其来源（如环境变量、命令行参数等）。配置参数详情：${config_parameters}",
+        "4. 配置管理方式：了解项目如何管理和加载配置参数，例如使用Spring的`@Value`注解、配置管理工具（如Spring Cloud Config）等。管理方式：${config_management}",
+        "5. 使用情况分析：分析配置参数和全局变量在项目中的具体使用情况，包括在哪些模块或类中被引用。使用情况：${usage_analysis}",
+        "6. 总结与建议：总结全局变量和配置管理的现状，提出优化建议和潜在问题。"
+    ],
+    "background": "开发人员需要了解项目中全局变量和配置参数的定义及使用情况，以便进行维护、优化和扩展。",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "ZFile中全局配置参数是如何定义和使用的？"
+    },
+    "steps": [
+        {
+            "step": "识别配置文件",
+            "refs": [
+                {
+                    "place_holder": "config_files",
+                    "query_type": "配置文件定位",
+                    "query_keys": [
+                        "application.properties",
+                        "application.yml"
+                    ],
+                    "example_ref": "application.properties,application-default.properties,logback-spring.xml,这些文件位于classes目录下"
+                }
+            ]
+        },
+        {
+            "step": "识别全局变量",
+            "refs": [
+                {
+                    "place_holder": "global_variables",
+                    "query_type": "全局变量定位",
+                    "query_keys": [
+                        "常量类",
+                        "配置类",
+                        "静态变量"
+                    ],
+                    "example_ref": [
+                        "在`SystemConfigConstant.java`中定义了全局常量，如`public class SystemConfigConstant {  public static final String USERNAME = username;   public static final String PASSWORD = password;public static final String LOGIN_VERIFY_MODE = loginVerifyMode;}`",
+                        "在ZFileProperties.java 文件中，定义了 ZFile 的自定义配置属性。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "分析配置参数",
+            "refs": [
+                {
+                    "place_holder": "config_parameters",
+                    "query_type": "配置参数详情",
+                    "query_keys": [
+                        "app.name",
+                        "database.url",
+                        "security.enabled"
+                    ],
+                    "example_ref": [
+                        "application.properties.java:1-32",
+                        "database.url: spring.datasource.driver-class-name=org.sqlite.JDBC,spring.datasource.url=jdbc:sqlite:${zfile.db.path}",
+                        "application-default.properties.java: 1-50"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "配置管理方式",
+            "refs": [
+                {
+                    "place_holder": "config_management",
+                    "query_type": "总结文本",
+                    "query_keys": [
+                        "Spring @Value",
+                        "Spring Environment",
+                        "配置管理工具"
+                    ],
+                    "example_ref":[ "Spring Boot 配置：使用 `@ConfigurationProperties` 注解和 `@Value` 注解加载配置参数。",
+                                    "缓存管理：使用 `@CacheConfig` 和 `@Cacheable` 注解管理缓存。"
+                    ]
+                
+                }
+            ]
+        },
+        {
+            "step": "使用情况分析",
+            "refs": [
+                {
+                    "place_holder": "usage_analysis",
+                    "query_type": "总结文本",
+                    "query_keys": [
+                        "服务类",
+                        "控制器",
+                        "配置加载类"
+                    ],
+                    "example_ref": [
+                        "SystemConfigService：在 SystemConfigService.java 文件中，使用 SystemConfigConstant 和 ZFileProperties 获取和管理系统配置。",
+                        "SiteController：在 SiteController.java 文件中，使用 SystemConfigService 获取站点配置。"
+                    ]
+                }
+            ]
+        }
+    ],
+    "example_answer":[
+        "在 ZFile 项目中，全局变量和配置主要通过以下几种方式定义和使用：",
+        "### 1. 配置文件",
+        "#### `application.properties`",
+        "位于 application.properties 文件中，包含了 Spring Boot 应用的全局配置。",
+        "#### `application-default.properties`",
+        "位于 application-default.properties 文件中，包含了默认的应用配置。",
+        "### 2. 配置类",
+        "#### ZFileProperties",
+        "位于 ZFileProperties.java 文件中，定义了 ZFile 的自定义配置属性。",
+        "```java",
+        "package im.zhaojun.zfile.core.config;",
+        "import lombok.Data;",
+        "import org.springframework.boot.context.properties.ConfigurationProperties;",
+        "import org.springframework.boot.context.properties.EnableConfigurationProperties;",
+        "import org.springframework.stereotype.Component;",
+        "/**",
+        " * ZFile 自定义配置属性",
+        " * ",
+        " * @author zhaojun",
+        " */",
+        "@Data",
+        "@EnableConfigurationProperties",
+        "@Component",
+        "@ConfigurationProperties(prefix = \"zfile\")",
+        "public class ZFileProperties {",
+        "    private boolean debug;",
+        "}",
+        "```",
+        "### 3. 配置服务",
+        "#### SystemConfigService",
+        "位于 SystemConfigService.java 文件中，提供了系统配置的获取和更新服务。",
+        "```java",
+        "package im.zhaojun.zfile.module.config.service;",
+        "import cn.hutool.core.collection.CollUtil;",
+        "import cn.hutool.core.convert.Convert;",
+        "import cn.hutool.core.convert.ConvertException;",
+        "import cn.hutool.core.util.EnumUtil;",
+        "import cn.hutool.core.util.ObjUtil;",
+        "import cn.hutool.core.util.StrUtil;",
+        "import im.zhaojun.zfile.core.config.ZFileProperties;",
+        "import im.zhaojun.zfile.core.exception.ServiceException;",
+        "import im.zhaojun.zfile.core.util.CodeMsg;",
+        "import im.zhaojun.zfile.core.util.EnumConvertUtils;",
+        "import im.zhaojun.zfile.module.config.constant.SystemConfigConstant;",
+        "import im.zhaojun.zfile.module.config.event.ISystemConfigModifyHandler;",
+        "import im.zhaojun.zfile.module.config.mapper.SystemConfigMapper;",
+        "import im.zhaojun.zfile.module.config.model.dto.SystemConfigDTO;",
+        "import im.zhaojun.zfile.module.config.model.entity.SystemConfig;",
+        "import lombok.extern.slf4j.Slf4j;",
+        "import org.springframework.cache.annotation.CacheConfig;",
+        "import org.springframework.cache.annotation.CacheEvict;",
+        "import org.springframework.cache.annotation.Cacheable;",
+        "import org.springframework.stereotype.Service;",
+        "import org.springframework.transaction.annotation.Transactional;",
+        "import javax.annotation.Resource;",
+        "import java.lang.reflect.Field;",
+        "import java.util.ArrayList;",
+        "import java.util.List;",
+        "import java.util.Map;",
+        "/**",
+        " * 系统设置 Service",
+        " * ",
+        " * 提供系统配置的获取和更新服务",
+        " * ",
+        " */",
+        "@Slf4j",
+        "@Service",
+        "@CacheConfig(cacheNames = \"systemConfig\")",
+        "public class SystemConfigService {",
+        "    @Resource",
+        "    private SystemConfigMapper systemConfigMapper;",
+        "    @Resource",
+        "    private ZFileProperties zFileProperties;",
+        "    @Resource",
+        "    private ISystemConfigModifyHandler systemConfigModifyHandler;",
+        "    private final Class<SystemConfigDTO> systemConfigClazz = SystemConfigDTO.class;",
+        "    @Cacheable(key = \"'dto'\")",
+        "    public SystemConfigDTO getSystemConfig() {",
+        "        SystemConfigDTO systemConfigDTO = new SystemConfigDTO();",
+        "        List<SystemConfig> systemConfigList = systemConfigMapper.findAll();",
+        "        for (SystemConfig systemConfig : systemConfigList) {",
+        "            String key = systemConfig.getName();",
+        "            try {",
+        "                Field field = systemConfigClazz.getDeclaredField(key);",
+        "                field.setAccessible(true);",
+        "                String strVal = systemConfig.getValue();",
+        "                Class<?> fieldType = field.getType();",
+        "                Object convertVal;",
+        "                if (EnumUtil.isEnum(fieldType)) {",
+        "                    convertVal = EnumConvertUtils.convertStrToEnum(fieldType, strVal);",
+        "                } else {",
+        "                    convertVal = Convert.convert(fieldType, strVal);",
+        "                }",
+        "                field.set(systemConfigDTO, convertVal);",
+        "            } catch (NoSuchFieldException | IllegalAccessException | ConvertException e) {",
+        "                log.error(\"通过反射, 将字段 {} 注入 SystemConfigDTO 时出现异常:\", key, e);",
+        "            }",
+        "        }",
+        "        return systemConfigDTO;",
+        "    }",
+        "    @Transactional(rollbackFor = Exception.class)",
+        "    @CacheEvict(allEntries = true)",
+        "    public void updateSystemConfig(SystemConfigDTO systemConfigDTO) {",
+        "        List<SystemConfig> systemConfigListInDb = systemConfigMapper.findAll();",
+        "        Map<String, SystemConfig> systemConfigMapInDb = CollUtil.toMap(systemConfigListInDb, null, SystemConfig::getName);",
+        "        List<SystemConfig> updateSystemConfigList = new ArrayList<>();",
+        "        Field[] fields = systemConfigClazz.getDeclaredFields();",
+        "        for (Field field : fields) {",
+        "            String key = field.getName();",
+        "            SystemConfig systemConfig = systemConfigMapInDb.get(key);",
+        "            if (systemConfig != null) {",
+        "                field.setAccessible(true);",
+        "                Object val = null;",
+        "                try {",
+        "                    val = field.get(systemConfigDTO);",
+        "                } catch (IllegalAccessException e) {",
+        "                    log.error(\"通过反射, 从 SystemConfigDTO 获取字段 {} 时出现异常:\", key, e);",
+        "                }",
+        "                if (val != null) {",
+        "                    if (EnumUtil.isEnum(val)) {",
+        "                        val = EnumConvertUtils.convertEnumToStr(val);",
+        "                    }",
+        "                    String originVal = systemConfig.getValue();",
+        "                    if (ObjUtil.equals(originVal, val)) {",
+        "                        continue;",
+        "                    }",
+        "                    SystemConfig updateSystemConfig = new SystemConfig();",
+        "                    updateSystemConfig.setId(systemConfig.getId());",
+        "                    updateSystemConfig.setName(systemConfig.getName());",
+        "                    updateSystemConfig.setValue(Convert.toStr(val));",
+        "                    updateSystemConfig.setTitle(systemConfig.getTitle());",
+        "                    updateSystemConfigList.add(updateSystemConfig);",
+        "                }",
+        "            }",
+        "        }",
+        "        updateSystemConfigList.forEach(systemConfigInForm -> {",
+        "            SystemConfig systemConfigInDb = systemConfigMapInDb.get(systemConfigInForm.getName());",
+        "            systemConfigModifyHandler.modify(systemConfigInDb, systemConfigInForm);",
+        "            systemConfigMapper.updateById(systemConfigInForm);",
+        "        });",
+        "    }",
+        "}",
+        "```",
+        "### 4. 配置常量",
+        "#### SystemConfigConstant",
+        "位于 SystemConfigConstant.java 文件中，定义了系统配置的常量。",
+        "```java",
+        "package im.zhaojun.zfile.module.config.constant;",
+        "/**",
+        " * 系统配置常量",
+        " * ",
+        " * 定义了系统配置的常量",
+        " * ",
+        " */",
+        "public class SystemConfigConstant {",
+        "    public static final String USERNAME = \"username\";",
+        "    public static final String PASSWORD = \"password\";",
+        "    public static final String LOGIN_VERIFY_MODE = \"loginVerifyMode\";",
+        "}",
+        "```",
+        "### 5. 配置使用情况",
+        "#### 在控制器中使用配置",
+        "例如，在 SiteController.java 文件中，使用 SystemConfigService 获取系统配置。",
+        "```java",
+        "package im.zhaojun.zfile.module.config.controller;",
+        "import im.zhaojun.zfile.core.config.ZFileProperties;",
+        "import im.zhaojun.zfile.core.util.AjaxJson;",
+        "import im.zhaojun.zfile.module.config.model.dto.SystemConfigDTO;",
+        "import im.zhaojun.zfile.module.config.model.result.SiteConfigResult;",
+        "import im.zhaojun.zfile.module.config.service.SystemConfigService;",
+        "import im.zhaojun.zfile.module.storage.service.StorageSourceService;",
+        "import io.swagger.annotations.Api;",
+        "import io.swagger.annotations.ApiOperation;",
+        "import lombok.extern.slf4j.Slf4j;",
+        "import org.springframework.beans.BeanUtils;",
+        "import org.springframework.web.bind.annotation.GetMapping;",
+        "import org.springframework.web.bind.annotation.RequestMapping;",
+        "import org.springframework.web.bind.annotation.RestController;",
+        "import javax.annotation.Resource;",
+        "/**",
+        " * 站点基础模块接口",
+        " * ",
+        " * 提供站点基础配置的获取接口",
+        " * ",
+        " */"]
+    }
