@@ -1,0 +1,65 @@
+{
+    "name": "函数与API使用",
+    "type": "local",
+    "content": [
+        "1. 确定要查找的特定函数名称的实现位置，函数名称为：${function_name}",
+        "2. 分析该函数的输入参数及其类型。",
+        "3. 分析该函数的输出结果及其类型。",
+        "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息"
+    ],
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "函数findEnumValueFieldName作用是什么？"
+    },
+    "steps": [
+        {
+            "step": "1. 确定要查找的特定函数名称的实现位置，函数位置为：${function_location}",
+            "refs": [
+                {
+                    "place_holder": "function_location",
+                    "query_type": "函数",
+                    "query_keys": [
+                        "function_location"
+                    ],
+                    "example_ref": "zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java"
+                }
+            ]
+        },
+        {
+            "step": "2. 分析该函数的输入参数及其类型。",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "函数",
+                    "query_keys": [
+                        "input_parameters"
+                    ],
+                    "example_ref": "该函数接收一个参数clazz，类型为Class<?>"
+                }
+            ]
+        },
+        {
+            "step": "3. 分析该函数的输出结果及其类型",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "函数",
+                    "query_keys": [
+                        "output_type"
+                    ],
+                    "example_ref": "输出参数类型为String。该函数返回一个字符串，表示枚举值字段的名称。"
+                }
+            ]
+        },
+        {
+            "step": "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息",
+            "refs": []
+        }
+    ],
+    "example_answer": [
+        "函数名称: findEnumValueFieldName",
+        "实现位置: 该函数位于文件 zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java 中。",
+        "输入参数:  参数名称: clazz, 参数类型: Class<?>, 描述: 该参数表示一个类对象，用于查找枚举值字段的名称。",
+        "输出参数: 返回类型: String,  描述: 该函数返回一个字符串，表示枚举值字段的名称。"
+    ]
+}
