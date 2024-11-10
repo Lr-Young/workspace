@@ -1,0 +1,118 @@
+{
+    "name": "局部依赖和导入",
+    "type": "local",
+    "content": [
+        "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
+        "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
+        "3. 分析每个导入的模块及其作用${modules}",
+        "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
+        "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。"
+    ],
+    "background": "问题背景：开发人员需要分析在文件中导入的模块或库的作用",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "这个文件(ImgVerifyCodeService.java)中导入的模块或库的作用是什么"
+    },
+    "steps": [
+        {
+            "step": "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
+            "refs": []
+        },
+        {
+            "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "query_type": "外部依赖库",
+                    "query_keys": [
+                        "dependency"
+                    ],
+                    "example_ref": [
+                        "Hutool：",
+                        "包含的类：",
+                        "cn.hutool.cache.CacheUtil",
+                        "cn.hutool.cache.impl.FIFOCache",
+                        "cn.hutool.captcha.CaptchaUtil",
+                        "cn.hutool.captcha.CircleCaptcha",
+                        "cn.hutool.core.lang.UUID",
+                        "用途：",
+                        "CacheUtil 和 FIFOCache 用于创建和管理验证码缓存。",
+                        "CaptchaUtil 和 CircleCaptcha 用于生成带有干扰的验证码图像。",
+                        "UUID 用于生成唯一标识符。",
+                        "Spring Framework：",
+                        "包含的类：",
+                        "org.springframework.stereotype.Service",
+                        "用途：",
+                        "@Service 注解用于将 ImgVerifyCodeService 类标记为 Spring 的服务组件，以便进行依赖注入和管理。",
+                        "Lombok：",
+                        "包含的类：",
+                        "lombok.extern.slf4j.Slf4j",
+                        "用途：",
+                        "@Slf4j 注解用于自动生成日志记录器字段，简化日志记录操作。",
+                        "Java 标准库：",
+                        "包含的类：",
+                        "java.util.Objects",
+                        "用途：",
+                        "Objects.equals 方法用于比较两个对象的相等性。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "3. 分析每个导入的模块，找到相关代码实现.${modules}",
+            "refs": [
+                {
+                    "place_holder": "modules",
+                    "query_type": "摘要信息",
+                    "query_keys": [
+                        "module"
+                    ],
+                    "example_ref": [
+                        "**im.zhaojun.zfile.core.exception.LoginVerifyException**：",
+                        "位置：src/main/java/im/zhaojun/zfile/core/exception/LoginVerifyException.java",
+                        "作用：自定义异常类，用于在验证码验证失败时抛出异常",
+                        "**im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult**：",
+                        "位置：src/main/java/im/zhaojun/zfile/module/login/model/result/LoginVerifyImgResult.java",
+                        "作用：封装验证码生成结果的模型类，包含验证码图像的 Base64 编码和唯一标识符（UUID）。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
+            "refs": []
+        },
+        {
+            "step": "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。",
+            "refs": []
+        }
+ 
+    ],
+    "example_answer": [
+        "外部依赖库",
+        "Hutool：",
+        "cn.hutool.cache.CacheUtil 和 **cn.hutool.cache.impl.FIFOCache**：",
+        "作用：用于创建和管理验证码缓存。FIFOCache 是一种先进先出的缓存实现，CacheUtil 提供了便捷的方法来创建缓存实例。",
+        "cn.hutool.captcha.CaptchaUtil 和 **cn.hutool.captcha.CircleCaptcha**：",
+        "作用：用于生成带有干扰的验证码图像。CaptchaUtil 提供了创建验证码的便捷方法，CircleCaptcha 是一种带有圆圈干扰的验证码实现。",
+        "**cn.hutool.core.lang.UUID**：",
+        "作用：用于生成唯一标识符（UUID），以标识每次生成的验证码。",
+        "Spring Framework：",
+        "**org.springframework.stereotype.Service**：",
+        "作用：@Service 注解用于将 ImgVerifyCodeService 类标记为 Spring 的服务组件，以便进行依赖注入和管理。",
+        "Lombok：",
+        "**lombok.extern.slf4j.Slf4j**：",
+        "作用：@Slf4j 注解用于自动生成日志记录器字段，简化日志记录操作。",
+        "Java 标准库：",
+        "**java.util.Objects**：",
+        "作用：Objects.equals 方法用于比较两个对象的相等性。",
+        "内部依赖模块",
+        "**im.zhaojun.zfile.core.exception.LoginVerifyException**：",
+        "位置：src/main/java/im/zhaojun/zfile/core/exception/LoginVerifyException.java",
+        "作用：自定义异常类，用于在验证码验证失败时抛出异常。",
+        "**im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult**：",
+        "位置：src/main/java/im/zhaojun/zfile/module/login/model/result/LoginVerifyImgResult.java",
+        "作用：封装验证码生成结果的模型类，包含验证码图像的 Base64 编码和唯一标识符（UUID）。",
+        "这些外部依赖库和内部依赖模块在 ImgVerifyCodeService 类中被使用，用于实现验证码生成、缓存管理、服务组件标记、日志记录和异常处理等功能。"
+    ]
+}

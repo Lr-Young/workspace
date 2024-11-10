@@ -11,7 +11,7 @@
     "background": "问题背景：开发人员需要分析在文件中导入的模块或库的作用",
     "example": {
         "repo": "本地ZFile仓库",
-        "query": "这个文件中导入的模块或库的作用是什么"
+        "query": "这个文件(LoginController)中导入的模块或库的作用是什么"
     },
     "steps": [
         {

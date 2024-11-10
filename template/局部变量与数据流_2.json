@@ -1,0 +1,58 @@
+{
+    "name": "局部变量与数据流",
+    "type": "local",
+    "content": [
+        "1. 查找该局部变量或数据的出现位置，变量名称为：${var_name}",
+        "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文.",
+        "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况"
+    ],
+    "background": "问题背景：在Java项目的代码分析过程中，开发人员希望深入了解局部变量的变化及数据流动。关注重点在于局部变量如何在代码中修改或处理，数据如何通过不同的代码段传递。",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "变量verifyCodeCache的值在ImgVerifyCodeService.java中是如何变化的？"
+    },
+    "steps": [
+        {
+            "step": "1. 查找该局部变量或数据的出现位置，变量为：${var_name}",
+            "refs": [
+                {
+                    "place_holder": "var_name",
+                    "query_type": "局部变量",
+                    "query_keys": [
+                        "定义使用"
+                    ],
+                    "example_ref": "ImgVerifyCodeService.java: 27\nImgVerifyCodeService.java: 41\nImgVerifyCodeService.java: 62\n"
+                }
+            ]
+        },
+        {
+            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "局部变量",
+                    "query_keys": [
+                        "使用场景"
+                    ],
+                    "example_ref": [
+                        "第27行：该变量被声明为 FIFOCache<String, String> 类型，并使用 CacheUtil.newFIFOCache 方法初始化，设置最大容量为 100，验证码有效期为 60 秒。",
+                        "第41行：在 generatorCaptcha 方法中，生成验证码后，将验证码存储在 verifyCodeCache 中，使用 uuid 作为键，验证码 code 作为值。",
+                        "第62行：在 verifyCaptcha 方法中，通过 uuid 从 verifyCodeCache 中获取存储的验证码，并与传入的 code 进行比较，返回验证结果。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况",
+            "refs": []
+        }
+  
+    ],
+    "example_answer": [
+        "1. 初始化：verifyCodeCache 被初始化为一个最大容量为 100，验证码有效期为 60 秒的 FIFO 缓存。",
+        "2. 存储验证码：在 generatorCaptcha 方法中，生成验证码后，将其存储在 verifyCodeCache 中：在这里，verifyCodeCache 的值通过 verifyCodeCache.put(uuid, code) 发生变化，存储了新的验证码。",
+        "3. 获取验证码： 在 verifyCaptcha 方法中，通过 uuid 从 verifyCodeCache 中获取存储的验证码：在这里，verifyCodeCache 的值通过 verifyCodeCache.get(uuid) 进行读取。",
+        "4. 验证验证码并抛出异常： 在 checkCaptcha 方法中，调用 verifyCaptcha 方法进行验证码验证：在这里，verifyCodeCache 的值间接通过 verifyCaptcha 方法进行读取和验证。",
+        "综上所述，verifyCodeCache 的值在 ImgVerifyCodeService.java 文件中主要通过 put 方法进行存储，通过 get 方法进行读取和验证。"
+    ]
+}

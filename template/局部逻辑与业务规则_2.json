@@ -1,0 +1,71 @@
+{
+    "name": "局部逻辑与业务规则",
+    "type": "local",
+    "content": [
+        "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
+        "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_name}",
+        "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
+        "4. 总结：根据以上分析，概述该代码段的功能，业务流程"
+    ],
+    "background": "问题背景：开发人员需要分析在文件中选中的代码段的业务逻辑",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "选中部分的处理逻辑是什么 ",
+        "code": [
+                "public LoginVerifyImgResult generatorCaptcha() {",
+                "CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(200, 45, 4, 7);",
+                "String code = captcha.getCode();",
+                "String imageBase64 = captcha.getImageBase64Data();",
+                "String uuid = UUID.fastUUID().toString();",
+                "verifyCodeCache.put(uuid, code);",
+                "LoginVerifyImgResult loginVerifyImgResult = new LoginVerifyImgResult();",
+                "loginVerifyImgResult.setImgBase64(imageBase64);",
+                "loginVerifyImgResult.setUuid(uuid);",
+                "return loginVerifyImgResult;",
+            "}"
+        ]
+    },
+    "steps": [
+        {
+            "step": "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
+            "refs": []
+        },
+        {
+            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_names}",
+            "refs": [
+                {
+                    "place_holder": "var_names",
+                    "query_type": "局部变量",
+                    "query_keys": [
+                        "定义使用"
+                    ],
+                    "example_ref": [
+                        "**verifyCodeCache**：类型：FIFOCache<String, String>定义位置：类的成员变量用途：存储验证码，防止恶意请求占满内存，",
+                        "**captcha**：类型：CircleCaptcha定义位置：generatorCaptcha 方法中用途：生成验证码图像。",
+                        "**code**：类型：String定义位置：generatorCaptcha 方法中用途：存储生成的验证码。",
+                        "*imageBase64**：类型：String定义位置：generatorCaptcha 方法中用途：存储验证码图像的 Base64 编码。",
+                        "**uuid**：类型：String定义位置：generatorCaptcha 方法中用途：存储生成的验证码的 UUID。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
+            "refs": []
+        },
+        {
+            "step": "4. 总结：根据以上分析，概述该代码段的功能，业务流程",
+            "refs": []
+        }
+    
+    ],
+    "example_answer": [
+        "选中的代码片段位于 ImgVerifyCodeService.java 文件中，其处理逻辑如下：生成验证码：使用 CaptchaUtil.createCircleCaptcha 方法生成一个带有圆圈干扰的验证码图像，图像宽度为 200 像素，高度为 45 像素，包含 4 个字符和 7 个干扰元素。",
+        "获取验证码内容：从生成的验证码图像中获取验证码的字符内容，并存储在 code 变量中。",
+        "获取验证码图像的 Base64 编码：将验证码图像转换为 Base64 编码格式，并存储在 imageBase64 变量中",
+        "生成验证码的 UUID：使用 UUID.fastUUID().toString() 方法生成一个 UUID，并存储在 uuid 变量中。",
+        "存储验证码：将生成的验证码内容 code 存储到 verifyCodeCache 缓存中，以 uuid 作为 key。",
+        "返回结果：将验证码图像的 Base64 编码 imageBase64 和验证码的 UUID uuid 封装到 LoginVerifyImgResult 对象中，并返回该对象。",
+        "综上所述，选中的代码片段的处理逻辑是生成一个带有干扰的验证码图像，获取其字符内容和 Base64 编码，生成一个唯一标识符，将验证码内容存储到缓存中，并返回包含图像编码和唯一标识符的结果对象。"
+    ]
+}
