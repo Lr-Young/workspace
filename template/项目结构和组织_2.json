@@ -1,0 +1,175 @@
+{
+    "name": "项目结构和组织",
+    "type": "global",
+    "content": "问题背景：这是一个Java项目的代码仓库，开发人员询问项目代码仓库的整体架构，主要关注其目录结构、模块职责、依赖关系方面\n1. 分析项目的目录结构，项目代码的目录结构如下：${directory_structure}\n2. 分析项目的主要模块及其作用，核心模块包括：${modules}\n3. 识别项目的依赖，项目的依赖包括：${dependencies}\n4. 阅读项目相关资料（如README、设计文档、API文档等）：${documents}\n5. 总结：根据以上分析步骤，生成关于这个代码仓库的详细架构分析报告\n\n注意：只需要输出最后的总结，中间分析步骤不需要输出",
+    "background": "问题背景：这是一个Java项目的代码仓库，开发人员询问项目代码仓库的整体架构，主要关注其目录结构、模块职责、依赖关系方面",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "这个项目的整体架构是什么样的？"
+    },
+    "steps": [
+        {
+            "step": "分析项目的目录结构，项目代码的目录结构如下：${directory_structure}",
+            "refs": [
+                {
+                    "place_holder": "directory_structure",
+                    "query_type": "目录结构",
+                    "query_keys": [
+                        "project",
+                        "directory_structure"
+                    ],
+                    "example_ref":[
+                        "zfile/",
+                        "├── .github/",
+                        "│   ├── ISSUE_TEMPLATE/",
+                        "│   │   └── config.yml",
+                        "├── .gitignore",
+                        "├── LICENSE",
+                        "├── pom.xml",
+                        "├── README.md",
+                        "├── src/",
+                        "│   ├── main/",
+                        "│   │   ├── java/",
+                        "│   │   │   ├── com/",
+                        "│   │   │   │   └── baomidou/",
+                        "│   │   │   ├── im/",
+                        "│   │   │   │   └── zhaojun/",
+                        "│   │   │   └── springfox/",
+                        "│   │   │       └── documentation/",
+                        "│   │   ├── resources/",
+                        "│   │   │   ├── application-default.properties",
+                        "│   │   │   ├── application.properties",
+                        "│   │   │   ├── banner.txt",
+                        "│   │   │   ├── db/",
+                        "│   │   │   │   ├── migration-mysql/",
+                        "│   │   │   │   └── migration-sqlite/",
+                        "│   │   │   ├── logback-spring.xml",
+                        "│   │   │   ├── mapper/",
+                        "│   │   │   │   └── DownloadLogMapper.xml",
+                        "│   │   │   ├── META-INF/",
+                        "│   │   │   ├── static/",
+                        "│   │   │   └── templates/",
+                        "├── target/",
+                        "└── template.json"
+                                                
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "分析项目的主要模块及其作用，核心模块包括：${modules}",
+            "refs": [
+                {
+                    "place_holder": "modules",
+                    "query_type": "摘要信息",
+                    "query_keys": [
+                        "module"
+                    ],
+                    "example_ref":[
+                        "com.baomidou: 这个包通常包含 MyBatis-Plus 相关的代码，MyBatis-Plus 是一个 MyBatis 的增强工具。",
+                        "im.zhaojun: 这个包可能是项目的主要业务逻辑所在，包含了项目的核心功能和实现。",
+                        "springfox.documentation: 这个包通常用于 Springfox 的文档生成，Springfox 是一个用于生成 Swagger 文档的库。",
+                        "resources: 这个目录包含了项目的资源文件，包括配置文件、数据库迁移脚本、日志配置、静态资源和模板文件等。",
+                        "application-default.properties 和 application.properties: Spring Boot 的配置文件。",
+                        "banner.txt: Spring Boot 启动时显示的横幅。",
+                        "db/migration-mysql 和 db/migration-sqlite: 数据库迁移脚本，分别用于 MySQL 和 SQLite 数据库。",
+                        "logback-spring.xml: Logback 的日志配置文件。",
+                        "mapper/DownloadLogMapper.xml: MyBatis 的 XML 映射文件。",
+                        "META-INF: 包含项目的元数据文件。",
+                        "static: 包含静态资源文件，如 CSS、JavaScript 和图片等。",
+                        "templates: 包含模板文件，通常用于生成动态内容。",
+                        "target: 这个目录通常是 Maven 构建输出的目录，包含编译后的类文件和打包后的 JAR 文件等。",
+                        "template.json: 这个文件可能是项目的模板配置文件。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "识别项目的依赖，项目的依赖包括：${dependencies}",
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "query_type": "外部依赖库",
+                    "query_keys": [
+                        "dependency"
+                    ],
+                    "example_ref":[
+                        "Spring Framework",
+                        "org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication: 根据应用程序的 Web 环境条件来配置 Bean。",
+                        "org.springframework.context.annotation.Conditional: 根据条件来配置 Bean。",
+                        "org.springframework.http.HttpStatus: 表示 HTTP 响应状态码。",
+                        "org.springframework.http.ResponseEntity: 表示 HTTP 响应实体，包括状态码、头信息和响应体。",
+                        "org.springframework.web.bind.annotation.RequestMapping: 映射 HTTP 请求到处理方法。",
+                        "org.springframework.web.bind.annotation.RequestMethod: 指定 HTTP 请求方法（如 GET、POST 等）。",
+                        "org.springframework.web.bind.annotation.RequestParam: 绑定 HTTP 请求参数到方法参数。",
+                        "org.springframework.web.bind.annotation.RestController: 标记类为 REST 控制器，返回 JSON 或 XML 格式的响应。",
+                        "org.springframework.web.util.HtmlUtils: 提供 HTML 编码和解码的实用方法。",
+                        "Swagger",
+                        "io.swagger.models.Swagger: 表示 Swagger API 文档的根对象。",
+                        "springfox.documentation.service.Documentation: 表示生成的 API 文档。",
+                        "springfox.documentation.spi.DocumentationType: 表示文档类型（如 Swagger 2.0）。",
+                        "springfox.documentation.spring.web.DocumentationCache: 缓存生成的 API 文档。",
+                        "springfox.documentation.spring.web.json.Json: 表示 JSON 格式的 API 文档。",
+                        "springfox.documentation.spring.web.json.JsonSerializer: 将 API 文档序列化为 JSON 格式。",
+                        "springfox.documentation.spring.web.plugins.Docket: 配置 Swagger 的主要接口。",
+                        "springfox.documentation.swagger2.mappers.ServiceModelToSwagger2Mapper: 将服务模型映射到 Swagger 2.0 模型。",
+                        "SLF4J",
+                        "org.slf4j.Logger: 日志记录接口。",
+                        "org.slf4j.LoggerFactory: 创建 Logger 实例的工厂类。",
+                        "Spring Plugin",
+                        "org.springframework.plugin.core.PluginRegistry: 管理插件的注册和查找。",
+                        "这些依赖库主要用于构建 RESTful API、处理 Swagger 文档生成和转换、以及日志记录等功能。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "阅读项目相关资料（如README、设计文档、API文档等）：${documents}",
+            "refs": [
+                {
+                    "place_holder": "documents",
+                    "query_type": "文件",
+                    "query_keys": [
+                        "documents"
+                    ],
+                    "example_ref": "通过 Spring Boot 提供了一个在线文件浏览系统，支持多种存储策略和数据库，具有良好的扩展性和配置灵活性。 "
+                }
+            ]
+        },
+        {
+            "step": "总结：根据以上分析步骤，生成关于这个代码仓库的详细架构分析报告",
+            "refs": []
+        }
+    ],
+    "example_answer":[
+        "这个项目的整体架构主要由以下几个模块组成：",
+        "",
+        "存储服务模块 (storage):",
+        "",
+        "主要负责与不同存储源（如本地存储、微软云盘等）的交互。",
+        "例如，AbstractMicrosoftDriveService 是一个抽象类，定义了与微软云盘交互的基本方法。",
+        "StorageSourceService 提供了存储源的管理和操作服务。",
+        "",
+        "短链接模块 (link):",
+        "",
+        "负责生成和解析短链接。",
+        "例如，ShortLinkController 提供了生成短链接和根据短链接跳转的接口。",
+        "",
+        "系统配置模块 (config):",
+        "",
+        "负责系统配置的管理。",
+        "例如，SystemConfigService 提供了获取和更新系统配置的服务。",
+        "",
+        "文件控制器模块 (file):",
+        "",
+        "负责文件的管理和操作。",
+        "例如，FileController 提供了文件列表、文件详情等接口。",
+        "",
+        "实现类模块 (impl):",
+        "",
+        "具体实现了不同存储源的服务。",
+        "例如，LocalServiceImpl 实现了本地存储的服务。",
+        "",
+        "这些模块通过控制器、服务和数据访问层相互协作，共同实现了文件存储、短链接生成、系统配置管理等功能。"
+    ]
+}
