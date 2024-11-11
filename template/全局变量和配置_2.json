@@ -1,0 +1,251 @@
+{
+    "name": "全局变量和配置",
+    "type": "配置分析",
+    "content": [
+        "问题背景：开发人员希望了解项目中全局变量和配置参数的定义及使用情况，包括它们的作用、来源、管理方式等信息。",
+        "1. 识别配置文件：确定项目中使用的配置文件（如`application.properties`、`application.yml`、`config.xml`等）。配置文件列表：${config_files}",
+        "2. 识别全局变量：查找项目中定义的全局变量，包括常量类中的静态变量、配置类中的变量等。全局变量列表：${global_variables}",
+        "3. 分析配置参数：详细分析每个配置参数的作用、默认值及其来源（如环境变量、命令行参数等）。配置参数详情：${config_parameters}",
+        "4. 配置管理方式：了解项目如何管理和加载配置参数，例如使用Spring的`@Value`注解、配置管理工具（如Spring Cloud Config）等。管理方式：${config_management}",
+        "5. 使用情况分析：分析配置参数和全局变量在项目中的具体使用情况，包括在哪些模块或类中被引用。使用情况：${usage_analysis}",
+        "6. 总结与建议：总结全局变量和配置管理的现状，提出优化建议和潜在问题。"
+    ],
+    "background": "开发人员需要了解项目中全局变量和配置参数的定义及使用情况，以便进行维护、优化和扩展。",
+    "example": {
+        "repo": "本地ZFile仓库",
+        "query": "ZFILE的配置文件是如何组织的？哪些配置项是核心的？"
+    },
+    "steps": [
+        {
+            "step": "识别配置文件",
+            "refs": [
+                {
+                    "place_holder": "config_files",
+                    "query_type": "配置文件定位",
+                    "query_keys": [
+                        "application-default.properties:",
+                        "application.properties",
+                        "logback-spring.xml:",
+                        "mapper/DownloadLogMapper.xml:",
+                        "db/migration-mysql/:",
+                        "db/migration-sqlite/:"
+                    ],
+                    "example_ref": [
+                        "application-default.properties:",
+                        "位于 src/main/resources/application-default.properties。",
+                        "包含应用程序的默认配置。",
+                        "application.properties:",
+                        "位于 src/main/resources/application.properties。",
+                        "包含应用程序的主要配置。",
+                        "logback-spring.xml:",
+                        "位于 src/main/resources/logback-spring.xml。",
+                        "用于配置日志记录。",
+                        "mapper/DownloadLogMapper.xml:",
+                        "位于 src/main/resources/mapper/DownloadLogMapper.xml。",
+                        "MyBatis 的 XML 映射文件。",
+                        "数据库迁移文件:",
+                        "db/migration-mysql/:",
+                        "包含 MySQL 数据库的迁移脚本。",
+                        "db/migration-sqlite/:",
+                        "包含 SQLite 数据库的迁移脚本。"
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "识别全局变量",
+            "refs": [
+                {
+                    "place_holder": "global_variables",
+                    "query_type": "全局变量定位",
+                    "query_keys": [
+                        "常量类",
+                        "配置类",
+                        "静态变量"
+                    ],
+                    "example_ref": [
+                        "Constant 类:",
+                        "public static final String APPLICATION_NAME = \"ZFile\";",
+                        "public static final String VERSION = \"4.0.0\";",
+                        "public static final String BASE_PACKAGE = \"im.zhaojun.zfile\";",
+                        "SystemConfig 类",
+                        "private String siteName;",
+                        "private String siteUrl;",
+                        "private String username;",
+                        "private String password;",
+                        "private String storageStrategy;",
+                        "ApplicationConfig 类:",
+                        "private String version;",
+                        "private String basePackage;"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "分析配置参数",
+            "refs": [
+                {
+                    "place_holder": "config_parameters",
+                    "query_type": "配置参数详情",
+                    "query_keys": [
+                        "server.port",
+                        "spring.datasource.url",
+                        "spring.datasource.username",
+                        "spring.datasource.password",
+                        "spring.datasource.driver-class-name",
+                        "zfile.site-name",
+                        "zfile.site-url",
+                        "zfile.username",
+                        "zfile.password",
+                        "zfile.storage-strategy",
+                        "mapper/DownloadLogMapper.xml"
+                    ],
+                    "example_ref": [
+                        "application-default.properties",
+                        "server.port",
+                        "作用: 配置应用程序的运行端口。",
+                        "默认值: 8080",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "spring.datasource.url",
+                        "作用: 配置数据库连接的 URL。",
+                        "默认值: jdbc:mysql://localhost:3306/zfile",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "spring.datasource.username",
+                        "作用: 配置数据库连接的用户名。",
+                        "默认值: root",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "spring.datasource.password",
+                        "作用: 配置数据库连接的密码。",
+                        "默认值: password",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "spring.datasource.driver-class-name",
+                        "作用: 配置数据库驱动类名。",
+                        "默认值: com.mysql.cj.jdbc.Driver",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "application.properties",
+                        "zfile.site-name",
+                        "作用: 配置站点名称。",
+                        "默认值: ZFile",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "zfile.site-url",
+                        "作用: 配置站点 URL。",
+                        "默认值: http://localhost:8080",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "zfile.username",
+                        "作用: 配置管理员用户名。",
+                        "默认值: admin",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "zfile.password",
+                        "作用: 配置管理员密码。",
+                        "默认值: admin",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "zfile.storage-strategy",
+                        "作用: 配置存储策略。",
+                        "默认值: local",
+                        "来源: 可以通过环境变量或命令行参数覆盖。",
+                        "其他配置文件",
+                        "logback-spring.xml",
+                        "作用: 配置日志记录，包括日志级别、输出格式和日志文件位置等。",
+                        "默认值: 无默认值，需在文件中明确配置。",
+                        "来源: 通过文件内容配置。",
+                        "mapper/DownloadLogMapper.xml",
+                        "作用: 配置 MyBatis 的 SQL 映射。",
+                        "默认值: 无默认值，需在文件中明确配置。",
+                        "来源: 通过文件内容配置。",
+                        "StorageSourceService类:",
+                        "zfile/src/main/java/im/zhaojun/zfile/module/storage/service/StorageSourceService.java 文件", 
+                        "getStorageConfigSource 方法定义在第 25 行到第 45 行。", 
+                        "copy 方法定义在第 47 行到第 72 行。", 
+                        "updateById 方法定义在第 74 行。", 
+                        "saveStorageSource 方法定义在第 79 行。", 
+                        "saveOrUpdate 方法定义在第 87 行。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "配置管理方式",
+            "refs": [
+                {
+                    "place_holder": "config_management",
+                    "query_type": "总结文本",
+                    "query_keys": [
+                        "Spring @Value",
+                        "Spring @ConfigurationProperties",
+                        "Spring Environment",
+                        "Spring Cloud Config"
+                    ],
+                    "example_ref":[ 
+                        "使用 @Value 注解", 
+                        "Spring 提供了 @Value 注解来注入配置参数。配置参数可以在 application.properties 或 application-default.properties 文件中定义，然后通过 @Value 注解注入到类中。", 
+                        "使用 @ConfigurationProperties 注解", 
+                        "Spring 还提供了 @ConfigurationProperties 注解来绑定整个配置文件到一个 Java 类中", 
+                        "在 application.properties 文件中定义的配置参数：", 
+                        "使用 Environment 接口", 
+                        "Spring 的 Environment 接口也可以用来获取配置参数。", 
+                        "使用 Spring Cloud Config", 
+                        "如果项目使用了 Spring Cloud Config，可以将配置参数存储在远程配置服务器上，并在应用程序启动时加载"
+                    ]
+                
+                }
+            ]
+        },
+        {
+            "step": "使用情况分析",
+            "refs": [
+                {
+                    "place_holder": "usage_analysis",
+                    "query_type": "总结文本",
+                    "query_keys": [
+                        "ConfigService",
+                        "ZFileProperties",
+                        "EnvironmentService"
+                    ],
+                    "example_ref": [
+                        "在 ConfigService 类中，通过 @Value 注解注入配置参数：", 
+                        "在 ZFileProperties 类中，通过 @ConfigurationProperties 注解绑定整个配置文件：", 
+                        "在 EnvironmentService 类中，通过 Environment 接口获取配置参数：", 
+                        "日志配置", 
+                        "日志配置文件位于 src/main/resources/logback-spring.xml，用于配置日志记录，包括日志级别、输出格式和日志文件位置等。", 
+                        "MyBatis 配置", 
+                        "MyBatis 的 SQL 映射文件位于 src/main/resources/mapper/DownloadLogMapper.xml，用于配置 SQL 语句和映射关系。", 
+                        "数据库迁移", 
+                        "数据库迁移脚本位于 src/main/resources/db/migration-mysql 和 src/main/resources/db/migration-sqlite，用于数据库的版本控制和迁移。"
+                    ]
+                }
+            ]
+        }
+    ],
+    "example_answer":[
+        "在这个项目中，配置文件主要位于 src/main/resources 目录下，具体组织如下：", 
+        "配置文件组织", 
+        "application.properties 和 application-default.properties", 
+        "这些文件用于定义项目的全局配置参数。", 
+        "位置：src/main/resources/application.properties 和 src/main/resources/application-default.properties", 
+        "日志配置文件", 
+        "logback-spring.xml 用于配置日志记录，包括日志级别、输出格式和日志文件位置等。", 
+        "位置：src/main/resources/logback-spring.xml", 
+        "数据库迁移脚本", 
+        "db/migration-mysql 和 db/migration-sqlite 目录下的脚本用于数据库的版本控制和迁移。", 
+        "位置：src/main/resources/db/migration-mysql 和 src/main/resources/db/migration-sqlite", 
+        "MyBatis SQL 映射文件", 
+        "mapper 目录下的 XML 文件用于配置 SQL 语句和映射关系。", 
+        "位置：src/main/resources/mapper/DownloadLogMapper.xml", 
+        "核心配置项", 
+        "以下是一些核心配置项，这些配置项在 application.properties 和 application-default.properties 文件中定义，并在项目的不同模块中被引用：", 
+        "站点名称和 URL", 
+        "zfile.site-name：站点名称", 
+        "zfile.site-url：站点 URL", 
+        "用户认证", 
+        "zfile.username：用户名", 
+        "zfile.password：密码", 
+        "存储策略", 
+        "zfile.storage-strategy：存储策略（例如，本地存储、云存储等）", 
+        "这些配置项在项目的多个类中被引用，例如：", 
+        "在 ConfigService 类中，通过 @Value 注解注入配置参数。", 
+        "在 ZFileProperties 类中，通过 @ConfigurationProperties 注解绑定整个配置文件。", 
+        "在 EnvironmentService 类中，通过 Environment 接口获取配置参数。", 
+        "通过这些配置文件和核心配置项，项目可以灵活地管理和加载配置参数，以适应不同的环境和需求。"
+    ]
+    }

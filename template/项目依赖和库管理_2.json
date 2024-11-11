@@ -1,0 +1,143 @@
+{
+    "name": "项目依赖和库管理",
+    "type": "依赖分析",
+    "content": [
+        "问题背景：开发人员希望了解项目中使用的依赖和第三方库，包括它们的功能、版本、使用场景等信息。",
+        "1. 构建工具识别：确定项目使用的构建工具(如Maven、Gradle等)，查看构建配置文件。构建工具：${build_tool}",
+        "2. 核心依赖分析：识别项目的核心依赖库，这些库对项目的基础功能至关重要。核心依赖：${core_dependencies}",
+        "3. 功能性依赖分析：识别用于特定功能实现的依赖库，如数据库访问、缓存、消息队列等。功能依赖：${feature_dependencies}",
+        "4. 工具类依赖分析：识别用于提升开发效率的工具类库，如日志、测试、代码生成等。工具依赖：${utility_dependencies}",
+        "5. 依赖使用情况：分析各个依赖在项目中的实际使用情况，识别可能的无用依赖。使用情况：${dependency_usage}",
+        "6. 总结：总结项目的依赖管理状况，包括主要依赖、潜在问题和优化建议。"
+    ],
+    "background": "开发人员需要了解项目的依赖结构和管理状况，以便进行维护、升级和优化。",
+    "example": {
+        "repo": "https://github.com/prmr/JetUML",
+        "query": "项目中使用了哪些核心依赖库？它们各自的作用是什么？"
+    },
+    "steps": [
+        {
+            "step": "构建工具识别",
+            "refs": [
+                {
+                    "place_holder": "build_tool",
+                    "query_type": "构建配置",
+                    "query_keys": [
+                        "project",
+                        "checkstyle",
+                        "jekyll"
+                    ],
+                    "example_ref": [
+                        "Eclipse项目配置文件：",
+                        ".project: 定义了Eclipse项目的基本信息和构建规范。",
+                        ".classpath: 定义了Eclipse项目的类路径配置。",
+                        "Checkstyle配置文件：",
+                        ".checkstyle: 定义了Checkstyle的配置，用于代码风格检查。",
+                        "Jekyll配置文件：",
+                        "_config.yml: 用于Jekyll静态网站生成器的配置。",
+                        "这些文件分别用于不同的工具和插件，以帮助管理和构建项目。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "核心依赖分析",
+            "refs": [
+                {
+                    "place_holder": "core_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "JavaFX",
+                        "Checkstyle"
+                    ],
+                    "example_ref": [
+                        "JavaFX：用于构建图形用户界面（GUI），这是项目的核心功能之一。",
+                        "Checkstyle：用于代码风格检查，确保代码符合项目的编码规范。",
+                        "配置文件：.checkstyle"
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "功能性依赖分析",
+            "refs": [
+                {
+                    "place_holder": "feature_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "图形用户界面",
+                        "代码风格检查"
+                    ],
+                    "example_ref": [
+                        "JavaFX：用于构建图形用户界面。",
+                        "Checkstyle：用于代码风格检查，确保代码符合项目的编码规范。",
+                        "Jekyll：用于生成项目的静态网站。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "工具类依赖分析",
+            "refs": [
+                {
+                    "place_holder": "dependency_usage",
+                    "query_type": "文件",
+                    "query_keys": [
+                        "代码风格检查",
+                        "单元测试"
+                    ],
+                    "example_ref": [
+                        "Checkstyle：用于代码风格检查，确保代码符合项目的编码规范。",
+                        "配置文件：.checkstyle",
+                        "JUnit：用于单元测试，确保代码的正确性和稳定性。",
+                        "相关测试文件通常位于 test/ 目录下。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "依赖使用情况分析",
+            "refs": [
+                {
+                    "place_holder": "utility_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "前面识别到的依赖"
+                    ],
+                    "example_ref": [
+                        "JavaFX：用于构建图形用户界面（GUI）。",
+                        "相关导入示例：",
+                        "这些导入语句通常会出现在 src/ 目录下的 Java 文件中。",
+                        "Checkstyle：用于代码风格检查，确保代码符合项目的编码规范。",
+                        "配置文件：.checkstyle",
+                        "JUnit：用于单元测试，确保代码的正确性和稳定性。",
+                        "相关测试文件通常位于 test/ 目录下。",
+                        "Jekyll：用于生成项目的静态网站。",
+                        "配置文件：_config.yml",
+                        "主题：jekyll-theme-slate",
+                        "布局文件位于 _layouts/ 目录下。"
+                    ]
+                }
+            ]
+        }
+    ],
+    "example_answer": [
+        "JavaFX：用于构建图形用户界面（GUI）。",
+        "作用：提供用于创建和管理用户界面的组件和布局。",
+        "相关导入示例：",
+        "Checkstyle：用于代码风格检查，确保代码符合项目的编码规范。",
+        "作用：自动检查代码风格，帮助开发者保持一致的编码规范。",
+        "配置文件：.checkstyle",
+        "JUnit：用于单元测试，确保代码的正确性和稳定性。",
+        "作用：提供测试框架，帮助开发者编写和运行单元测试。",
+        "相关测试文件通常位于 test/ 目录下。",
+        "Jekyll：用于生成项目的静态网站。",
+        "作用：将 Markdown 文件和模板转换为静态网站，便于项目文档的展示和管理。",
+        "配置文件：_config.yml",
+        "主题：jekyll-theme-slate",
+        "布局文件位于 _layouts/ 目录下。",
+        "这些核心依赖库在项目中的作用确保了项目的构建、运行、代码质量和文档生成。"
+        
+    ]
+}
