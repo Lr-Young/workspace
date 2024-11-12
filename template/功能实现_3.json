@@ -1,0 +1,276 @@
+{
+    "name": "功能实现",
+    "type": "global",
+    "content": [
+    "问题背景：这是一个java项目的仓库，开发人员希望了解项目中某个特定功能是如何实现的，特别是具体的实现步骤和相关代码。",
+    "1. 理解功能需求：首先，明确功能的需求和目标。通过查看功能文档、产品需求文档或与产品经理沟通，了解功能的核心需求及其期望效果。需求描述：${function_requirements}",
+    "2. 查找功能实现代码：在项目中找到实现该功能的相关代码。可以通过查看功能模块的文件结构、类名或方法名来定位。常见的搜索工具包括IDE的搜索功能、GitHub的搜索、以及项目的代码注释。代码位置：${code}",
+    "3. 分析核心实现逻辑：分析代码中实现该功能的核心逻辑。例如，在文件上传功能中，可能涉及文件的接收、存储路径的生成、文件类型的验证等。",
+    "4. 识别依赖关系：确定该功能是否依赖其他模块或外部服务。例如，视频预览功能可能需要调用外部服务来获取视频流，或者依赖存储服务来加载视频文件。依赖关系：${dependencies}",
+    "5. 查看相关配置文件：检查是否有功能相关的配置项，例如存储路径、外部服务API的URL、权限设置等。这些配置通常在项目的配置文件中定义。配置项：${configurations}",
+    "6. 查看测试用例(如有)：查看是否为该功能编写了单元测试或集成测试。通过测试用例来验证功能是否按预期实现。测试用例：${test_cases}",
+    "7. 性能分析与优化(如有)：如果功能有性能要求（如视频流播放、文件上传），则需要分析代码的性能瓶颈，并提出优化方案。性能优化：${performance_optimization}",
+    "8. 功能文档和开发手册(如有)：检查项目文档或开发手册中的功能说明，通常文档中会提供详细的实现说明和注意事项。文档参考：${documentation}",
+    "9. 查看版本控制记录(如有)：通过查看版本控制系统（如Git）的提交记录，了解功能的实现演变过程。版本记录：${version_control}",
+    "10. 总结与归纳：将功能的实现步骤进行总结，确保了解所有涉及的模块、流程和关键代码，掌握该功能的实现细节。"
+    ],
+    "background": "开发人员需要了解项目中某个功能是如何实现的，尤其是步骤和核心逻辑，以便能够复用或修改该功能。",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "mall项目中的购物车功能是如何实现的？"
+    },
+    "steps": [
+        {
+            "step": "理解功能需求",
+            "refs": [
+                {
+                    "place_holder": "function_description",
+                    "query_type": "摘要信息",
+                    "query_keys": [
+                        "购物车"
+                    ],
+                    "example_ref":[                
+                    "购物车功能主要包括以下需求：",
+                    "用户可以将商品添加到购物车。",
+                    "用户可以查看购物车中的商品。",
+                    "用户可以修改购物车中的商品数量。",
+                    "用户可以删除购物车中的商品。",
+                    "用户可以清空购物车。"
+    ]
+                }
+            ]
+        },
+        {
+            "step": "查找功能实现代码",
+            "refs": [
+                {
+                    "place_holder": "code",
+                    "query_type": "相关代码",
+                    "query_keys": [
+                        "mall-portal",
+                        "购物"
+                    ],
+                    "example_ref": [
+                        "控制器层:OmsCartItemController.java",
+                        "服务层(核心方法):OmsCartItemService.java",
+                        "public interface OmsCartItemService {",
+                        "    int add(OmsCartItem cartItem);",
+                        "    List<OmsCartItem> list();",
+                        "    int updateQuantity(Long id, Integer quantity);",
+                        "    int delete(List<Long> ids);",
+                        "    int clear();",
+                        "}",
+                        "服务实现类:OmsCartItemServiceImpl.java"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "分析核心功能实现逻辑",
+            "refs": [
+                {
+                    "place_holder": "无",
+                    "query_type": "无",
+                    "query_keys": [
+                    ],
+                    "example_ref": ""
+                }
+            ]
+        },
+        {
+            "step": "识别该功能依赖关系",
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "query_type": "依赖函数",
+                    "query_keys": [
+                        "web服务",
+                        "数据库服务"
+                    ],
+                    "example_ref":[
+                        "购物车功能主要依赖以下组件和库：",
+                        "Spring Boot：用于构建 Web 应用。",
+                        "MyBatis：用于数据库操作。",
+                        "Redis：用于缓存购物车数据。",
+                        "Spring Security：用于用户认证和授权。"
+                    ]
+                    }
+            ]
+        },
+        {
+            "step": "查看相关配置文件",
+            "refs": [
+                {
+                    "place_holder": "configurations",
+                    "query_type": "配置项",
+                    "query_keys": [
+                        "购物车",
+                        "数据库",
+                        "缓存"
+                    ],
+                    "example_ref": [
+                        "application.yml",
+                        "mybatis-config.xml",
+                        "redis.properties"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "查看测试用例",
+            "refs": [
+                {
+                    "place_holder": "test_cases",
+                    "query_type": "测试用例文件",
+                    "query_keys": [
+                        "购物车"
+                    ],
+                    "example_ref": "未找到测试用例文件"
+                }
+            ]
+        },
+        {
+            "step": "总结与归纳",
+            "refs": [
+                {
+                    "place_holder": "无",
+                    "query_type": "无",
+                    "query_keys": [
+                    ],
+                    "example_ref": ""
+                }
+            ]
+        }
+    ],
+    "example_answer": [
+        "在 ",
+        "mall",
+        " 项目中，购物车功能主要由 ",
+        "OmsCartItemController",
+        " 控制器和相关的服务类、数据模型类共同实现。以下是对购物车功能实现的详细总结：",
+        "## 主要文件和类",
+        "### 1. 控制器类",
+        "#### ",
+        "OmsCartItemController",
+        "- **位置**：mall-portal/src/main/java/com/macro/mall/portal/controller/OmsCartItemController.java",
+        "- **功能**：处理购物车相关的 HTTP 请求，包括添加商品到购物车、获取购物车列表、获取带促销信息的购物车列表等。",
+        "主要方法：",
+        "- ",
+        "add(@RequestBody OmsCartItem cartItem)",
+        "：添加商品到购物车。",
+        "- ",
+        "list()",
+        "：获取当前会员的购物车列表。",
+        "- ",
+        "listPromotion(@RequestParam(required = false) List<Long> cartIds)",
+        "：获取当前会员的购物车列表，包括促销信息。",
+        "### 2. 服务类",
+        "#### ",
+        "OmsCartItemService",
+        "- **位置**：mall-portal/src/main/java/com/macro/mall/portal/service/OmsCartItemService.java",
+        "- **功能**：定义购物车相关的业务逻辑接口。",
+        "主要方法：",
+        "- ",
+        "int add(OmsCartItem cartItem)",
+        "：添加商品到购物车。",
+        "- ",
+        "List<OmsCartItem> list(Long memberId)",
+        "：获取指定会员的购物车列表。",
+        "- ",
+        "List<CartPromotionItem> listPromotion(Long memberId, List<Long> cartIds)",
+        "：获取指定会员的购物车列表，包括促销信息。",
+        "#### `OmsCartItemServiceImpl`",
+        "- **位置**：mall-portal/src/main/java/com/macro/mall/portal/service/impl/OmsCartItemServiceImpl.java",
+        "- **功能**：实现 ",
+        "OmsCartItemService",
+        " 接口，具体实现购物车相关的业务逻辑。",
+        "主要方法：",
+        "- ",
+        "int add(OmsCartItem cartItem)",
+        "：实现添加商品到购物车的逻辑。",
+        "- ",
+        "List<OmsCartItem> list(Long memberId)",
+        "：实现获取指定会员的购物车列表的逻辑。",
+        "- ",
+        "List<CartPromotionItem> listPromotion(Long memberId, List<Long> cartIds)",
+        "：实现获取指定会员的购物车列表，包括促销信息的逻辑。",
+        "### 3. 数据模型类",
+        "#### ",
+        "OmsCartItem",
+        "- **位置**：mall-mbg/src/main/java/com/macro/mall/model/OmsCartItem.java",
+        "- **功能**：定义购物车商品的数据模型，包括商品 ID、会员 ID、数量、价格等属性。",
+        "#### ",
+        "CartPromotionItem",
+        "- **位置**：mall-portal/src/main/java/com/macro/mall/portal/domain/CartPromotionItem.java",
+        "- **功能**：定义带促销信息的购物车商品的数据模型，继承自 ",
+        "OmsCartItem",
+        "，增加了促销信息的属性。",
+        "### 4. 会员服务类",
+        "#### ",
+        "UmsMemberService",
+        "- **位置**：mall-portal/src/main/java/com/macro/mall/portal/service/UmsMemberService.java",
+        "- **功能**：定义会员相关的业务逻辑接口，提供获取当前会员信息的方法。",
+        "主要方法：",
+        "- ",
+        "UmsMember getCurrentMember()",
+        "：获取当前登录的会员信息。",
+        "## 购物车功能实现流程",
+        "1. **添加商品到购物车**：",
+        "   - 前端发送 POST 请求到 `/cart/add`，请求体为 ",
+        "OmsCartItem",
+        " 对象。",
+        "   - ",
+        "OmsCartItemController",
+        " 的 ",
+        "add",
+        " 方法接收请求，调用 ",
+        "OmsCartItemService",
+        " 的 ",
+        "add",
+        " 方法。",
+        "   - `OmsCartItemServiceImpl` 实现 ",
+        "add",
+        " 方法，将商品信息添加到数据库中，并返回添加结果。",
+        "2. **获取购物车列表**：",
+        "   - 前端发送 GET 请求到 `/cart/list`。",
+        "   - ",
+        "OmsCartItemController",
+        " 的 ",
+        "list",
+        " 方法接收请求，调用 ",
+        "OmsCartItemService",
+        " 的 ",
+        "list",
+        " 方法。",
+        "   - `OmsCartItemServiceImpl` 实现 ",
+        "list",
+        " 方法，根据当前会员 ID 查询数据库，获取购物车商品列表，并返回结果。",
+        "3. **获取带促销信息的购物车列表**：",
+        "   - 前端发送 GET 请求到 `/cart/list/promotion`，可选地传递购物车商品 ID 列表。",
+        "   - ",
+        "OmsCartItemController",
+        " 的 ",
+        "listPromotion",
+        " 方法接收请求，调用 ",
+        "OmsCartItemService",
+        " 的 ",
+        "listPromotion",
+        " 方法。",
+        "   - `OmsCartItemServiceImpl` 实现 ",
+        "listPromotion",
+        " 方法，根据当前会员 ID 和可选的购物车商品 ID 列表查询数据库，获取带促销信息的购物车商品列表，并返回结果。",
+        "## 总结",
+        "购物车功能通过 ",
+        "OmsCartItemController",
+        " 控制器处理前端请求，调用 ",
+        "OmsCartItemService",
+        " 服务类实现具体的业务逻辑，使用 ",
+        "OmsCartItem",
+        " 和 ",
+        "CartPromotionItem",
+        " 数据模型类定义购物车商品的数据结构。会员信息通过 ",
+        "UmsMemberService",
+        " 服务类获取。各个组件协同工作，实现了购物车的添加、查询和促销信息获取等功能。"
+
+        ]
+}

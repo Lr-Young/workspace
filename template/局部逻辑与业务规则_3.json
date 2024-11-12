@@ -1,0 +1,120 @@
+{
+    "name": "局部逻辑与业务规则",
+    "type": "local",
+    "content": [
+        "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
+        "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_name}",
+        "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
+        "4. 总结：根据以上分析，概述该代码段的功能，业务流程"
+    ],
+    "background": "问题背景：开发人员需要分析在文件中选中的代码段的业务逻辑",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "选中部分的处理逻辑是什么 ",
+        "code": [
+            " Date now = new Date();",
+            "        //获取该用户所有优惠券",
+            "        List<SmsCouponHistoryDetail> allList = couponHistoryDao.getDetailList(currentMember.getId());",
+            "        //根据优惠券使用类型来判断优惠券是否可用",
+            "        List<SmsCouponHistoryDetail> enableList = new ArrayList<>();",
+            "        List<SmsCouponHistoryDetail> disableList = new ArrayList<>();",
+            "        for (SmsCouponHistoryDetail couponHistoryDetail : allList) {",
+            "            Integer useType = couponHistoryDetail.getCoupon().getUseType();",
+            "            BigDecimal minPoint = couponHistoryDetail.getCoupon().getMinPoint();",
+            "            Date endTime = couponHistoryDetail.getCoupon().getEndTime();",
+            "            if(useType.equals(0)){",
+            "                //0->全场通用",
+            "                //判断是否满足优惠起点",
+            "                //计算购物车商品的总价",
+            "                BigDecimal totalAmount = calcTotalAmount(cartItemList);",
+            "                if(now.before(endTime)&&totalAmount.subtract(minPoint).intValue()>=0){",
+            "                    enableList.add(couponHistoryDetail);",
+            "                }else{",
+            "                    disableList.add(couponHistoryDetail);",
+            "                }",
+            "            }else if(useType.equals(1)){",
+            "                //1->指定分类",
+            "                //计算指定分类商品的总价",
+            "                List<Long> productCategoryIds = new ArrayList<>();",
+            "                for (SmsCouponProductCategoryRelation categoryRelation : couponHistoryDetail.getCategoryRelationList()) {",
+            "                    productCategoryIds.add(categoryRelation.getProductCategoryId());",
+            "                }",
+            "                BigDecimal totalAmount = calcTotalAmountByproductCategoryId(cartItemList,productCategoryIds);",
+            "                if(now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){",
+            "                    enableList.add(couponHistoryDetail);",
+            "                }else{",
+            "                    disableList.add(couponHistoryDetail);",
+            "                }",
+            "            }else if(useType.equals(2)){",
+            "                //2->指定商品",
+            "                //计算指定商品的总价",
+            "                List<Long> productIds = new ArrayList<>();",
+            "                for (SmsCouponProductRelation productRelation : couponHistoryDetail.getProductRelationList()) {",
+            "                    productIds.add(productRelation.getProductId());",
+            "                }",
+            "                BigDecimal totalAmount = calcTotalAmountByProductId(cartItemList,productIds);",
+            "                if(now.before(endTime)&&totalAmount.intValue()>0&&totalAmount.subtract(minPoint).intValue()>=0){",
+            "                    enableList.add(couponHistoryDetail);",
+            "                }else{",
+            "                    disableList.add(couponHistoryDetail);",
+            "                }",
+            "            }",
+            "        }",
+            "        if(type.equals(1)){",
+            "            return enableList;",
+            "        }else{",
+            "            return disableList;",
+            "        }",
+            "}"
+        ]
+    },
+    "steps": [
+        {
+            "step": "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
+            "answer": [
+                "文件：mall-portal/src/main/java/com/macro/mall/portal/service/impl/UmsMemberCouponServiceImpl.java",
+                "代码行：117-169"
+            ]
+        },
+        {
+            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_names}",
+            "answer": [
+                "变量：",
+                "1. Date now = new Date();",
+                "2. List<SmsCouponHistoryDetail> allList = couponHistoryDao.getDetailList(currentMember.getId());",
+                "3. List<SmsCouponHistoryDetail> enableList = new ArrayList<>();",
+                "4. List<SmsCouponHistoryDetail> disableList = new ArrayList<>();",
+                "5. for (SmsCouponHistoryDetail couponHistoryDetail : allList) {",
+                "6. Integer useType = couponHistoryDetail.getCoupon().getUseType();",
+                "7. BigDecimal minPoint = couponHistoryDetail.getCoupon().getMinPoint();",
+                "8. Date endTime = couponHistoryDetail.getCoupon().getEndTime();",
+                "9. BigDecimal totalAmount = calcTotalAmount(cartItemList);",
+                "10. List<Long> productCategoryIds = new ArrayList<>();",
+                "11. BigDecimal totalAmount = calcTotalAmountByproductCategoryId(cartItemList,productCategoryIds);",
+                "12. List<Long> productIds = new ArrayList<>();",
+                "13. BigDecimal totalAmount = calcTotalAmountByProductId(cartItemList,productIds);"
+            ]
+        },
+        {
+            "step": "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
+            "answer": [
+                "1. 获取当前时间：Date now = new Date();",
+                "2. 获取当前用户的所有优惠券：List<SmsCouponHistoryDetail> allList = couponHistoryDao.getDetailList(currentMember.getId());",
+                "3. 初始化两个列表：enableList 和 disableList，用于存储可用和不可用的优惠券。",
+                "4. 遍历所有优惠券，根据优惠券的使用类型（useType）和其他条件判断优惠券是否可用。",
+                "5. 如果优惠券类型为全场通用（useType == 0），则计算购物车商品的总价，并判断是否满足优惠起点和有效期。",
+                "6. 如果优惠券类型为指定分类（useType == 1），则计算指定分类商品的总价，并判断是否满足优惠起点和有效期。",
+                "7. 如果优惠券类型为指定商品（useType == 2），则计算指定商品的总价，并判断是否满足优惠起点和有效期。",
+                "8. 根据判断结果，将优惠券添加到 enableList 或 disableList。",
+                "9. 最后，根据传入的 type 参数，返回 enableList 或 disableList。"
+            ]
+        },
+        {
+            "step": "4. 总结：根据以上分析，概述该代码段的功能，业务流程",
+            "answer": [
+                "该代码段的功能是根据当前用户的购物车商品和优惠券的使用规则，判断哪些优惠券是可用的，哪些是不可用的。",
+                "主要业务流程包括：获取当前时间和用户的所有优惠券，遍历优惠券列表，根据优惠券的使用类型和条件判断其是否可用，并将结果存储在 enableList 和 disableList 中，最后根据传入的 type 参数返回相应的列表。"
+            ]
+        }
+    ]
+}

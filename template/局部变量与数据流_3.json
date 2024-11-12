@@ -1,0 +1,76 @@
+{
+    "name": "局部变量与数据流",
+    "type": "local",
+    "content": [
+        "1. 查找该局部变量或数据的出现位置，变量名称为：${var_name}",
+        "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文.",
+        "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况"
+    ],
+    "background": "问题背景：在Java项目的代码分析过程中，开发人员希望深入了解局部变量的变化及数据流动。关注重点在于局部变量如何在代码中修改或处理，数据如何通过不同的代码段传递。",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "变量criteria是如何被定义以及操作变化的？"
+    },
+    "steps": [
+        {
+            "step": "1. 查找该局部变量或数据的出现位置，变量为：criteria",
+            "refs": [
+                {
+                    "place_holder": "var_name",
+                    "query_type": "局部变量",
+                    "query_keys": [
+                        "定义使用"
+                    ],
+                    "example_ref": []
+                }
+            ]
+        },
+        {
+            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "局部变量",
+                    "query_keys": [
+                        "使用场景"
+                    ],
+                    "example_ref": []
+                }
+            ]
+        },
+        {
+            "step": "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况",
+            "refs": []
+        }
+    ],
+    "example_answer": [
+        {
+            "step": "1. 查找该局部变量或数据的出现位置，变量为：criteria",
+            "answer": [
+                "变量criteria在PmsPortalProductServiceImpl.java文件的search方法中被定义，位于第36行。",
+                "定义语句：PmsProductExample.Criteria criteria = example.createCriteria();"
+            ]
+        },
+        {
+            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
+            "answer": [
+                "变量criteria在search方法中被多次使用，用于设置查询条件。",
+                "使用场景包括：",
+                "1. criteria.andDeleteStatusEqualTo(0);",
+                "2. criteria.andPublishStatusEqualTo(1);",
+                "3. criteria.andNameLike(\"%\" + keyword + \"%\");",
+                "4. criteria.andBrandIdEqualTo(brandId);",
+                "5. criteria.andProductCategoryIdEqualTo(productCategoryId);"
+            ]
+        },
+        {
+            "step": "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况",
+            "answer": [
+                "变量criteria在PmsPortalProductServiceImpl.java文件的search方法中被定义，位于第36行。",
+                "定义语句：PmsProductExample.Criteria criteria = example.createCriteria();",
+                "该变量用于设置查询条件，包括删除状态、发布状态、商品名称、品牌ID和商品分类ID等。",
+                "通过criteria变量，search方法能够根据不同的查询条件动态生成SQL查询语句，从而实现商品的搜索功能。"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,258 @@
+{
+    "name": "项目依赖和库管理",
+    "type": "依赖分析",
+    "content": [
+        "问题背景：开发人员希望了解项目中使用的依赖和第三方库，包括它们的功能、版本、使用场景等信息。",
+        "1. 构建工具识别：确定项目使用的构建工具(如Maven、Gradle等)，查看构建配置文件。构建工具：${build_tool}",
+        "2. 核心依赖分析：识别项目的核心依赖库，这些库对项目的基础功能至关重要。核心依赖：${core_dependencies}",
+        "3. 功能性依赖分析：识别用于特定功能实现的依赖库，如数据库访问、缓存、消息队列等。功能依赖：${feature_dependencies}",
+        "4. 工具类依赖分析：识别用于提升开发效率的工具类库，如日志、测试、代码生成等。工具依赖：${utility_dependencies}",
+        "5. 依赖使用情况：分析各个依赖在项目中的实际使用情况，识别可能的无用依赖。使用情况：${dependency_usage}",
+        "6. 总结：总结项目的依赖管理状况，包括主要依赖、潜在问题和优化建议。"
+    ],
+    "background": "开发人员需要了解项目的依赖结构和管理状况，以便进行维护、升级和优化。",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "项目中使用了哪些核心依赖库？它们各自的作用是什么？"
+    },
+    "steps": [
+        {
+            "step": "构建工具识别",
+            "refs": [
+                {
+                    "place_holder": "build_tool",
+                    "query_type": "构建配置",
+                    "query_keys": [
+                        "pom.xml",
+                        "build.gradle"
+                    ],
+                    "example_ref": "项目使用Maven作为构建工具，配置文件为pom.xml"
+                }
+            ]
+        },
+        {
+            "step": "核心依赖分析",
+            "refs": [
+                {
+                    "place_holder": "core_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "spring相关",
+                        "数据库相关"
+                    ],
+                    "example_ref": [
+                        "spring-boot-starter-web：用于构建基于 Spring Boot 的 Web 应用，包含嵌入式 Tomcat 和 Spring MVC。",
+                        "spring-boot-starter-security：提供安全认证和授权功能。",
+                        "spring-boot-starter-data-redis：用于与 Redis 数据库进行交互，实现缓存功能。",
+                        "MyBatis：持久层框架，用于简化数据库操作。",
+                        "Spring Boot：基础框架，用于构建独立的、生产级的 Spring 应用。"        
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "功能性依赖分析",
+            "refs": [
+                {
+                    "place_holder": "feature_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "数据库驱动",
+                        "缓存",
+                        "消息队列",
+                        "HTTP客户端",
+                        "Json处理"
+                    ],
+                    "example_ref": [
+                        "mysql-connector-java：MySQL 数据库驱动，用于连接 MySQL 数据库。",
+                        "spring-boot-starter-data-mongodb：用于与 MongoDB 数据库进行交互。",
+                        "spring-boot-starter-amqp：用于与 AMQP 消息队列（如 RabbitMQ）进行交互。",
+                        "spring-boot-starter-data-elasticsearch：用于与 Elasticsearch 进行交互，实现搜索功能。",
+                        "jjwt：用于生成和解析 JSON Web Token (JWT)，实现安全认证。",
+                        "alipay-sdk-java：用于与支付宝支付接口进行交互。"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "工具类依赖分析",
+            "refs": [
+                {
+                    "place_holder": "dependency_usage",
+                    "query_type": "文件",
+                    "query_keys": [
+                        "开发工具",
+                        "日志工具",
+                        "API文档生成"
+
+                    ],
+                    "example_ref": [
+                        "logstash-logback-encoder：用于将日志输出到 Logstash，便于集中管理和分析日志。",
+                        "spring-boot-starter-test：提供 Spring Boot 应用的测试支持，包括 JUnit、Mockito 等。",
+                        "mybatis-generator-core：MyBatis 代码生成器，用于自动生成 MyBatis 的 Mapper、Model 等代码。",
+                        "hutool-all：一个 Java 工具类库，提供各种常用的工具方法，提升开发效率。",
+                        "lombok：通过注解简化 Java 代码，减少样板代码（如 getter/setter、构造函数等）"
+        
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "依赖使用情况分析",
+            "refs": [
+                {
+                    "place_holder": "utility_dependencies",
+                    "query_type": "依赖配置",
+                    "query_keys": [
+                        "前面识别到的依赖"
+                    ],
+                    "example_ref": [
+                        "## 1. 核心依赖",
+                        "### `spring-boot-starter-web`",
+                        "- **位置**：mall-common/pom.xml",
+                        "- **用途**：用于构建 Web 应用，提供 Spring MVC 和嵌入式 Tomcat 支持。",
+                        "- **使用情况**：在各个模块中用于处理 HTTP 请求和响应。",
+                        "### `spring-boot-starter-security`",
+                        "- **位置**：mall-demo/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：提供安全认证和授权功能。",
+                        "- **使用情况**：在 ",
+                        "mall-security",
+                        " 模块中用于实现用户认证和权限管理。",
+                        "### `spring-boot-starter-data-redis`",
+                        "- **位置**：mall-common/pom.xml, ",
+                        "pom.xml",
+                        ", ",
+                        "pom.xml",
+                        "- **用途**：用于 Redis 数据库的集成，提供缓存功能。",
+                        "- **使用情况**：在多个模块中用于缓存数据，提高系统性能。",
+                        "### `MyBatis`",
+                        "- **位置**：mall-mbg/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：持久层框架，用于简化数据库操作。",
+                        "- **使用情况**：在 ",
+                        "mall-mbg",
+                        " 模块中用于生成数据库操作代码，在其他模块中用于数据库访问。",
+                        "### `Spring Boot`",
+                        "- **位置**：pom.xml",
+                        "- **用途**：用于构建独立的、生产级的 Spring 应用。",
+                        "- **使用情况**：作为项目的基础框架，提供各种 Spring 组件的支持。",
+                        "## 2. 功能性依赖",
+                        "### 数据库访问",
+                        "#### `mysql-connector-java`",
+                        "- **位置**：mall-mbg/pom.xml",
+                        "- **用途**：MySQL 数据库驱动。",
+                        "- **使用情况**：在 ",
+                        "mall-mbg",
+                        " 模块中用于连接 MySQL 数据库。",
+                        "#### `spring-boot-starter-data-mongodb`",
+                        "- **位置**：mall-portal/pom.xml",
+                        "- **用途**：用于 MongoDB 数据库的集成。",
+                        "- **使用情况**：在 ",
+                        "mall-portal",
+                        " 模块中用于 MongoDB 数据库操作。",
+                        "### 缓存",
+                        "#### `spring-boot-starter-data-redis`",
+                        "- **位置**：mall-common/pom.xml",
+                        "- **用途**：用于 Redis 数据库的集成，提供缓存功能。",
+                        "- **使用情况**：在多个模块中用于缓存数据，提高系统性能。",
+                        "### 消息队列",
+                        "#### `spring-boot-starter-amqp`",
+                        "- **位置**：mall-portal/pom.xml",
+                        "- **用途**：用于 RabbitMQ 消息队列的集成。",
+                        "- **使用情况**：在 ",
+                        "mall-portal",
+                        " 模块中用于消息队列操作。",
+                        "### 搜索",
+                        "#### `spring-boot-starter-data-elasticsearch`",
+                        "- **位置**：mall-search/pom.xml",
+                        "- **用途**：用于 Elasticsearch 的集成。",
+                        "- **使用情况**：在 ",
+                        "mall-search",
+                        " 模块中用于实现商品搜索功能。",
+                        "### 安全",
+                        "#### `spring-boot-starter-security`",
+                        "- **位置**：mall-demo/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：提供安全认证和授权功能。",
+                        "- **使用情况**：在 ",
+                        "mall-security",
+                        " 模块中用于实现用户认证和权限管理。",
+                        "#### `jjwt`",
+                        "- **位置**：mall-security/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：用于生成和解析 JSON Web Token (JWT)。",
+                        "- **使用情况**：在 ",
+                        "mall-security",
+                        " 模块中用于实现基于 JWT 的认证。",
+                        "### 支付",
+                        "#### `alipay-sdk-java`",
+                        "- **位置**：mall-portal/pom.xml",
+                        "- **用途**：用于集成支付宝支付功能。",
+                        "- **使用情况**：在 ",
+                        "mall-portal",
+                        " 模块中用于处理支付相关操作。",
+                        "## 3. 工具类依赖",
+                        "### 日志",
+                        "#### `logstash-logback-encoder`",
+                        "- **位置**：mall-demo/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：用于将日志输出到 Logstash。",
+                        "- **使用情况**：在多个模块中用于日志处理和输出。",
+                        "### 测试",
+                        "#### `spring-boot-starter-test`",
+                        "- **位置**：pom.xml",
+                        "- **用途**：提供 Spring Boot 测试支持。",
+                        "- **使用情况**：在各个模块中用于单元测试和集成测试。",
+                        "### 代码生成",
+                        "#### `mybatis-generator-core`",
+                        "- **位置**：mall-mbg/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：用于生成 MyBatis 的代码。",
+                        "- **使用情况**：在 ",
+                        "mall-mbg",
+                        " 模块中用于生成数据库操作代码。",
+                        "### 其他工具",
+                        "#### `hutool-all`",
+                        "- **位置**：mall-demo/pom.xml, ",
+                        "pom.xml",
+                        "- **用途**：提供各种 Java 工具类。",
+                        "- **使用情况**：在多个模块中用于简化开发。",
+                        "#### `lombok`",
+                        "- **位置**：pom.xml",
+                        "- **用途**：用于简化 Java 代码的开发。",
+                        "- **使用情况**：在各个模块中用于减少样板代码。",
+                        "## 总结",
+                        "项目中的依赖库被广泛应用于不同模块，以实现相应的功能。核心依赖库如 `spring-boot-starter-web` 和 `spring-boot-starter-security` 提供了基础功能支持，功能性依赖库如 `mysql-connector-java` 和 `spring-boot-starter-data-redis` 用于特定功能实现，工具类依赖库如 `logstash-logback-encoder` 和 `spring-boot-starter-test` 提升了开发效率。所有依赖库均与项目功能紧密相关，未发现明显的无用依赖。"
+        
+                    ]
+                }
+            ]
+        }
+    ],
+    "example_answer": [
+        "项目使用Maven作为构建工具，配置文件为pom.xml",
+        "核心依赖：",
+        "- `spring-boot-starter-web`：用于构建基于 Spring Boot 的 Web 应用，包含嵌入式 Tomcat 和 Spring MVC。",
+        "- `spring-boot-starter-security`：提供安全认证和授权功能。",
+        "- `spring-boot-starter-data-redis`：用于与 Redis 数据库进行交互，实现缓存功能。",
+        "- `MyBatis`：持久层框架，用于简化数据库操作。",
+        "- `Spring Boot`：基础框架，用于构建独立的、生产级的 Spring 应用。",
+        "功能性依赖：",
+        "- 数据库访问：",
+        "  - `mysql-connector-java`：MySQL 数据库驱动，用于连接 MySQL 数据库。",
+        "  - `spring-boot-starter-data-mongodb`：用于与 MongoDB 数据库进行交互。",
+        "- 缓存：",
+        "  - `spring-boot-starter-data-redis`：用于 Redis 数据库的集成，提供缓存功能。",
+        "- 消息队列：",
+        "  - `spring-boot-starter-amqp`：用于与 AMQP 消息队列（如 RabbitMQ）进行交互。",
+        "- HTTP客户端：",
+        "  - `jjwt`：用于生成和解析 JSON Web Token (JWT)，实现安全认证。",
+        "- Json处理：",
+        "  - `alipay-sdk-java`：用于与支付宝支付接口进行交互。",
+        "工具类依赖：",
+        "- `logstash-logback-encoder`：用于将日志输出到 Logstash，便于集中管理和分析日志。",
+        "- `spring-boot-starter-test`：提供 Spring Boot 应用的测试支持，包括 JUnit、Mockito 等。",
+        "- `mybatis-generator-core`：MyBatis 代码生成器，用于自动生成 MyBatis 的 Mapper、Model 等代码。"
+      ]
+}

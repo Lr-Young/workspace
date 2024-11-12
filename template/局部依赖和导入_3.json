@@ -1,0 +1,138 @@
+{
+    "name": "局部依赖和导入",
+    "type": "local",
+    "content": [
+        "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
+        "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
+        "3. 分析每个导入的模块及其作用${modules}",
+        "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
+        "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。"
+    ],
+    "background": "问题背景：开发人员需要分析在文件中导入的模块或库的作用",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "这个文件(OmsCartItemController.java)中导入的模块或库的作用是什么"
+    },
+    "steps": [
+        {
+            "step": "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
+            "refs": [
+                "import com.macro.mall.common.api.CommonResult;",
+                "import com.macro.mall.model.OmsCartItem;",
+                "import com.macro.mall.portal.domain.CartProduct;",
+                "import com.macro.mall.portal.domain.CartPromotionItem;",
+                "import com.macro.mall.portal.service.OmsCartItemService;",
+                "import com.macro.mall.portal.service.UmsMemberService;",
+                "import io.swagger.annotations.Api;",
+                "import io.swagger.annotations.ApiOperation;",
+                "import io.swagger.v3.oas.annotations.tags.Tag;",
+                "import org.springframework.beans.factory.annotation.Autowired;",
+                "import org.springframework.stereotype.Controller;",
+                "import org.springframework.web.bind.annotation.*;",
+                "import java.util.List;"
+            ]
+        },
+        {
+            "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "query_type": "外部依赖库",
+                    "query_keys": [
+                        "dependency"
+                    ],
+                    "example_ref": [
+                        "dependencies", [
+                            {
+                                "dependency": "io.swagger.annotations.Api",
+                                "description": "用于生成API文档的注解。"
+                            },
+                            {
+                                "dependency": "io.swagger.annotations.ApiOperation",
+                                "description": "用于描述API操作的注解。"
+                            },
+                            {
+                                "dependency": "io.swagger.v3.oas.annotations.tags.Tag",
+                                "description": "用于OpenAPI 3的标签注解。"
+                            },
+                            {
+                                "dependency": "org.springframework.beans.factory.annotation.Autowired",
+                                "description": "用于自动注入Spring Bean的注解。"
+                            },
+                            {
+                                "dependency": "org.springframework.stereotype.Controller",
+                                "description": "用于标识Spring MVC控制器的注解。"
+                            },
+                            {
+                                "dependency": "org.springframework.web.bind.annotation.*",
+                                "description": "用于处理HTTP请求的注解集合，包括@RequestMapping、@RequestBody、@ResponseBody等。"
+                            }
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "3. 分析每个导入的模块，找到相关代码实现.${modules}",
+            "refs": [
+                {
+                    "place_holder": "modules",
+                    "query_type": "摘要信息",
+                    "query_keys": [
+                        "module"
+                    ],
+                    "example_ref": {
+                        "modules": [
+                    {
+                        "module": "com.macro.mall.common.api.CommonResult",
+                        "description": "用于封装API响应结果的通用类。"
+                    },
+                    {
+                        "module": "com.macro.mall.model.OmsCartItem",
+                        "description": "购物车商品的数据模型类。"
+                    },
+                    {
+                        "module": "com.macro.mall.portal.domain.CartProduct",
+                        "description": "购物车商品的详细信息类。"
+                    },
+                    {
+                        "module": "com.macro.mall.portal.domain.CartPromotionItem",
+                        "description": "带有促销信息的购物车商品类。"
+                    },
+                    {
+                        "module": "com.macro.mall.portal.service.OmsCartItemService",
+                        "description": "购物车相关的业务逻辑接口。"
+                    },
+                    {
+                        "module": "com.macro.mall.portal.service.UmsMemberService",
+                        "description": "会员相关的业务逻辑接口。"
+                    }
+                ]
+            }
+                }
+            ]
+        },
+        {
+            "step": "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
+            "refs": [
+                "这些模块和库通过注入服务类（如OmsCartItemService和UmsMemberService）来处理购物车相关的业务逻辑。",
+                "Swagger注解用于生成API文档，帮助开发者理解和使用API。",
+                "Spring MVC注解用于处理HTTP请求，定义了控制器的方法和请求映射。"
+            ]
+        },
+        {
+            "step": "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。",
+            "refs": [
+                
+            ]
+        }
+ 
+    ],
+    "example_answer": [
+                "OmsCartItemController类通过导入各种模块和库，实现了购物车的添加、查询等功能。",
+                "Spring相关注解用于处理依赖注入和HTTP请求，确保控制器能够正确接收和处理请求。",
+                "Swagger注解用于生成API文档，方便API的维护和使用。",
+                "业务逻辑通过服务类（如OmsCartItemService和UmsMemberService）实现，控制器负责调用这些服务类的方法来完成具体的业务操作。"
+            
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "name": "函数与API使用",
+    "type": "local",
+    "content": [
+        "1. 确定要查找的特定函数名称的实现位置，函数名称为：${function_name}",
+        "2. 分析该函数的输入参数及其类型。",
+        "3. 分析该函数的输出结果及其类型。",
+        "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息"
+    ],
+    "background": "开发人员需要找到某个特定函数的具体实现位置,并了解其作用",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "函数search(PmsPortalProductServiceImpl.java)是如何实现的，有何作用？"
+    },
+    "steps": [
+        {
+            "step": "1. 确定要查找的特定函数名称的实现位置，函数名称为：${function_name}",
+            "refs": [
+                {
+                    "place_holder": "function_name",
+                    "query_type": "函数",
+                    "query_keys": [
+                        "function_location"
+                    ],
+                    "example_ref": []
+                }
+            ]
+        },
+        {
+            "step": "2. 分析该函数的输入参数及其类型。",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "函数",
+                    "query_keys": [
+                        "input_parameters"
+                    ],
+                    "example_ref": []
+                }
+            ]
+        },
+        {
+            "step": "3. 分析该函数的输出结果及其类型",
+            "refs": [
+                {
+                    "place_holder": "",
+                    "query_type": "函数",
+                    "query_keys": [
+                        "output_type"
+                    ],
+                    "example_ref": []
+                }
+            ]
+        },
+        {
+            "step": "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息",
+            "refs": []
+        }
+    ],
+    "example_answer": [
+        {
+            "step": "1. 确定要查找的特定函数名称的实现位置，函数名称为：search",
+            "answer": [
+                "函数search的实现位置在文件PmsPortalProductServiceImpl.java中，位于第27行。"
+            ]
+        },
+        {
+            "step": "2. 分析该函数的输入参数及其类型。",
+            "answer": [
+                "函数search的输入参数包括：",
+                "1. String keyword：搜索关键词。",
+                "2. Long brandId：品牌ID。",
+                "3. Long productCategoryId：产品分类ID。",
+                "4. Integer pageNum：页码。",
+                "5. Integer pageSize：每页显示数量。",
+                "6. Integer sort：排序方式。"
+            ]
+        },
+        {
+            "step": "3. 分析该函数的输出结果及其类型",
+            "answer": [
+                "函数search的输出结果为List<PmsProduct>，即符合搜索条件的产品列表。"
+            ]
+        },
+        {
+            "step": "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息",
+            "answer": [
+                "函数search的实现位置在文件PmsPortalProductServiceImpl.java中，位于第27行。",
+                "该函数的输入参数包括搜索关键词、品牌ID、产品分类ID、页码、每页显示数量和排序方式。",
+                "该函数的输出结果为符合搜索条件的产品列表，类型为List<PmsProduct>。",
+                "函数search通过PageHelper进行分页，通过PmsProductExample.Criteria设置搜索条件，并最终返回符合条件的产品列表。"
+            ]
+        }
+    ]
+}
