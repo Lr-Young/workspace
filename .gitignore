@@ -1,3 +1,6 @@
 /.idea
 **/__init__.py
 **/__pycache__
+*.java
+*.class
+*.txt

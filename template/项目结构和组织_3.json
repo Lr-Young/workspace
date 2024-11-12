@@ -1,0 +1,192 @@
+{
+    "name": "项目结构和组织",
+    "type": "global",
+    "content": "问题背景：这是一个Java项目的代码仓库，开发人员询问项目代码仓库的整体架构，主要关注其目录结构、模块职责、依赖关系方面\n1. 分析项目的目录结构，项目代码的目录结构如下：${directory_structure}\n2. 分析项目的主要模块及其作用，核心模块包括：${modules}\n3. 识别项目的依赖，项目的依赖包括：${dependencies}\n4. 阅读项目相关资料（如README、设计文档、API文档等）：${documents}\n5. 总结：根据以上分析步骤，生成关于这个代码仓库的详细架构分析报告\n\n注意：只需要输出最后的总结，中间分析步骤不需要输出",
+    "background": "问题背景：这是一个Java项目的代码仓库，开发人员询问项目代码仓库的整体架构，主要关注其目录结构、模块职责、依赖关系方面",
+    "example": {
+        "repo": "https://github.com/macrozheng/mall",
+        "query": "这个项目的架构是什么样的？"
+    },
+    "steps": [
+        {
+            "step": "分析项目的目录结构，项目代码的目录结构如下：${directory_structure}",
+            "refs": [
+                {
+                    "place_holder": "directory_structure",
+                    "query_type": "目录结构",
+                    "query_keys": [
+                        "project",
+                        "directory_structure"
+                    ],
+                    "example_ref": [".gitignore",
+                                    "document/",
+                                    "    axure/",
+                                    "        [app-design.md](document/axure/app-design.md)",
+                                    "        [mall-app.rp](document/axure/mall-app.rp)",
+                                    "        [mall-flow.rp](document/axure/mall-flow.rp)",
+                                    "    docker/",
+                                    "        ...",
+                                    "    elk/",
+                                    "    mind/",
+                                    "    pdm/",
+                                    "    pos/",
+                                    "    postman/",
+                                    "    reference/",
+                                    "    resource/",
+                                    "    sh/",
+                                    "    sql/",
+                                    "LICENSE",
+                                    "[mall-admin/](mall-admin/)",
+                                    "    [pom.xml](mall-admin/pom.xml)",
+                                    "    [src/](mall-admin/src/)",
+                                    "    [target/](mall-admin/target/)",
+                                    "[mall-common/](mall-common/)",
+                                    "    [pom.xml](mall-common/pom.xml)",
+                                    "    [src/](mall-common/src/)",
+                                    "    [target/](mall-common/target/)",
+                                    "[mall-demo/](mall-demo/)",
+                                    "    [.gitignore](mall-demo/.gitignore)",
+                                    "    [pom.xml](mall-demo/pom.xml)",
+                                    "    [src/](mall-demo/src/)",
+                                    "    [target/](mall-demo/target/)",
+                                    "[mall-mbg/](mall-mbg/)",
+                                    "    [.gitignore](mall-mbg/.gitignore)",
+                                    "    [pom.xml](mall-mbg/pom.xml)",
+                                    "    [src/](mall-mbg/src/)",
+                                    "    [target/](mall-mbg/target/)",
+                                    "[mall-portal/](mall-portal/)",
+                                    "    [.gitignore](mall-portal/.gitignore)",
+                                    "    [pom.xml](mall-portal/pom.xml)",
+                                    "    [src/](mall-portal/src/)",
+                                    "    [target/](mall-portal/target/)",
+                                    "[mall-search/](mall-search/)",
+                                    "    [.gitignore](mall-search/.gitignore)",
+                                    "    [pom.xml](mall-search/pom.xml)",
+                                    "    [src/](mall-search/src/)",
+                                    "    [target/](mall-search/target/)",
+                                    "[mall-security/](mall-security/)",
+                                    "    [.gitignore](mall-security/.gitignore)",
+                                    "    [pom.xml](mall-security/pom.xml)",
+                                    "    [src/](mall-security/src/)",
+                                    "    [target/](mall-security/target/)",
+                                    "[pom.xml](pom.xml)",
+                                    "[README.md](README.md)"]
+                }
+            ]
+        },
+        {
+            "step": "分析项目的主要模块及其作用，核心模块包括：${modules}",
+            "refs": [
+                {
+                    "place_holder": "modules",
+                    "query_type": "摘要信息",
+                    "query_keys": [
+                        "module"
+                    ],
+                    "example_ref": ["核心模块包括：",
+                                    "mall-admin: 后台管理系统模块，负责商品管理、订单管理、用户管理等功能。",
+                                    "mall-common: 公共模块，提供通用的配置和工具类，供其他模块共享。",
+                                    "mall-demo: 示例模块，用于演示和测试项目功能。",
+                                    "mall-mbg: MyBatis Generator生成的代码模块，负责数据访问层的代码生成。",
+                                    "mall-portal: 前台商城系统模块，面向用户的商城前端。",
+                                    "mall-search: 搜索系统模块，提供基于Elasticsearch的商品搜索功能。",
+                                    "mall-security: 安全模块，负责认证和授权功能，基于Spring Security实现。"
+                                    ]
+                        }
+            ]
+        },
+        {
+            "step": "识别项目的依赖，项目的依赖包括：${dependencies}",
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "query_type": "外部依赖库",
+                    "query_keys": [
+                        "dependency"
+                    ],
+                    "example_ref":["项目使用Maven进行构建，各模块的依赖定义在各自的 pom.xml 文件中。主要依赖包括：",
+                                    "Spring Boot: 提供基础的应用框架。",
+                                    "Spring Cloud: 支持微服务架构。",
+                                    "MyBatis: 数据持久层框架，用于数据库操作。",
+                                    "Docker: 容器化部署。",
+                                    "Swagger: API文档生成工具。",
+                                    "Elasticsearch: 搜索引擎，支持 mall-search 模块。",
+                                    "Spring Security: 安全框架，支持 mall-security 模块。"
+                                    ]
+                }
+            ]
+        },
+        {
+            "step": "阅读项目相关资料（如README、设计文档、API文档等）：${documents}",
+            "refs": [
+                {
+                    "place_holder": "documents",
+                    "query_type": "文件",
+                    "query_keys": [
+                        "documents"
+                    ],
+                    "example_ref": ["README.md: 项目的总体介绍和使用说明。",
+                                    "document: 含有详细的设计文档、Docker使用手册、API文档等。",
+                                    "docker-compose-env.yml: Docker Compose环境配置文件。",
+                                    "nginx.conf: Nginx配置文件。",
+                                    "docker.md: Docker入门手册及常用命令。",
+                                    "各模块的 src/ 目录中包含源代码和相关文档。"
+                                    ]
+                }
+            ]
+        },
+        {
+            "step": "总结：根据以上分析步骤，生成关于这个代码仓库的详细架构分析报告",
+            "refs": []
+        }
+    ],
+    "example_answer": ["# 项目结构分析",
+                        "该项目是一个基于 **Spring Boot** 和 **Spring Cloud** 的多模块电商系统。以下是对项目架构、核心模块、相关依赖及配置的详细分析：",
+                        "## 项目架构",
+                        "项目采用模块化设计，每个模块负责不同的功能，并通过 **Maven** 进行管理。主要模块包括：",
+                        "- **mall-admin**：后台管理系统，负责商品管理、订单管理、促销管理、内容管理和用户管理等功能。",
+                        "- **mall-portal**：前台商城系统，面向用户的商城前台，提供商品浏览、搜索、下单、支付等功能。",
+                        "- **mall-search**：搜索系统模块，基于 **Elasticsearch** 实现商品搜索功能。",
+                        "- **mall-common**：公共模块，包含通用的配置和工具类，如 **Swagger** 配置。",
+                        "- **mall-demo**、**mall-mbg**：示例及代码生成模块。",
+                        "- **mall-security**：安全模块，提供认证和授权功能。",
+                        "## 核心模块",
+                        "### 1. 后台管理模块：mall-admin",
+                        "- **功能**：商品管理、订单管理、促销管理、内容管理、用户管理等。",
+                        "- **主要配置文件**：mall-admin/pom.xml",
+                        "- **Docker 脚本**：document/sh/mall-admin.sh",
+                        "### 2. 前台商城模块：mall-portal",
+                        "- **功能**：用户注册、登录、商品浏览、搜索、下单、支付等。",
+                        "- **主要配置文件**：mall-portal/pom.xml",
+                        "- **Docker 脚本**：document/sh/mall-portal.sh",
+                        "### 3. 搜索模块：mall-search",
+                        "- **功能**：提供基于 Elasticsearch 的商品搜索功能。",
+                        "- **主要实现类**：EsProductServiceImpl.java",
+                        "- **Docker 脚本**：document/sh/mall-search.sh",
+                        "### 4. 公共模块：mall-common",
+                        "- **功能**：提供公共配置和工具类，如 Swagger 配置。",
+                        "- **主要配置文件**：BaseSwaggerConfig.java",
+                        "## 相关依赖",
+                        "- **Spring Boot**：用于构建独立的、生产级的 Spring 应用。",
+                        "- **Spring Cloud**：提供服务注册与发现、负载均衡、断路器等分布式系统基础设施。",
+                        "- **MyBatis**：持久层框架，用于简化数据库操作。",
+                        "- **Elasticsearch**：实现高效的搜索功能。",
+                        "- **Docker**：容器化部署各个服务模块。",
+                        "- **Swagger**：自动生成 API 文档。",
+                        "- **Maven**：项目管理和构建工具，根配置文件为pom.xml。",
+                        "## 配置",
+                        "### 1. Docker 配置",
+                        "项目使用 **Docker** 进行容器化部署，相关脚本位于sh 目录下，包括启动、停止和管理各个服务的脚本。",
+                        "- **启动脚本示例**：mall-admin.sh",
+                        "### 2. Maven 配置",
+                        "根目录的pom.xml文件定义了所有子模块的依赖和构建配置。每个子模块也有各自的 pom.xml 文件，管理其特定的依赖关系。",
+                        "### 3. Swagger 配置",
+                        "公共模块中的 BaseSwaggerConfig.java 负责 Swagger 的配置，自动生成各模块的 API 文档。",
+                        "### 4. 数据库配置",
+                        "项目使用 **MySQL** 作为数据库，相关配置通常在各服务的 `application.yml` 或 `application.properties` 文件中定义。",
+                        "### 5. 容器编排",
+                        "项目采用 **Docker Compose** 进行服务编排，相关配置和命令说明位于docker.md。",
+                        "## 总结",
+                        "该项目通过模块化设计和容器化部署，实现了一个功能完善、易于扩展和维护的电商系统。核心模块各司其职，依赖管理清晰，配置规范，确保系统的高可用性和可维护性。"
+                        ]
+}
