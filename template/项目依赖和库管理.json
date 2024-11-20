@@ -11,45 +11,61 @@
         "6. 总结：总结项目的依赖管理状况，包括主要依赖、潜在问题和优化建议。"
     ],
     "background": "开发人员需要了解项目的依赖结构和管理状况，以便进行维护、升级和优化。",
+    "keywords": ["依赖分析", "构建工具", "第三方库", "项目优化"],
     "example": {
         "repo": "本地ZFile仓库",
-        "query": "项目中使用了哪些核心依赖库？它们各自的作用是什么？"
+        "query_variants": [
+            "项目中使用了哪些核心依赖库？它们各自的作用是什么？",
+            "分析项目的依赖结构。",
+            "项目有哪些功能性依赖？",
+            "项目中有哪些提升效率的工具类依赖？"
+        ]
     },
     "steps": [
         {
             "step": "构建工具识别",
+            "reason": "构建工具决定了项目的依赖管理方式和构建流程，是后续依赖分析的基础。",
             "refs": [
                 {
                     "place_holder": "build_tool",
                     "query_type": "构建配置",
-                    "query_keys": [
-                        "pom.xml",
-                        "build.gradle"
-                    ],
+                    "query_keys": ["pom.xml", "build.gradle"],
                     "example_ref": "项目使用Maven作为构建工具，配置文件为pom.xml"
                 }
             ]
         },
         {
             "step": "核心依赖分析",
+            "reason": "核心依赖是项目功能的基础，了解这些依赖有助于明确项目的关键技术栈。",
+            "depends_on": [
+                {
+                    "step_name": "构建工具识别",
+                    "dependency_type": "data",
+                    "details": "需要读取构建工具识别步骤的输出，用于定位依赖配置文件（如 pom.xml 或 build.gradle）"
+                }
+            ],
             "refs": [
                 {
                     "place_holder": "core_dependencies",
                     "query_type": "依赖配置",
-                    "query_keys": [
-                        "spring相关",
-                        "数据库相关"
-                    ],
+                    "query_keys": ["spring相关", "数据库相关"],
                     "example_ref": [
                         "spring-boot-starter-web: Web应用程序的核心依赖，提供Spring MVC支持",
-                        "spring-boot-starter-data-jpa: 数据持久化层的核心依赖，提供JPA支持",
-                        "mybatis-spring-boot-starter: MyBatis的Spring Boot集成支持"
+                        "spring-boot-starter-data-jpa: 数据持久化层的核心依赖，提供JPA支持"
                     ]
                 }
             ]
         },
         {
             "step": "功能性依赖分析",
+            "reason": "功能性依赖支持项目的特定模块功能（如数据库、缓存），其分析有助于明确功能实现的技术选型。",
+            "depends_on": [
+                {
+                    "step_name": "核心依赖分析",
+                    "dependency_type": "data",
+                    "details": "需要核心依赖分析的结果，识别功能模块依赖的基础配置。"
+                }
+            ],
             "refs": [
                 {
                     "place_holder": "feature_dependencies",
@@ -73,18 +89,26 @@
         },
         {
             "step": "工具类依赖分析",
+            "reason": "工具类依赖用于提升开发效率和优化项目性能，是项目开发的有力支持。",
+            "depends_on": [
+                {
+                    "step_name": "功能性依赖分析",
+                    "dependency_type": "data",
+                    "details": "需要功能性依赖分析的输出结果，用于识别工具类依赖是否直接服务于核心功能或模块功能。"
+                }
+            ],
             "refs": [
                 {
-                    "place_holder": "dependency_usage",
-                    "query_type": "文件",
+                    "place_holder": "utility_dependencies",
+                    "query_type": "依赖配置",
                     "query_keys": [
                         "开发工具",
                         "日志工具",
                         "API文档生成"
-
                     ],
                     "example_ref": [
-                        "Lombok: 简化Java开发工具,Hutool: Java工具类库",
+                        "Lombok: 简化Java开发工具",
+                        "Hutool: Java工具类库",
                         "Logback: 日志框架",
                         "Swagger: API文档生成工具"
                     ]
@@ -93,15 +117,20 @@
         },
         {
             "step": "依赖使用情况分析",
+            "reason": "分析依赖的实际使用情况，识别冗余依赖，有助于优化项目结构，减少不必要的依赖。",
+            "depends_on": [
+                {
+                    "step_name": "工具类依赖分析",
+                    "dependency_type": "data",
+                    "details": "使用工具类依赖和功能性依赖的分析结果，结合代码使用频率，筛选无用依赖。"
+                }
+            ],
             "refs": [
                 {
-                    "place_holder": "utility_dependencies",
-                    "query_type": "依赖配置",
-                    "query_keys": [
-                        "前面识别到的依赖"
-                    ],
+                    "place_holder": "dependency_usage",
+                    "query_type": "文件",
+                    "query_keys": ["前面识别到的依赖"],
                     "example_ref": [
-
                         "Spring Boot Web：用于构建 Web 应用和 REST API",
                         "Spring Security：实现认证和授权",
                         "JPA：数据库访问层",
@@ -112,6 +141,30 @@
                         "Hutool：提供通用工具方法，如在 StringUtils 中使用",
                         "Lombok：简化代码，自动生成 getter/setter 等",
                         "Swagger：生成 API 文档"
+                    ]
+                }
+            ]
+        },
+        {
+            "step": "总结",
+            "reason": "对依赖分析的结果进行总结，便于开发者理解当前项目的依赖状况，并提出优化建议。",
+            "depends_on": [
+                {
+                    "step_name": "依赖使用情况分析",
+                    "dependency_type": "flag",
+                    "details": "总结依赖使用情况分析中识别的冗余依赖和关键依赖优化点。"
+                }
+            ],
+            "refs": [
+                {
+                    "place_holder": "summary",
+                    "query_type": "总结",
+                    "query_keys": [],
+                    "example_ref": [
+                        "项目依赖结构清晰，核心功能依赖稳定。",
+                        "优化建议：",
+                        "1. 删除未使用依赖：FastJSON（建议替换为Jackson）。",
+                        "2. 考虑升级 Spring Boot 至最新版本，以增强安全性。"
                     ]
                 }
             ]

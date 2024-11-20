@@ -11,97 +11,113 @@
         "6. 总结与建议：总结全局变量和配置管理的现状，提出优化建议和潜在问题。"
     ],
     "background": "开发人员需要了解项目中全局变量和配置参数的定义及使用情况，以便进行维护、优化和扩展。",
+    "keywords": ["全局变量", "配置参数", "配置文件", "配置管理", "Spring"],
     "example": {
         "repo": "本地ZFile仓库",
-        "query": "ZFile中全局配置参数是如何定义和使用的？"
+        "query_variants": [
+            "ZFile中全局配置参数是如何定义和使用的？",
+            "项目中的配置文件和全局变量怎么管理？",
+            "有哪些全局变量和配置参数被定义和使用？"
+        ]
     },
     "steps": [
         {
             "step": "识别配置文件",
+            "reason": "配置文件通常是项目参数化配置的入口，识别配置文件是分析全局变量和参数的第一步。",
             "refs": [
                 {
                     "place_holder": "config_files",
                     "query_type": "配置文件定位",
-                    "query_keys": [
-                        "application.properties",
-                        "application.yml"
-                    ],
-                    "example_ref": "application.properties,application-default.properties,logback-spring.xml,这些文件位于classes目录下"
+                    "query_keys": ["application.properties", "application.yml"],
+                    "example_ref": "application.properties, application-default.properties, logback-spring.xml，这些文件位于 classes 目录下。"
                 }
             ]
         },
         {
             "step": "识别全局变量",
+            "reason": "全局变量是项目中多个模块共享的重要参数，理解它们的定义和作用有助于优化配置管理。",
             "refs": [
                 {
                     "place_holder": "global_variables",
                     "query_type": "全局变量定位",
-                    "query_keys": [
-                        "常量类",
-                        "配置类",
-                        "静态变量"
-                    ],
+                    "query_keys": ["常量类", "配置类", "静态变量"],
                     "example_ref": [
-                        "在`SystemConfigConstant.java`中定义了全局常量，如`public class SystemConfigConstant {  public static final String USERNAME = username;   public static final String PASSWORD = password;public static final String LOGIN_VERIFY_MODE = loginVerifyMode;}`",
-                        "在ZFileProperties.java 文件中，定义了 ZFile 的自定义配置属性。"
+                        "在 SystemConfigConstant.java 中定义了全局常量，如 USERNAME、PASSWORD。",
+                        "在 ZFileProperties.java 文件中定义了 ZFile 的自定义配置属性。"
                     ]
                 }
             ]
         },
         {
             "step": "分析配置参数",
+            "reason": "详细分析配置参数的作用和来源，可以帮助开发人员理解配置的用途和适用场景。",
+            "depends_on": [
+                {
+                    "step_name": "识别配置文件",
+                    "dependency_type": "data",
+                    "details": "需要从识别的配置文件中提取参数信息。"
+                }
+            ],
             "refs": [
                 {
                     "place_holder": "config_parameters",
                     "query_type": "配置参数详情",
-                    "query_keys": [
-                        "app.name",
-                        "database.url",
-                        "security.enabled"
-                    ],
+                    "query_keys": ["app.name", "database.url", "security.enabled"],
                     "example_ref": [
-                        "application.properties.java:1-32",
-                        "database.url: spring.datasource.driver-class-name=org.sqlite.JDBC,spring.datasource.url=jdbc:sqlite:${zfile.db.path}",
-                        "application-default.properties.java: 1-50"
+                        "spring.datasource.url=jdbc:sqlite:${zfile.db.path}",
+                        "spring.datasource.driver-class-name=org.sqlite.JDBC"
                     ]
                 }
             ]
         },
         {
             "step": "配置管理方式",
+            "reason": "了解项目中使用的配置管理方式可以帮助评估配置加载的效率和灵活性。",
             "refs": [
                 {
                     "place_holder": "config_management",
                     "query_type": "总结文本",
-                    "query_keys": [
-                        "Spring @Value",
-                        "Spring Environment",
-                        "配置管理工具"
-                    ],
-                    "example_ref":[ "Spring Boot 配置：使用 `@ConfigurationProperties` 注解和 `@Value` 注解加载配置参数。",
-                                    "缓存管理：使用 `@CacheConfig` 和 `@Cacheable` 注解管理缓存。"
+                    "query_keys": ["Spring @Value", "Spring Environment", "配置管理工具"],
+                    "example_ref": [
+                        "使用 @ConfigurationProperties 和 @Value 注解加载配置参数。",
+                        "使用 Spring Cloud Config 实现分布式配置管理。"
                     ]
-                
                 }
             ]
         },
         {
             "step": "使用情况分析",
+            "reason": "分析配置参数和全局变量的使用情况，可以发现潜在的冗余或未使用的配置，帮助优化代码结构。",
+            "depends_on": [
+                {
+                    "step_name": "识别全局变量",
+                    "dependency_type": "data",
+                    "details": "需要全局变量的信息以确认它们的使用范围和场景。"
+                }
+            ],
             "refs": [
                 {
                     "place_holder": "usage_analysis",
                     "query_type": "总结文本",
-                    "query_keys": [
-                        "服务类",
-                        "控制器",
-                        "配置加载类"
-                    ],
+                    "query_keys": ["服务类", "控制器", "配置加载类"],
                     "example_ref": [
-                        "SystemConfigService：在 SystemConfigService.java 文件中，使用 SystemConfigConstant 和 ZFileProperties 获取和管理系统配置。",
-                        "SiteController：在 SiteController.java 文件中，使用 SystemConfigService 获取站点配置。"
+                        "SystemConfigService：使用 SystemConfigConstant 和 ZFileProperties 管理系统配置。",
+                        "SiteController：使用 SystemConfigService 获取站点配置。"
                     ]
                 }
             ]
+        },
+        {
+            "step": "总结与建议",
+            "reason": "通过总结分析结果，帮助开发人员全面了解全局变量和配置的现状，并提出改进建议。",
+            "depends_on": [
+                {
+                    "step_name": "使用情况分析",
+                    "dependency_type": "flag",
+                    "details": "汇总分析结果并形成最终建议。"
+                }
+            ],
+            "refs": []
         }
     ],
     "example_answer":[
