@@ -3,8 +3,8 @@
     "type": "local",
     "content": [
         "1. 确定要查找的特定函数名称的实现位置，函数名称为：${function_name}",
-        "2. 分析该函数的输入参数及其类型。",
-        "3. 分析该函数的输出结果及其类型。",
+        "2. 分析该函数的输入参数及其类型。${input}",
+        "3. 分析该函数的输出结果及其类型。${output}",
         "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息"
     ],
     "background": "开发人员需要找到某个特定函数的具体实现位置,并了解其作用",
@@ -24,10 +24,12 @@
                     ],
                     "example_ref": "zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java"
                 }
-            ]
+            ],
+            "reasonality":"找出函数的具体实现位置是理解函数功能的基础。通过精确定位代码文件及位置，开发者可以直接查看函数实现细节。",
+            "dependency":"无"
         },
         {
-            "step": "2. 分析该函数的输入参数及其类型。",
+            "step": "2. 分析该函数的输入参数及其类型。${input}",
             "refs": [
                 {
                     "place_holder": "",
@@ -37,10 +39,12 @@
                     ],
                     "example_ref": "该函数接收一个参数clazz，类型为Class<?>"
                 }
-            ]
+            ],
+            "reasonality":"输入参数决定了函数的预期输入范围，是理解函数行为和用途的关键。",
+            "dependency":"无"
         },
         {
-            "step": "3. 分析该函数的输出结果及其类型",
+            "step": "3. 分析该函数的输出结果及其类型. ${output}",
             "refs": [
                 {
                     "place_holder": "",
@@ -50,11 +54,18 @@
                     ],
                     "example_ref": "输出参数类型为String。该函数返回一个字符串，表示枚举值字段的名称。"
                 }
-            ]
+            ],
+            "reasonality":"输出结果定义了函数的最终用途，是函数功能的直接体现。",
+            "dependency":"无"
         },
         {
             "step": "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息",
-            "refs": []
+            "refs": [],
+            "dependency":[
+                "{function_name}",
+                "{input}",
+                "{output}"
+            ]
         }
     ],
     "example_answer": "函数findEnumValueFieldName的作用是查找并返回指定类对象中枚举值字段的名称。它通过传入一个类对象clazz，在该类中查找符合条件的枚举值字段，并返回其名称作为字符串。该函数通常用于处理枚举类型的字段映射或序列化等操作。\n你可以在文件zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java中找到该函数的具体实现"

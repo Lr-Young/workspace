@@ -3,7 +3,7 @@
     "type": "local",
     "content": [
         "1. 查找该局部变量或数据的出现位置，变量名称为：${var_name}",
-        "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文.",
+        "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文. ${context}",
         "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况"
     ],
     "background": "问题背景：在Java项目的代码分析过程中，开发人员希望深入了解局部变量的变化及数据流动。关注重点在于局部变量如何在代码中修改或处理，数据如何通过不同的代码段传递。",
@@ -23,10 +23,12 @@
                     ],
                     "example_ref": "MybatisEnumTypeHandler.java: 53\n\nMybatisEnumTypeHandler.java: 57\n\nMybatisEnumTypeHandler.java: 58\n\nMybatisEnumTypeHandler.java: 61\n\nMybatisEnumTypeHandler.java: 62\n\nMybatisEnumTypeHandler.java: 64\n\nMybatisEnumTypeHandler.java: 65\n\n"
                 }
-            ]
+            ],
+            "reasonality":"明确变量在代码文件中的定义和出现位置是后续分析的基础。只有找到变量的具体位置，才能分析其作用范围和行为。",
+            "dependency":"无"
         },
         {
-            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
+            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文. ${context}",
             "refs": [
                 {
                     "place_holder": "",
@@ -43,11 +45,17 @@
                         "第 65 行：查找枚举值字段名,使用 this.enumClassType 查找枚举值字段名，如果找不到则抛出异常。"
                     ]
                 }
-            ]
+            ],
+            "reasonality":"明确变量在不同代码片段中的具体用途，尤其是与函数调用、条件判断或循环体等逻辑的关联。",
+            "dependency": "{var_name}"
         },
         {
             "step": "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况",
-            "refs": []
+            "refs": [],
+            "dependency":[
+                "${var_name}",
+                "${context}"
+            ]
         }
   
     ],
