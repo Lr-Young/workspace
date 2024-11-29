@@ -22,20 +22,8 @@
         },
         {
             "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
-            "refs": [
-                {
-                    "place_holder": "dependencies",
-                    "query_type": "外部依赖库",
-                    "query_keys": [
-                        "dependency"
-                    ],
-                    "example_ref": [
-                        "org.springframework: 提供依赖注入功能,支持 RESTful 风格的 Web 服务等",
-                        "io.swagger.annotations：自动生成详细的 API 文档，方便开发者和用户理解和使用 API",
-                        "cn.dev33.satoken.st: 主要用于处理用户的登录状态和权限验证"
-                    ]
-                }
-            ],
+            "request": "LoginController.java中导入了哪些外部依赖库？",
+            "refs": ["zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\controller\\LoginController.java: 1, 19-29"],
             "reasonality":"外部依赖库是项目的关键组成部分，深入分析它们的功能和定位，可以帮助开发者判断其必要性和价值。",
             "dependency": "无"
 
@@ -45,13 +33,19 @@
             "refs": [
                 {
                     "place_holder": "modules",
-                    "query_type": "摘要信息",
-                    "query_keys": [
-                        "module"
-                    ],
+                    "request": "分析LoginController中导入的内部模块的作用，找到repo中相关的代码实现",
                     "example_ref": [
-                        "config: 包含应用程序的全局配置",
-                        "login: 处理用户登录、认证和相关操作"
+                        "im.zhaojun.zfile.core.util.AjaxJson.java: 12-198",
+                        "im.zhaojun.zfile.module.config.model.dto.SystemConfigDTO.java: 18-170",
+                        "im.zhaojun.zfile.module.config.service.SystemConfigService.java: 48-275",
+                        "im.zhaojun.zfile.module.login.model.enums.LoginVerifyModeEnum.java: 15-36",
+                        "im.zhaojun.zfile.module.login.model.request.VerifyLoginTwoFactorAuthenticatorRequest.java: 18-28",
+                        "im.zhaojun.zfile.module.login.model.result.LoginTwoFactorAuthenticatorResult.java: 16-24",
+                        "im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult.java: 14-22",
+                        "im.zhaojun.zfile.module.login.request.UserLoginRequest.java: 16-32",
+                        "im.zhaojun.zfile.module.login.service.ImgVerifyCodeService.java: 22-84",
+                        "im.zhaojun.zfile.module.login.service.TwoFactorAuthenticatorVerifyService.java: 27-101"
+
                     ]
                 }
             ],
