@@ -22,8 +22,15 @@
         },
         {
             "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
-            "request": "LoginController.java中导入了哪些外部依赖库？",
-            "refs": ["zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\controller\\LoginController.java: 1, 19-29"],
+            "refs": [
+                {
+                    "place_holder": "dependencies",
+                    "request": "LoginController.java中导入了哪些外部依赖库？",
+                    "example_ref": [
+                        "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\controller\\LoginController.java: 1, 19-29"
+                    ]
+                }
+            ],
             "reasonality":"外部依赖库是项目的关键组成部分，深入分析它们的功能和定位，可以帮助开发者判断其必要性和价值。",
             "dependency": "无"
 
