@@ -16,71 +16,47 @@
     "steps": [
         {
             "step": "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
-            "refs": []
+            "refs": [],
+            "reasonality": "导入语句直接影响代码文件的功能边界。清晰列出这些导入能帮助开发者了解文件的功能范围和依赖外部的程度。",
+            "dependency": "无"
         },
         {
             "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "query_type": "外部依赖库",
-                    "query_keys": [
-                        "dependency"
-                    ],
+                    "request": "ImgVerifyCodeService.java中导入了哪些外部依赖库？",
                     "example_ref": [
-                        "Hutool：",
-                        "包含的类：",
-                        "cn.hutool.cache.CacheUtil",
-                        "cn.hutool.cache.impl.FIFOCache",
-                        "cn.hutool.captcha.CaptchaUtil",
-                        "cn.hutool.captcha.CircleCaptcha",
-                        "cn.hutool.core.lang.UUID",
-                        "用途：",
-                        "CacheUtil 和 FIFOCache 用于创建和管理验证码缓存。",
-                        "CaptchaUtil 和 CircleCaptcha 用于生成带有干扰的验证码图像。",
-                        "UUID 用于生成唯一标识符。",
-                        "Spring Framework：",
-                        "包含的类：",
-                        "org.springframework.stereotype.Service",
-                        "用途：",
-                        "@Service 注解用于将 ImgVerifyCodeService 类标记为 Spring 的服务组件，以便进行依赖注入和管理。",
-                        "Lombok：",
-                        "包含的类：",
-                        "lombok.extern.slf4j.Slf4j",
-                        "用途：",
-                        "@Slf4j 注解用于自动生成日志记录器字段，简化日志记录操作。",
-                        "Java 标准库：",
-                        "包含的类：",
-                        "java.util.Objects",
-                        "用途：",
-                        "Objects.equals 方法用于比较两个对象的相等性。"
+                        "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 3-7, 11-13"
                     ]
                 }
-            ]
+            ],
+            "reasonality":"外部依赖库是项目的关键组成部分，深入分析它们的功能和定位，可以帮助开发者判断其必要性和价值。",
+            "dependency": "无"
         },
         {
             "step": "3. 分析每个导入的模块，找到相关代码实现.${modules}",
             "refs": [
                 {
                     "place_holder": "modules",
-                    "query_type": "摘要信息",
-                    "query_keys": [
-                        "module"
-                    ],
+                    "request": "分析ImgVerifyCodeService中导入的内部模块的作用，找到repo中相关的代码实现",
                     "example_ref": [
-                        "**im.zhaojun.zfile.core.exception.LoginVerifyException**：",
-                        "位置：src/main/java/im/zhaojun/zfile/core/exception/LoginVerifyException.java",
-                        "作用：自定义异常类，用于在验证码验证失败时抛出异常",
-                        "**im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult**：",
-                        "位置：src/main/java/im/zhaojun/zfile/module/login/model/result/LoginVerifyImgResult.java",
-                        "作用：封装验证码生成结果的模型类，包含验证码图像的 Base64 编码和唯一标识符（UUID）。"
+                        "im.zhaojun.zfile.core.exception.LoginVerifyException.java: 8-14",
+                        "im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult.java: 14-22"
                     ]
                 }
-            ]
+            ],
+            "reasonality":"本地模块的作用直接影响代码的业务实现。对其功能进行详细分析，可以优化模块间的关系，并降低耦合度。",
+            "dependency": "无"
         },
         {
             "step": "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
-            "refs": []
+            "refs": [],
+            "reasonality":"业务逻辑是代码的核心功能。分析模块或库与业务逻辑的交互，可以确保依赖的使用方式符合设计目标，并优化数据流。",
+            "dependency": [
+                "{dependencies}",
+                "{modules}"
+            ]
         },
         {
             "step": "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。",
