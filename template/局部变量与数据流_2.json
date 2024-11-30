@@ -13,38 +13,27 @@
     },
     "steps": [
         {
-            "step": "1. 查找该局部变量或数据的出现位置，变量为：${var_name}",
+            "step": "1. 查找该局部变量或数据的出现位置，${var_use}",
             "refs": [
                 {
-                    "place_holder": "var_name",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "定义使用"
-                    ],
+                    "place_holder": "{var_use}",
+                    "request": "变量verifyCodeCache的出现位置",
                     "example_ref": "ImgVerifyCodeService.java: 27\nImgVerifyCodeService.java: 41\nImgVerifyCodeService.java: 62\n"
                 }
-            ]
+            ],
+            "reasonality":"明确变量在代码文件中的定义和出现位置是后续分析的基础。只有找到变量的具体位置，才能分析其作用范围和行为。",
+            "dependency":"无"
         },
         {
             "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
-            "refs": [
-                {
-                    "place_holder": "",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "使用场景"
-                    ],
-                    "example_ref": [
-                        "第27行：该变量被声明为 FIFOCache<String, String> 类型，并使用 CacheUtil.newFIFOCache 方法初始化，设置最大容量为 100，验证码有效期为 60 秒。",
-                        "第41行：在 generatorCaptcha 方法中，生成验证码后，将验证码存储在 verifyCodeCache 中，使用 uuid 作为键，验证码 code 作为值。",
-                        "第62行：在 verifyCaptcha 方法中，通过 uuid 从 verifyCodeCache 中获取存储的验证码，并与传入的 code 进行比较，返回验证结果。"
-                    ]
-                }
-            ]
+            "refs": [],
+            "reasonality":"明确变量在不同代码片段中的具体用途，尤其是与函数调用、条件判断或循环体等逻辑的关联。",
+            "dependency": "{var_use}"
         },
         {
             "step": "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况",
-            "refs": []
+            "refs": [],
+            "dependency": "{var_use}"
         }
   
     ],

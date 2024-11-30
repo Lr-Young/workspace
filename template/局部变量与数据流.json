@@ -13,14 +13,11 @@
     },
     "steps": [
         {
-            "step": "1. 查找该局部变量或数据的出现位置，变量为：${var_name}",
+            "step": "1. 查找该局部变量或数据的出现位置. ${var_use}",
             "refs": [
                 {
-                    "place_holder": "var_name",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "定义使用"
-                    ],
+                    "place_holder": "var_use",
+                    "request": "变量enumClassType的出现位置",
                     "example_ref": "MybatisEnumTypeHandler.java: 53\n\nMybatisEnumTypeHandler.java: 57\n\nMybatisEnumTypeHandler.java: 58\n\nMybatisEnumTypeHandler.java: 61\n\nMybatisEnumTypeHandler.java: 62\n\nMybatisEnumTypeHandler.java: 64\n\nMybatisEnumTypeHandler.java: 65\n\n"
                 }
             ],
@@ -28,33 +25,16 @@
             "dependency":"无"
         },
         {
-            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文. ${context}",
-            "refs": [
-                {
-                    "place_holder": "",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "使用场景"
-                    ],
-                    "example_ref": [
-                        "第 57 行：构造函数参数,这里 enumClassType 被用作构造函数的参数，用于传递枚举类的类型",
-                        "第 58 行：空值检查,在构造函数中，首先检查 enumClassType 是否为 null，以确保传入的枚举类类型有效。",
-                        "第 61 行：赋值给实例变量,将传入的 enumClassType 赋值给类的实例变量 this.enumClassType。",
-                        "第 62 行：创建 MetaClass 实例,使用 enumClassType 创建一个 MetaClass 实例，用于反射操作。",
-                        "第 64 行：类型检查,检查 enumClassType 是否实现了 IEnum 接口，以确保其符合预期的类型。",
-                        "第 65 行：查找枚举值字段名,使用 this.enumClassType 查找枚举值字段名，如果找不到则抛出异常。"
-                    ]
-                }
-            ],
+            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文. ",
+            "refs": [],
             "reasonality":"明确变量在不同代码片段中的具体用途，尤其是与函数调用、条件判断或循环体等逻辑的关联。",
-            "dependency": "{var_name}"
+            "dependency": "{var_use}"
         },
         {
             "step": "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况",
             "refs": [],
             "dependency":[
-                "${var_name}",
-                "${context}"
+                "${var_use}"
             ]
         }
   

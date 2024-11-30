@@ -10,7 +10,7 @@
     "background": "问题背景：开发人员需要分析在文件中选中的代码段的业务逻辑",
     "example": {
         "repo": "本地ZFile仓库",
-        "query": "选中部分代码的业务逻辑是什么 ",
+        "query": "选中部分代码的业务逻辑(MybatisEnumTypeHandler.java)是什么 ",
         "code": [
             "public MybatisEnumTypeHandler(Class<E> enumClassType) {",
                 "if (enumClassType == null) {",
@@ -30,33 +30,41 @@
     "steps": [
         {
             "step": "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
-            "refs": []
+            "refs": [],
+            "reasonality": "准确定位代码段有助于开发者快速找到要分析的内容，为后续分析节省时间并提供上下文支持。",
+            "dependency":"无"
+
         },
         {
-            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_names}",
+            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果 {var_define}",
             "refs": [
                 {
-                    "place_holder": "var_names",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "定义使用"
-                    ],
+                    "place_holder": "var_define",
+                    "request": "选中代码段中的局部变量在哪里定义的",
                     "example_ref": [
-                        "enumClassType 变量：enumClassType 是一个类的实例变量，在类的定义中被声明为 private final，表示它是一个不可变的类类型。",
-                        "REFLECTOR_FACTORY 变量：REFLECTOR_FACTORY 是一个静态常量，表示一个 ReflectorFactory 实例，用于创建 MetaClass 实例。",
-                        "propertyType 变量：propertyType 是一个类的实例变量，在类的定义中被声明为 private final，表示它是一个不可变的类类型。",
-                        "getInvoker 变量：getInvoker 是一个类的实例变量，在类的定义中被声明为 private final，表示它是一个不可变的 Invoker 实例。"
+                        "REFLECTOR_FACTORY: zfile\\src\\main\\java\\com\\baomidou\\mybatisplus\\core\\handlers\\MybatisEnumTypeHandler.java: 52",
+                        "enumClassType: zfile\\src\\main\\java\\com\baomidou\\mybatisplus\\core\\handlers\\MybatisEnumTypeHandler.java: 53",
+                        "propertyType: zfile\\src\\main\\java\\com\\baomidou\\mybatisplus\\core\\handlers\\MybatisEnumTypeHandler.java: 54",
+                        "getInvoker: zfile\\src\\main\\java\\com\\baomidou\\mybatisplus\\core\\handlers\\MybatisEnumTypeHandler.java: 55"
                     ]
                 }
-            ]
+            ],
+            "reasonality": "理解变量的来源和流转过程有助于把握代码的核心逻辑，并为变量的正确性和有效性提供保障。",
+            "dependency":"无"
+
         },
         {
             "step": "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
-            "refs": []
+            "refs": [],
+            "reasonality": "透彻理解代码业务逻辑可以帮助开发者明确代码的实际用途及其在系统中的作用，便于优化或调试。",
+            "dependency":"无"
+
         },
         {
             "step": "4. 总结：根据以上分析，概述该代码段的功能，业务流程",
-            "refs": []
+            "refs": [],
+            "dependency":"{var_define}"
+
         }
     
     ],

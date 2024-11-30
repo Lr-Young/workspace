@@ -10,7 +10,7 @@
     "background": "问题背景：开发人员需要分析在文件中选中的代码段的业务逻辑",
     "example": {
         "repo": "本地ZFile仓库",
-        "query": "选中部分的处理逻辑是什么 ",
+        "query": "选中部分的处理逻辑是什么(zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java) ",
         "code": [
                 "public LoginVerifyImgResult generatorCaptcha() {",
                 "CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(200, 45, 4, 7);",
@@ -28,34 +28,42 @@
     "steps": [
         {
             "step": "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
-            "refs": []
+            "refs": [],
+            "reasonality": "准确定位代码段有助于开发者快速找到要分析的内容，为后续分析节省时间并提供上下文支持。",
+            "dependency":"无"
+            
         },
         {
-            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_names}",
+            "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_define}",
             "refs": [
                 {
-                    "place_holder": "var_names",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "定义使用"
-                    ],
+                    "place_holder": "var_define",
+                    "request": "选中代码段中的局部变量在哪里定义的",
                     "example_ref": [
-                        "**verifyCodeCache**：类型：FIFOCache<String, String>定义位置：类的成员变量用途：存储验证码，防止恶意请求占满内存，",
-                        "**captcha**：类型：CircleCaptcha定义位置：generatorCaptcha 方法中用途：生成验证码图像。",
-                        "**code**：类型：String定义位置：generatorCaptcha 方法中用途：存储生成的验证码。",
-                        "*imageBase64**：类型：String定义位置：generatorCaptcha 方法中用途：存储验证码图像的 Base64 编码。",
-                        "**uuid**：类型：String定义位置：generatorCaptcha 方法中用途：存储生成的验证码的 UUID。"
+                        "verifyCodeCache: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 27",
+                        "captcha: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 36",
+                        "code: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 37",
+                        "imageBase64: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 38",
+                        "uuid: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 40"
                     ]
                 }
-            ]
+            ],
+            "reasonality": "理解变量的来源和流转过程有助于把握代码的核心逻辑，并为变量的正确性和有效性提供保障。",
+            "dependency":"无"
+
         },
         {
             "step": "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
-            "refs": []
+            "refs": [],
+            "reasonality": "透彻理解代码业务逻辑可以帮助开发者明确代码的实际用途及其在系统中的作用，便于优化或调试。",
+            "dependency":"无"
+
         },
         {
             "step": "4. 总结：根据以上分析，概述该代码段的功能，业务流程",
-            "refs": []
+            "refs": [],
+            "dependency":"{var_define}"
+
         }
     
     ],
