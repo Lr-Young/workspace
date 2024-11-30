@@ -2,17 +2,17 @@
     "name": "功能实现",
     "type": "global",
     "content": [
-    "问题背景：这是一个java项目的仓库，开发人员希望了解项目中某个特定功能是如何实现的，特别是具体的实现步骤和相关代码。",
-    "1. 理解功能需求：首先，明确功能的需求和目标。通过查看功能文档、产品需求文档或与产品经理沟通，了解功能的核心需求及其期望效果。需求描述：${function_requirements}",
-    "2. 查找功能实现代码：在项目中找到实现该功能的相关代码。可以通过查看功能模块的文件结构、类名或方法名来定位。常见的搜索工具包括IDE的搜索功能、GitHub的搜索、以及项目的代码注释。代码位置：${code}",
-    "3. 分析核心实现逻辑：分析代码中实现该功能的核心逻辑。例如，在文件上传功能中，可能涉及文件的接收、存储路径的生成、文件类型的验证等。",
-    "4. 识别依赖关系：确定该功能是否依赖其他模块或外部服务。例如，视频预览功能可能需要调用外部服务来获取视频流，或者依赖存储服务来加载视频文件。依赖关系：${dependencies}",
-    "5. 查看相关配置文件：检查是否有功能相关的配置项，例如存储路径、外部服务API的URL、权限设置等。这些配置通常在项目的配置文件中定义。配置项：${configurations}",
-    "6. 查看测试用例(如有)：查看是否为该功能编写了单元测试或集成测试。通过测试用例来验证功能是否按预期实现。测试用例：${test_cases}",
-    "7. 性能分析与优化(如有)：如果功能有性能要求（如视频流播放、文件上传），则需要分析代码的性能瓶颈，并提出优化方案。性能优化：${performance_optimization}",
-    "8. 功能文档和开发手册(如有)：检查项目文档或开发手册中的功能说明，通常文档中会提供详细的实现说明和注意事项。文档参考：${documentation}",
-    "9. 查看版本控制记录(如有)：通过查看版本控制系统（如Git）的提交记录，了解功能的实现演变过程。版本记录：${version_control}",
-    "10. 总结与归纳：将功能的实现步骤进行总结，确保了解所有涉及的模块、流程和关键代码，掌握该功能的实现细节。"
+        "问题背景：这是一个java项目的仓库，开发人员希望了解项目中某个特定功能是如何实现的，特别是具体的实现步骤和相关代码。",
+        "1. 理解功能需求：首先，明确功能的需求和目标。通过查看功能文档、产品需求文档或与产品经理沟通，了解功能的核心需求及其期望效果。需求描述：${function_requirements}",
+        "2. 查找功能实现代码：在项目中找到实现该功能的相关代码。可以通过查看功能模块的文件结构、类名或方法名来定位。常见的搜索工具包括IDE的搜索功能、GitHub的搜索、以及项目的代码注释。代码位置：${code}",
+        "3. 分析核心实现逻辑：分析代码中实现该功能的核心逻辑。例如，在文件上传功能中，可能涉及文件的接收、存储路径的生成、文件类型的验证等。",
+        "4. 识别依赖关系：确定该功能是否依赖其他模块或外部服务。例如，视频预览功能可能需要调用外部服务来获取视频流，或者依赖存储服务来加载视频文件。依赖关系：${dependencies}",
+        "5. 查看相关配置文件：检查是否有功能相关的配置项，例如存储路径、外部服务API的URL、权限设置等。这些配置通常在项目的配置文件中定义。配置项：${configurations}",
+        "6. 查看测试用例(如有)：查看是否为该功能编写了单元测试或集成测试。通过测试用例来验证功能是否按预期实现。测试用例：${test_cases}",
+        "7. 性能分析与优化(如有)：如果功能有性能要求（如视频流播放、文件上传），则需要分析代码的性能瓶颈，并提出优化方案。性能优化：${performance_optimization}",
+        "8. 功能文档和开发手册(如有)：检查项目文档或开发手册中的功能说明，通常文档中会提供详细的实现说明和注意事项。文档参考：${documentation}",
+        "9. 查看版本控制记录(如有)：通过查看版本控制系统（如Git）的提交记录，了解功能的实现演变过程。版本记录：${version_control}",
+        "10. 总结与归纳：将功能的实现步骤进行总结，确保了解所有涉及的模块、流程和关键代码，掌握该功能的实现细节。"
     ],
     "background": "开发人员需要了解项目中某个功能是如何实现的，尤其是步骤和核心逻辑，以便能够复用或修改该功能。",
     "example": {
@@ -25,13 +25,13 @@
             "refs": [
                 {
                     "place_holder": "function_description",
-                    "query_type": "摘要信息",
-                    "query_keys": [
-                        "视频文件",
-                        "存储源服务",
-                        "在线播放"
-                    ],
-                    "example_ref": "需求描述：ZFile 需要实现在线播放视频文件的功能，允许用户在浏览器中直接播放存储在不同存储源（如本地存储、S3、OneDrive 等）的各种视频格式文件。该功能应支持流畅的播放体验，并处理大文件的分段加载（如使用 HLS 协议的 .m3u8 文件）。"
+                    "query": "请查找${function_name}功能的需求描述和定义部分。",
+                    "example_ref": [
+                        "README.md:38",
+                        "src/main/java/im/zhaojun/zfile/module/storage/service/impl/LocalServiceImpl.java:196-228",
+                        "此处是以视频在线预览功能为例得到的结果，请注意"
+                        
+                    ]
                 }
             ]
         },
@@ -40,16 +40,13 @@
             "refs": [
                 {
                     "place_holder": "code",
-                    "query_type": "相关代码",
-                    "query_keys": [
-                        "视频流处理",
-                        "m3u8格式",
-                        "HTML5播放器"
-                    ],
+                    "query": "请查找实现${function_name}功能的相关代码，定位核心逻辑和功能模块的代码实现。",
                     "example_ref": [
-                        "查找存储源服务相关代码，获取视频文件的下载链接: ZFile/src/main/java/io/github/zfile/service/LinkDownloadService.java,行数：117-203",
-                        "查找前端嵌入播放器相关代码，使用 HTML5 的 <video> 标签播放视频：未找到前端代码文件，下面是参考代码<!DOCTYPE html><html lang=en/><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>视频播放</title></head><body><video id='videoPlayer' controls><source src='视频文件下载链接' type='video/mp4'>您的浏览器不支持 HTML5 视频播放。</video></body></html>",
-                        "跨域问题相关代码：CorsFilter.java,行数:23-41"
+                        "src/main/java/im/zhaojun/zfile/module/storage/controller/base/StorageSourceController.java: 30-53",
+                        "src\main\java\im\zhaojun\zfile\core\util\HttpUtil.java",
+                        "ZFile/src/main/java/io/github/zfile/core/filter/CorsFilter.java: 22-42",
+                        "src\main\java\im\zhaojun\zfile\module\link\service\LinkDownloadService.java:181-203",
+                        "src\main\java\im\zhaojun\zfile\module\storage\service\impl\LocalServiceImpl.java",
                     ]
                 }
             ]
@@ -59,10 +56,8 @@
             "refs": [
                 {
                     "place_holder": "无",
-                    "query_type": "无",
-                    "query_keys": [
-                    ],
-                    "example_ref": ""
+                    "query": "请分析${function_name}功能的实现逻辑，重点关注其核心操作和流程。",
+                    "example_ref": "此步骤不需要查询"
                 }
             ]
         },
@@ -71,18 +66,14 @@
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "query_type": "依赖函数",
-                    "query_keys": [
-                        "m3u8格式",
-                        "存储源服务"
-                    ],
-                    "example_ref":[
-                        "1. 存储源服务：- 依赖 zfile\\zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\storage\\service\\StorageSourceService.java) 来获取存储源的服务实例和存储源的配置信息。- 通过 `fileService.getDownloadUrl(filePath)` 获取视频文件的下载链接。",
-                        "2. 短链服务：- 依赖(\\zfile\\zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\link\\service\\ShortLinkService.java) 来获取短链信息，并判断短链是否存在和是否过期。",
-                        "3. 系统配置服务：- 依赖 (zfile\\zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\config\\service\\SystemConfigService.java) 来获取系统配置，判断是否允许使用直链和短链。",
-                        "4. 过滤配置服务：- 依赖 (zfile\\zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\filter\\service\\FilterConfigService.java) 来检查文件是否在禁止下载的目录中。"
+                    "query": "请查找${function_name}功能依赖的模块、服务或外部组件。",
+                    "example_ref": [
+                        "src\main\java\im\zhaojun\zfile\module\storage\controller\proxy\ProxyDownloadController.java",
+                        "src/main/java/im/zhaojun/zfile/module/storage/service/impl/StorageSourceServiceImpl.java",
+                        "src/main/java/im/zhaojun/zfile/module/storage/service/impl/LocalServiceImpl.java",
+                        "src/main/java/im/zhaojun/zfile/core/util/HttpUtil.java"
                     ]
-                    }
+                }
             ]
         },
         {
@@ -90,12 +81,10 @@
             "refs": [
                 {
                     "place_holder": "configurations",
-                    "query_type": "配置项",
-                    "query_keys": [
-                        "存储路径",
-                        "CORS过滤器"
-                    ],
-                    "example_ref": ["application.properties: 无视频相关配置信息"
+                    "query": "请查找${function_name}功能相关的配置项，重点关注存储配置和外部服务设置。",
+                    "example_ref": [
+                        "src/main/resources/application.properties",
+                        "src\main\java\im\zhaojun\zfile\module\config\model\dto\SystemConfigDTO.java:126-127"
                     ]
                 }
             ]
@@ -105,12 +94,8 @@
             "refs": [
                 {
                     "place_holder": "test_cases",
-                    "query_type": "测试用例文件",
-                    "query_keys": [
-                        "视频流播放",
-                        "文件上传"
-                    ],
-                    "example_ref": "未找到测试用例文件"
+                    "query": "请查找与${function_name}功能相关的测试用例，验证功能是否按预期实现。",
+                    "example_ref": "未找到相关测试用例文件"
                 }
             ]
         },
@@ -119,12 +104,10 @@
             "refs": [
                 {
                     "place_holder": "performance_optimization",
-                    "query_type": "性能优化方法",
-                    "query_keys": [
-                        "视频流播放",
-                        "文件上传"
-                    ],
-                    "example_ref": "StorageSourceContext.java: 通过缓存存储源服务实例，减少重复创建实例的开销。"
+                    "query": "请分析${function_name}功能的性能瓶颈，评估潜在的优化方向。",
+                    "example_ref": [
+                        "此步骤不需要查询"
+                    ]
                 }
             ]
         },
@@ -133,15 +116,10 @@
             "refs": [
                 {
                     "place_holder": "documentation",
-                    "query_type": "文件或注释",
-                    "query_keys": [
-                        "视频流播放",
-                        "文件上传"
-                    ],
-                    "example_ref":[ "readme.md",
-                        "LinkDownloadService.java注释部分",
-                        "CorsFilter.java 注释部分"
-                    ]
+                    "query": "请查找与${function_name}功能相关的文档、开发手册或代码注释，了解实现细节。",
+                    "example_ref": [
+                        "README.md: 38",
+                        ]
                 }
             ]
         },
@@ -150,12 +128,11 @@
             "refs": [
                 {
                     "place_holder": "version_control",
-                    "query_type": "版本记录",
-                    "query_keys": [
-                        "视频流播放",
-                        "文件上传"
-                    ],
-                    "example_ref": "git log -- src/main/java/im/zhaojun/zfile/module/link/service/LinkDownloadService.java、git log -- src/main/java/im/zhaojun/zfile/core/filter/CorsFilter.java"
+                    "query": "请查找与${function_name}功能实现相关的Git提交记录，查看功能演变过程。",
+                    "example_ref": [
+                        "git log -- src/main/java/io/github/zfile/module/link/service/LinkDownloadService.java",
+                        "git log -- src/main/java/io/github/zfile/core/filter/CorsFilter.java"
+                    ]
                 }
             ]
         },
@@ -164,10 +141,8 @@
             "refs": [
                 {
                     "place_holder": "无",
-                    "query_type": "无",
-                    "query_keys": [
-                    ],
-                    "example_ref": ""
+                    "query": "请总结${function_name}功能的实现步骤，概述核心代码和相关模块。",
+                    "example_ref": "此步骤不需要查询"
                 }
             ]
         }

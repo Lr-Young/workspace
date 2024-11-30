@@ -100,19 +100,12 @@
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "query_type": "外部依赖库",
-                    "query_keys": [
-                        "dependency"
-                    ],
-                    "example_ref":["项目使用Maven进行构建，各模块的依赖定义在各自的 pom.xml 文件中。主要依赖包括：",
-                                    "Spring Boot: 提供基础的应用框架。",
-                                    "Spring Cloud: 支持微服务架构。",
-                                    "MyBatis: 数据持久层框架，用于数据库操作。",
-                                    "Docker: 容器化部署。",
-                                    "Swagger: API文档生成工具。",
-                                    "Elasticsearch: 搜索引擎，支持 mall-search 模块。",
-                                    "Spring Security: 安全框架，支持 mall-security 模块。"
-                                    ]
+                    "query": "请列出项目的外部依赖库",
+                    "example_ref": [
+                        "pom.xml: 50-100",
+                        "mall-admin/pom.xml: 10-30",
+                        "mall-security/pom.xml: 1-25"
+                    ]
                 }
             ]
         },
@@ -121,17 +114,12 @@
             "refs": [
                 {
                     "place_holder": "documents",
-                    "query_type": "文件",
-                    "query_keys": [
-                        "documents"
-                    ],
-                    "example_ref": ["README.md: 项目的总体介绍和使用说明。",
-                                    "document: 含有详细的设计文档、Docker使用手册、API文档等。",
-                                    "docker-compose-env.yml: Docker Compose环境配置文件。",
-                                    "nginx.conf: Nginx配置文件。",
-                                    "docker.md: Docker入门手册及常用命令。",
-                                    "各模块的 src/ 目录中包含源代码和相关文档。"
-                                    ]
+                    "query": "请查看项目的文档资料，如README和设计文档",
+                    "example_ref": [
+                        "README.md: 1-20",
+                        "document/design/architecture.md: 1-50",
+                        "docker-compose-env.yml: 1-30"
+                    ]
                 }
             ]
         },
