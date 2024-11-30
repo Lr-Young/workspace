@@ -94,32 +94,8 @@
                         "dependency"
                     ],
                     "example_ref":[
-                        "Spring Framework",
-                        "org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication: 根据应用程序的 Web 环境条件来配置 Bean。",
-                        "org.springframework.context.annotation.Conditional: 根据条件来配置 Bean。",
-                        "org.springframework.http.HttpStatus: 表示 HTTP 响应状态码。",
-                        "org.springframework.http.ResponseEntity: 表示 HTTP 响应实体，包括状态码、头信息和响应体。",
-                        "org.springframework.web.bind.annotation.RequestMapping: 映射 HTTP 请求到处理方法。",
-                        "org.springframework.web.bind.annotation.RequestMethod: 指定 HTTP 请求方法（如 GET、POST 等）。",
-                        "org.springframework.web.bind.annotation.RequestParam: 绑定 HTTP 请求参数到方法参数。",
-                        "org.springframework.web.bind.annotation.RestController: 标记类为 REST 控制器，返回 JSON 或 XML 格式的响应。",
-                        "org.springframework.web.util.HtmlUtils: 提供 HTML 编码和解码的实用方法。",
-                        "Swagger",
-                        "io.swagger.models.Swagger: 表示 Swagger API 文档的根对象。",
-                        "springfox.documentation.service.Documentation: 表示生成的 API 文档。",
-                        "springfox.documentation.spi.DocumentationType: 表示文档类型（如 Swagger 2.0）。",
-                        "springfox.documentation.spring.web.DocumentationCache: 缓存生成的 API 文档。",
-                        "springfox.documentation.spring.web.json.Json: 表示 JSON 格式的 API 文档。",
-                        "springfox.documentation.spring.web.json.JsonSerializer: 将 API 文档序列化为 JSON 格式。",
-                        "springfox.documentation.spring.web.plugins.Docket: 配置 Swagger 的主要接口。",
-                        "springfox.documentation.swagger2.mappers.ServiceModelToSwagger2Mapper: 将服务模型映射到 Swagger 2.0 模型。",
-                        "SLF4J",
-                        "org.slf4j.Logger: 日志记录接口。",
-                        "org.slf4j.LoggerFactory: 创建 Logger 实例的工厂类。",
-                        "Spring Plugin",
-                        "org.springframework.plugin.core.PluginRegistry: 管理插件的注册和查找。",
-                        "这些依赖库主要用于构建 RESTful API、处理 Swagger 文档生成和转换、以及日志记录等功能。"
-                    ]
+                        "pom.xml: 28-258"
+                        ]
                 }
             ]
         },
@@ -132,7 +108,7 @@
                     "query_keys": [
                         "documents"
                     ],
-                    "example_ref": "通过 Spring Boot 提供了一个在线文件浏览系统，支持多种存储策略和数据库，具有良好的扩展性和配置灵活性。 "
+                    "example_ref": " README.md:16-21"
                 }
             ]
         },

@@ -1,3 +1,4 @@
+
 {
     "name": "全局变量和配置",
     "type": "配置分析",
@@ -27,9 +28,12 @@
             "refs": [
                 {
                     "place_holder": "config_files",
-                    "query_type": "配置文件定位",
-                    "query_keys": ["application.properties", "application.yml"],
-                    "example_ref": "application.properties, application-default.properties, logback-spring.xml，这些文件位于 classes 目录下。"
+                    "query": "请查找项目中使用的配置文件，例如`application.properties`、`application.yml`等。",
+                    "example_ref": [
+                        "src\main\resources\application-default.properties",
+                        "src\main\resources\application.properties",
+                        "src\main\resources\logback-spring.xml"
+                    ]
                 }
             ]
         },
@@ -39,33 +43,34 @@
             "refs": [
                 {
                     "place_holder": "global_variables",
-                    "query_type": "全局变量定位",
-                    "query_keys": ["常量类", "配置类", "静态变量"],
+                    "query": "请查找项目中定义的全局变量，例如常量类中的静态变量或配置类中的变量。",
                     "example_ref": [
-                        "在 SystemConfigConstant.java 中定义了全局常量，如 USERNAME、PASSWORD。",
-                        "在 ZFileProperties.java 文件中定义了 ZFile 的自定义配置属性。"
-                    ]
+                        "src\main\java\im\zhaojun\zfile\module\config\mapper\SystemConfigMapper.java",
+                        "src\main\java\im\zhaojun\zfile\module\config\constant\SystemConfigConstant.java",
+                        "src/main/java/im/zhaojun/zfile/core/config/ZFileProperties.java",
+                        "src/main/java/im/zhaojun/zfile/core/constant/ZFileConstant.java",
+                        "src\main\java\im\zhaojun\zfile\core\constant\MdcConstant.java"
+
+                        ]
                 }
             ]
         },
         {
             "step": "分析配置参数",
             "reason": "详细分析配置参数的作用和来源，可以帮助开发人员理解配置的用途和适用场景。",
-            "depends_on": [
-                {
-                    "step_name": "识别配置文件",
-                    "dependency_type": "data",
-                    "details": "需要从识别的配置文件中提取参数信息。"
-                }
-            ],
             "refs": [
                 {
                     "place_holder": "config_parameters",
-                    "query_type": "配置参数详情",
-                    "query_keys": ["app.name", "database.url", "security.enabled"],
+                    "query": "查找项目中的配置参数，主要包括系统配置参数、数据库配置、安全配置参数、环境相关配置和外部服务配置",
                     "example_ref": [
-                        "spring.datasource.url=jdbc:sqlite:${zfile.db.path}",
-                        "spring.datasource.driver-class-name=org.sqlite.JDBC"
+                        "src\main\resources\application.properties",
+                        "src/main/java/im/zhaojun/zfile/core/config/ZFileProperties.java",
+                        "src/main/java/im/zhaojun/zfile/core/constant/SystemConfigConstant.java",
+                        "src\main\java\im\zhaojun\zfile\module\config\model\request\UpdateViewSettingRequest.java",
+                        "src\main\java\im\zhaojun\zfile\module\config\model\result\SiteConfigResult.java",
+                        "src\main\java\im\zhaojun\zfile\module\storage\annotation\StorageParamItem.java",
+                        "src\main\java\im\zhaojun\zfile\module\storage\model\param\FtpParam.java",
+                        "src\main\java\im\zhaojun\zfile\module\storage\model\param\S3BaseParam.java",
                     ]
                 }
             ]
@@ -76,11 +81,10 @@
             "refs": [
                 {
                     "place_holder": "config_management",
-                    "query_type": "总结文本",
-                    "query_keys": ["Spring @Value", "Spring Environment", "配置管理工具"],
+                    "query": "请查找项目中使用的配置管理方式，例如使用`@Value`注解、配置管理工具（如Spring Cloud Config）等。",
                     "example_ref": [
-                        "使用 @ConfigurationProperties 和 @Value 注解加载配置参数。",
-                        "使用 Spring Cloud Config 实现分布式配置管理。"
+                        "src/main/java/im/zhaojun/zfile/core/config/SpringCacheConfig.java: 18-28",
+                        "src/main/java/im/zhaojun/zfile/core/config/ZFileProperties.java：11-14"
                     ]
                 }
             ]
@@ -88,21 +92,15 @@
         {
             "step": "使用情况分析",
             "reason": "分析配置参数和全局变量的使用情况，可以发现潜在的冗余或未使用的配置，帮助优化代码结构。",
-            "depends_on": [
-                {
-                    "step_name": "识别全局变量",
-                    "dependency_type": "data",
-                    "details": "需要全局变量的信息以确认它们的使用范围和场景。"
-                }
-            ],
             "refs": [
                 {
                     "place_holder": "usage_analysis",
-                    "query_type": "总结文本",
-                    "query_keys": ["服务类", "控制器", "配置加载类"],
+                    "query": "请分析配置参数和全局变量在项目中的使用情况，确认它们在哪些模块或类中被引用。",
                     "example_ref": [
-                        "SystemConfigService：使用 SystemConfigConstant 和 ZFileProperties 管理系统配置。",
-                        "SiteController：使用 SystemConfigService 获取站点配置。"
+                        "SystemConfigService.java: 50-70",
+                        "SiteController.java: 40-60",
+                        "src\\main\\java\im\zhaojun\zfile\module\config\model\result\SiteConfigResult.java:13-14",
+                        "src\\main\\java\im\zhaojun\zfile\module\config\controller\SettingController.java: 32-53"
                     ]
                 }
             ]
@@ -110,13 +108,6 @@
         {
             "step": "总结与建议",
             "reason": "通过总结分析结果，帮助开发人员全面了解全局变量和配置的现状，并提出改进建议。",
-            "depends_on": [
-                {
-                    "step_name": "使用情况分析",
-                    "dependency_type": "flag",
-                    "details": "汇总分析结果并形成最终建议。"
-                }
-            ],
             "refs": []
         }
     ],
