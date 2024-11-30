@@ -43,10 +43,11 @@
                     "query": "请查找实现${function_name}功能的相关代码，定位核心逻辑和功能模块的代码实现。",
                     "example_ref": [
                         "src/main/java/im/zhaojun/zfile/module/storage/controller/base/StorageSourceController.java: 30-53",
-                        "src\main\java\im\zhaojun\zfile\core\util\HttpUtil.java",
+                        "src/main/java/im/zhaojun/zfile/core/util/HttpUtil.java",
                         "ZFile/src/main/java/io/github/zfile/core/filter/CorsFilter.java: 22-42",
-                        "src\main\java\im\zhaojun\zfile\module\link\service\LinkDownloadService.java:181-203",
-                        "src\main\java\im\zhaojun\zfile\module\storage\service\impl\LocalServiceImpl.java",
+                        "src/main/java/im/zhaojun/zfile/module/link/service/LinkDownloadService.java:181-203",
+                        "src/main/java/im/zhaojun/zfile/module/storage/service/impl/LocalServiceImpl.java"
+
                     ]
                 }
             ]
@@ -68,10 +69,11 @@
                     "place_holder": "dependencies",
                     "query": "请查找${function_name}功能依赖的模块、服务或外部组件。",
                     "example_ref": [
-                        "src\main\java\im\zhaojun\zfile\module\storage\controller\proxy\ProxyDownloadController.java",
+                        "src/main/java/im/zhaojun/zfile/module/storage/controller/proxy/ProxyDownloadController.java",
                         "src/main/java/im/zhaojun/zfile/module/storage/service/impl/StorageSourceServiceImpl.java",
                         "src/main/java/im/zhaojun/zfile/module/storage/service/impl/LocalServiceImpl.java",
                         "src/main/java/im/zhaojun/zfile/core/util/HttpUtil.java"
+
                     ]
                 }
             ]
@@ -84,7 +86,8 @@
                     "query": "请查找${function_name}功能相关的配置项，重点关注存储配置和外部服务设置。",
                     "example_ref": [
                         "src/main/resources/application.properties",
-                        "src\main\java\im\zhaojun\zfile\module\config\model\dto\SystemConfigDTO.java:126-127"
+                        "src/main/java/im/zhaojun/zfile/module/config/model/dto/SystemConfigDTO.java:126-127"
+
                     ]
                 }
             ]
@@ -118,7 +121,7 @@
                     "place_holder": "documentation",
                     "query": "请查找与${function_name}功能相关的文档、开发手册或代码注释，了解实现细节。",
                     "example_ref": [
-                        "README.md: 38",
+                        "README.md: 38"
                         ]
                 }
             ]

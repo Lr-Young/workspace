@@ -30,9 +30,9 @@
                     "place_holder": "config_files",
                     "query": "请查找项目中使用的配置文件，例如`application.properties`、`application.yml`等。",
                     "example_ref": [
-                        "src\main\resources\application-default.properties",
-                        "src\main\resources\application.properties",
-                        "src\main\resources\logback-spring.xml"
+                        "src/main/resources/application-default.properties",
+                        "src/main/resources/application.properties",
+                        "src/main/resources/logback-spring.xml"
                     ]
                 }
             ]
@@ -45,11 +45,12 @@
                     "place_holder": "global_variables",
                     "query": "请查找项目中定义的全局变量，例如常量类中的静态变量或配置类中的变量。",
                     "example_ref": [
-                        "src\main\java\im\zhaojun\zfile\module\config\mapper\SystemConfigMapper.java",
-                        "src\main\java\im\zhaojun\zfile\module\config\constant\SystemConfigConstant.java",
+                        "src/main/java/im/zhaojun/zfile/module/config/mapper/SystemConfigMapper.java",
+                        "src/main/java/im/zhaojun/zfile/module/config/constant/SystemConfigConstant.java",
                         "src/main/java/im/zhaojun/zfile/core/config/ZFileProperties.java",
                         "src/main/java/im/zhaojun/zfile/core/constant/ZFileConstant.java",
-                        "src\main\java\im\zhaojun\zfile\core\constant\MdcConstant.java"
+                        "src/main/java/im/zhaojun/zfile/core/constant/MdcConstant.java"
+
 
                         ]
                 }
@@ -63,14 +64,15 @@
                     "place_holder": "config_parameters",
                     "query": "查找项目中的配置参数，主要包括系统配置参数、数据库配置、安全配置参数、环境相关配置和外部服务配置",
                     "example_ref": [
-                        "src\main\resources\application.properties",
+                        "src/main/resources/application.properties",
                         "src/main/java/im/zhaojun/zfile/core/config/ZFileProperties.java",
                         "src/main/java/im/zhaojun/zfile/core/constant/SystemConfigConstant.java",
-                        "src\main\java\im\zhaojun\zfile\module\config\model\request\UpdateViewSettingRequest.java",
-                        "src\main\java\im\zhaojun\zfile\module\config\model\result\SiteConfigResult.java",
-                        "src\main\java\im\zhaojun\zfile\module\storage\annotation\StorageParamItem.java",
-                        "src\main\java\im\zhaojun\zfile\module\storage\model\param\FtpParam.java",
-                        "src\main\java\im\zhaojun\zfile\module\storage\model\param\S3BaseParam.java",
+                        "src/main/java/im/zhaojun/zfile/module/config/model/request/UpdateViewSettingRequest.java",
+                        "src/main/java/im/zhaojun/zfile/module/config/model/result/SiteConfigResult.java",
+                        "src/main/java/im/zhaojun/zfile/module/storage/annotation/StorageParamItem.java",
+                        "src/main/java/im/zhaojun/zfile/module/storage/model/param/FtpParam.java",
+                        "src/main/java/im/zhaojun/zfile/module/storage/model/param/S3BaseParam.java"
+
                     ]
                 }
             ]
@@ -99,8 +101,8 @@
                     "example_ref": [
                         "SystemConfigService.java: 50-70",
                         "SiteController.java: 40-60",
-                        "src\\main\\java\im\zhaojun\zfile\module\config\model\result\SiteConfigResult.java:13-14",
-                        "src\\main\\java\im\zhaojun\zfile\module\config\controller\SettingController.java: 32-53"
+                        "src/main/java/im/zhaojun/zfile/module/config/model/result/SiteConfigResult.java:13-14",
+                        "src/main/java/im/zhaojun/zfile/module/config/controller/SettingController.java: 32-53"
                     ]
                 }
             ]

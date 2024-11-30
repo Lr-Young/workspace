@@ -3,7 +3,7 @@
     "type": "local",
     "content": [
         "1. 查找该局部变量或数据的出现位置，变量名称为：${var_name}",
-        "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文.",
+        "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文。",
         "3. 总结：根据以上分析步骤，生成关于该局部变量的详细报告，包括其定义和使用情况"
     ],
     "background": "问题背景：在Java项目的代码分析过程中，开发人员希望深入了解局部变量的变化及数据流动。关注重点在于局部变量如何在代码中修改或处理，数据如何通过不同的代码段传递。",
@@ -13,15 +13,14 @@
     },
     "steps": [
         {
-            "step": "1. 查找该局部变量或数据的出现位置，变量为：criteria",
+            "step": "1. 查找该局部变量或数据的出现位置，变量名称为：${var_name}",
             "refs": [
                 {
-                    "place_holder": "var_name",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "定义使用"
-                    ],
-                    "example_ref": []
+                    "place_holder": "var_name(此处为criteria)",
+                    "query": "请查找项目中所有与${var_name}相关的代码片段，包括其声明、赋值、传递等操作。",
+                    "example_ref": [
+                        "mall-portal\\src\\main\\java\\com\\macro\\mall\\portal\\service\\impl\\PmsPortalProductServiceImpl.java: 48-59"
+                    ]
                 }
             ]
         },
@@ -29,12 +28,11 @@
             "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
             "refs": [
                 {
-                    "place_holder": "",
-                    "query_type": "局部变量",
-                    "query_keys": [
-                        "使用场景"
-                    ],
-                    "example_ref": []
+                    "place_holder": "var_name",
+                    "query": "请分析${var_name}变量在代码中出现的上下文，特别是它的使用次数、作用域以及它与其他变量的关系。",
+                    "example_ref": [
+                        "该条不是查询请求"
+                    ]
                 }
             ]
         },

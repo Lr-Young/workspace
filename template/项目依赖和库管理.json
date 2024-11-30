@@ -82,12 +82,12 @@
                     "place_holder": "dependency_usage",
                     "query": "查找项目中依赖的实际使用情况，识别冗余依赖",
                     "example_ref": [
-                       "src\main\java\im\zhaojun\zfile\core\util\PlaceholderUtils.java",
-                       "src\main\java\im\zhaojun\zfile\module\storage\controller\base\StorageSourceController.java",
-                       "src\main\java\im\zhaojun\zfile\module\storage\controller\helper\GoogleDriveHelperController.java",
-                       "src\\main\\java\\im\\zhaojun\\zfile\\module\\storage\\controller\\helper\\S3HelperController.java",
-                       "src\main\java\im\zhaojun\zfile\module\storage\controller\helper\SharePointHelperController.java",
-                       "src\main\java\im\zhaojun\zfile\module\storage\support\StorageSourceSupport.java"
+                       "src/main/java/im/zhaojun/zfile/core/util/PlaceholderUtils.java",
+                       "src/main/java/im/zhaojun/zfile/module/storage/controller/base/StorageSourceController.java",
+                       "src/main/java/im/zhaojun/zfile/module/storage/controller/helper/GoogleDriveHelperController.java",
+                       "src//main//java//im//zhaojun//zfile//module//storage//controller//helper//S3HelperController.java",
+                       "src/main/java/im/zhaojun/zfile/module/storage/controller/helper/SharePointHelperController.java",
+                       "src/main/java/im/zhaojun/zfile/module/storage/support/StorageSourceSupport.java"
 
                     ]
                 }
