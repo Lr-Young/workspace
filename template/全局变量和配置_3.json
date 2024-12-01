@@ -18,15 +18,22 @@
     "steps": [
         {
             "step": "识别配置文件",
+            "reason": "配置文件通常是项目参数化配置的入口，识别配置文件是分析全局变量和参数的第一步。",
             "refs": [
                 {
                     "place_holder": "config_files",
-                    "query_type": "配置文件定位",
-                    "query_keys": [
-                        "application.properties",
-                        "application.yml"
-                    ],
-                    "example_ref": "application.properties,application-default.properties,logback-spring.xml,这些文件位于classes目录下"
+                    "query": "请查找项目中使用的配置文件，例如`application.properties`、`application.yml`等。",
+                    "example_ref": [
+                       "mall-search/src/main/resources/application-dev.yml",
+                        "mall-search/src/main/resources/application-prod.yml",
+                        "mall-search/src/main/resources/application.yml",
+                        "mall-portal/src/main/resources/application-dev.yml",
+                        "mall-portal/src/main/resources/application-prod.yml",
+                        "mall-portal/src/main/resources/application.yml",
+                        "mall-security/src/main/java/com/macro/mall/security/config/SecurityConfig.java",
+                        "mall-security/src/main/java/com/macro/mall/security/config/RedisConfig.java"
+
+                    ]
                 }
             ]
         },
@@ -35,12 +42,7 @@
             "refs": [
                 {
                     "place_holder": "global_variables",
-                    "query_type": "全局变量定位",
-                    "query_keys": [
-                        "常量类",
-                        "配置类",
-                        "通过 @Value 注解注入的变量"
-                    ],
+                    "query": "请查找项目中定义的全局变量，例如常量类中的静态变量或配置类中的变量。",
                     "example_ref": [
                         "@Configuration",
                         "@ConfigurationProperties(prefix = \"alipay\")",
@@ -83,32 +85,17 @@
             "refs": [
                 {
                     "place_holder": "config_parameters",
-                    "query_type": "配置参数详情",
-                    "query_keys": [
-                        "app.name",
-                        "database.url",
-                        "security.enabled"
-                    ],
+                    "query": "查找项目中的配置参数，主要包括系统配置参数、数据库配置、安全配置参数、环境相关配置和外部服务配置",
                     "example_ref": [
-                        "配置参数详情：",
-                        "AlipayConfig 配置参数：",
-                        "gatewayUrl：支付宝网关地址",
-                        "appId：应用 ID",
-                        "appPrivateKey：应用私钥",
-                        "alipayPublicKey：支付宝公钥",
-                        "notifyUrl：异步通知回调地址",
-                        "returnUrl：同步跳转地址",
-                        "charset：请求使用的编码格式",
-                        "format：参数返回格式，默认值为 JSON",
-                        "signType：签名类型，默认值为 RSA2",
-                        "SwaggerProperties 配置参数：",
-                        "apiBasePackage：API 基础包路径",
-                        "title：API 文档标题",
-                        "description：API 文档描述",
-                        "contactName：联系人名称",
-                        "version：API 版本",
-                        "enableSecurity：是否启用安全配置"
-        
+                        "mall-search/src/main/resources/application-dev.yml",
+                        "mall-search/src/main/resources/application-prod.yml",
+                        "mall-search/src/main/resources/application.yml",
+                        "mall-portal/src/main/resources/application-dev.yml",
+                        "mall-portal/src/main/resources/application-prod.yml",
+                        "mall-portal/src/main/resources/application.yml",
+                        "mall-security/src/main/java/com/macro/mall/security/config/SecurityConfig.java",
+                        "mall-security/src/main/java/com/macro/mall/security/config/RedisConfig.java"
+    
                     ]
                 }
             ]
@@ -118,17 +105,11 @@
             "refs": [
                 {
                     "place_holder": "config_management",
-                    "query_type": "总结文本",
-                    "query_keys": [
-                        "Spring @Value",
-                        "Spring Environment",
-                        "配置管理工具"
-                    ],
-                    "example_ref":[                 
-                    "使用 Spring 的 @Value 注解注入配置参数。",
-                    "使用 @ConfigurationProperties 注解将配置参数映射到 Java 类。",
-                    "通过 Spring Boot 的 application.properties 或 application.yml 文件进行配置管理。",
-                    "使用 Spring Cloud Config 进行分布式配置管理"
+                    "query": "请查找项目中使用的配置管理方式，例如使用`@Value`注解、配置管理工具（如Spring Cloud Config）等。",
+                    "example_ref": [
+                        "mall-admin/src/main/java/com/macro/mall/controller/MinioController.java",
+                        "security/src/main/java/com/macro/mall/security/config/MallSecurityConfig.java:21-35",
+                        "mall-admin/src/main/java/com/macro/mall/controller/MinioController.java:26-44"
                     ]
                 
                 }
@@ -139,15 +120,11 @@
             "refs": [
                 {
                     "place_holder": "usage_analysis",
-                    "query_type": "总结文本",
-                    "query_keys": [
-                        "服务类",
-                        "控制器",
-                        "配置加载类"
-                    ],
+                    "query": "请分析配置参数和全局变量在项目中的使用情况，确认它们在哪些模块或类中被引用。",
                     "example_ref": [
-                        "在 AlipayController 中注入并使用：@Autowired private AlipayConfig alipayConfig;",
-                        "在 BaseSwaggerConfig 中使用：SwaggerProperties swaggerProperties = swaggerProperties();"
+                        "mall-common/src/main/resources/application.properties",
+                        "common/src/main/java/com/macro/mall/common/config/BaseSwaggerConfig.java",
+                        "mall-security/src/main/resources/application.yml"
                     ]
                 }
             ]

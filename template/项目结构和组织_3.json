@@ -13,11 +13,7 @@
             "refs": [
                 {
                     "place_holder": "directory_structure",
-                    "query_type": "目录结构",
-                    "query_keys": [
-                        "project",
-                        "directory_structure"
-                    ],
+                    "query": "请查找并提供项目的目录结构",
                     "example_ref": [".gitignore",
                                     "document/",
                                     "    axure/",
@@ -79,11 +75,9 @@
             "refs": [
                 {
                     "place_holder": "modules",
-                    "query_type": "摘要信息",
-                    "query_keys": [
-                        "module"
-                    ],
-                    "example_ref": ["核心模块包括：",
+                    "query": "请查找并提供项目的核心模块及其功能",
+                    "example_ref": [
+                                    "核心模块包括：",
                                     "mall-admin: 后台管理系统模块，负责商品管理、订单管理、用户管理等功能。",
                                     "mall-common: 公共模块，提供通用的配置和工具类，供其他模块共享。",
                                     "mall-demo: 示例模块，用于演示和测试项目功能。",

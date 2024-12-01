@@ -21,12 +21,16 @@
             "refs": [
                 {
                     "place_holder": "build_tool",
-                    "query_type": "构建配置",
-                    "query_keys": [
-                        "pom.xml",
-                        "build.gradle"
-                    ],
-                    "example_ref": "项目使用Maven作为构建工具，配置文件为pom.xml"
+                    "query": "识别项目使用的构建工具（如Maven、Gradle等）",
+                    "example_ref": [
+                        "pom.xml：1-5",
+                        "mall-admin/pom.xml：1-5",
+                        "mall-common/pom.xml：1-5",
+                        "mall-demo/pom.xml：1-5",
+                        "mall-portal/pom.xml：1-5",
+                        "mall-search/pom.xml：1-5",
+                        "mall-security/pom.xml：1-5"
+                    ]
                 }
             ]
         },
@@ -34,18 +38,14 @@
             "step": "核心依赖分析",
             "refs": [
                 {
+                    
                     "place_holder": "core_dependencies",
-                    "query_type": "依赖配置",
-                    "query_keys": [
-                        "spring相关",
-                        "数据库相关"
-                    ],
+                    "query": "识别项目的核心依赖库，如Spring相关和数据库相关依赖",
                     "example_ref": [
-                        "spring-boot-starter-web：用于构建基于 Spring Boot 的 Web 应用，包含嵌入式 Tomcat 和 Spring MVC。",
-                        "spring-boot-starter-security：提供安全认证和授权功能。",
-                        "spring-boot-starter-data-redis：用于与 Redis 数据库进行交互，实现缓存功能。",
-                        "MyBatis：持久层框架，用于简化数据库操作。",
-                        "Spring Boot：基础框架，用于构建独立的、生产级的 Spring 应用。"        
+                        "pom.xml：58-91",
+                        "mall-demo/pom.xml：19-31",
+                        "mall-search/pom.xml：20-35",
+                        "mall-security/pom.xml：19-40"
                     ]
                 }
             ]
@@ -54,22 +54,14 @@
             "step": "功能性依赖分析",
             "refs": [
                 {
+                
                     "place_holder": "feature_dependencies",
-                    "query_type": "依赖配置",
-                    "query_keys": [
-                        "数据库驱动",
-                        "缓存",
-                        "消息队列",
-                        "HTTP客户端",
-                        "Json处理"
-                    ],
+                    "query": "识别用于特定功能实现的依赖库，如数据库驱动、缓存、消息队列、HTTP客户端和Json处理",
                     "example_ref": [
-                        "mysql-connector-java：MySQL 数据库驱动，用于连接 MySQL 数据库。",
-                        "spring-boot-starter-data-mongodb：用于与 MongoDB 数据库进行交互。",
-                        "spring-boot-starter-amqp：用于与 AMQP 消息队列（如 RabbitMQ）进行交互。",
-                        "spring-boot-starter-data-elasticsearch：用于与 Elasticsearch 进行交互，实现搜索功能。",
-                        "jjwt：用于生成和解析 JSON Web Token (JWT)，实现安全认证。",
-                        "alipay-sdk-java：用于与支付宝支付接口进行交互。"
+                        "pom.xml:93-202",
+                        "mall-portal/pom.xml:20-49",
+                        "mall-admin/pom.xml:19-35"
+
                     ]
                 }
             ]
@@ -78,21 +70,10 @@
             "step": "工具类依赖分析",
             "refs": [
                 {
-                    "place_holder": "dependency_usage",
-                    "query_type": "文件",
-                    "query_keys": [
-                        "开发工具",
-                        "日志工具",
-                        "API文档生成"
-
-                    ],
+                    "place_holder": "utility_dependencies",
+                    "query": "识别用于提升开发效率的工具类库，如开发工具、日志工具和API文档生成工具",
                     "example_ref": [
-                        "logstash-logback-encoder：用于将日志输出到 Logstash，便于集中管理和分析日志。",
-                        "spring-boot-starter-test：提供 Spring Boot 应用的测试支持，包括 JUnit、Mockito 等。",
-                        "mybatis-generator-core：MyBatis 代码生成器，用于自动生成 MyBatis 的 Mapper、Model 等代码。",
-                        "hutool-all：一个 Java 工具类库，提供各种常用的工具方法，提升开发效率。",
-                        "lombok：通过注解简化 Java 代码，减少样板代码（如 getter/setter、构造函数等）"
-        
+                        "pom.xml:93-202"
                     ]
                 }
             ]
@@ -102,10 +83,7 @@
             "refs": [
                 {
                     "place_holder": "utility_dependencies",
-                    "query_type": "依赖配置",
-                    "query_keys": [
-                        "前面识别到的依赖"
-                    ],
+                    "query": "分析各个依赖在项目中的实际使用情况，识别可能的无用依赖。",
                     "example_ref": [
                         "## 1. 核心依赖",
                         "### `spring-boot-starter-web`",

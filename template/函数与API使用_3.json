@@ -18,11 +18,8 @@
             "refs": [
                 {
                     "place_holder": "function_name",
-                    "query_type": "函数",
-                    "query_keys": [
-                        "function_location"
-                    ],
-                    "example_ref": []
+                    "query": "请确定${function_name}函数的实现位置。",
+                    "example_ref": ["mall-portal\\src\\main\\java\\com\\macro\\mall\\portal\\service\\impl\\PmsPortalProductServiceImpl.java: 27"]
                 }
             ]
         },
@@ -31,10 +28,6 @@
             "refs": [
                 {
                     "place_holder": "",
-                    "query_type": "函数",
-                    "query_keys": [
-                        "input_parameters"
-                    ],
                     "example_ref": []
                 }
             ]
@@ -44,10 +37,6 @@
             "refs": [
                 {
                     "place_holder": "",
-                    "query_type": "函数",
-                    "query_keys": [
-                        "output_type"
-                    ],
                     "example_ref": []
                 }
             ]
@@ -61,7 +50,7 @@
         {
             "step": "1. 确定要查找的特定函数名称的实现位置，函数名称为：search",
             "answer": [
-                "函数search的实现位置在文件PmsPortalProductServiceImpl.java中，位于第27行。"
+                "函数search的实现位置在文件PmsPortalProductServiceImpl.java:45-71。"
             ]
         },
         {
