@@ -40,11 +40,10 @@
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "query_type": "外部依赖库",
-                    "query_keys": [
-                        "dependency"
-                    ],
-                    "example_ref": "Java库：java.lang.annotation包中的ElementType、Retention、RetentionPolicy、Target；java.util包中的MissingResourceException、ResourceBundle、stream、ArrayList、List、Set、function；java.lang.Math；javafx.geometry；javafx.scene；javafx.stage；javafx.bean"
+                    "query": "请查找并提供项目的外部依赖库。",
+                    "example_ref": [
+                        "pom.xml: 28-258"
+                    ]
                 }
             ]
         },
@@ -52,12 +51,12 @@
             "step": "阅读项目相关资料（如README、设计文档、API文档等）：${documents}",
             "refs": [
                 {
-                    "place_holder": "documents",
-                    "query_type": "文件",
-                    "query_keys": [
-                        "documents"
-                    ],
-                    "example_ref": "A lightweight desktop application for interactively creating and editing diagrams in the Unified Modeling Language. JetUML supports the sketching of software design ideas with a minimum of fuss. Diagrams can be saved in JSON, exported to popular image formats, and copied to the system clipboard for integration with other tools. Supports class diagrams, sequence diagrams, state diagrams, object diagrams, and use case diagrams. "
+                    "query": "请查看项目的文档资料，如README和设计文档",
+                    "example_ref": [
+                        "README.md: 1-20",
+                        "document/design/architecture.md: 1-50",
+                        "docker-compose-env.yml: 1-30"
+                    ]
                 }
             ]
         },
