@@ -18,7 +18,7 @@
             "refs": [
                 {
                     "place_holder": "{function_define}",
-                    "request": "查找函数findEnumValueFieldName的具体实现位置",
+                    "quary": "查找函数findEnumValueFieldName的具体实现位置",
                     "example_ref": "zfile/src/main/java/com/baomidou/mybatisplus/core/handlers/MybatisEnumTypeHandler.java: 78-87"
                 }
             ],

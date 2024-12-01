@@ -18,7 +18,7 @@
             "refs": [
                 {
                     "place_holder": "function_define",
-                    "request": "查找函数doLogin的具体实现位置",
+                    "quary": "查找函数doLogin的具体实现位置",
                     "example_ref": "zfile/src/main/java/im/zhaojun/zfile/module/login/controller/LoginController.java: 54-76"
                 }
             ],

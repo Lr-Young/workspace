@@ -38,7 +38,7 @@
             "refs": [
                 {
                     "place_holder": "var_define",
-                    "request": "选中代码段中的局部变量在哪里定义的",
+                    "quary": "选中代码段中的局部变量在哪里定义的",
                     "example_ref": [
                         "verifyCodeCache: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 27",
                         "captcha: zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 36",

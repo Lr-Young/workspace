@@ -40,7 +40,7 @@
             "refs": [
                 {
                     "place_holder": "var_define",
-                    "request": "选中代码段中的局部变量在哪里定义的",
+                    "quary": "选中代码段中的局部变量在哪里定义的",
                     "example_ref": [
                         "REFLECTOR_FACTORY: zfile\\src\\main\\java\\com\\baomidou\\mybatisplus\\core\\handlers\\MybatisEnumTypeHandler.java: 52",
                         "enumClassType: zfile\\src\\main\\java\\com\baomidou\\mybatisplus\\core\\handlers\\MybatisEnumTypeHandler.java: 53",

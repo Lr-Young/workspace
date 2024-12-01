@@ -25,7 +25,7 @@
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "request": "ImgVerifyCodeService.java中导入了哪些外部依赖库？",
+                    "quary": "ImgVerifyCodeService.java中导入了哪些外部依赖库？",
                     "example_ref": [
                         "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 3-7, 11-13"
                     ]
@@ -39,7 +39,7 @@
             "refs": [
                 {
                     "place_holder": "modules",
-                    "request": "分析ImgVerifyCodeService中导入的内部模块的作用，找到repo中相关的代码实现",
+                    "quary": "分析ImgVerifyCodeService中导入的内部模块的作用，找到repo中相关的代码实现",
                     "example_ref": [
                         "im.zhaojun.zfile.core.exception.LoginVerifyException.java: 8-14",
                         "im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult.java: 14-22"

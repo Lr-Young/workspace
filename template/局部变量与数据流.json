@@ -17,7 +17,7 @@
             "refs": [
                 {
                     "place_holder": "var_use",
-                    "request": "变量enumClassType的出现位置",
+                    "quary": "变量enumClassType的出现位置",
                     "example_ref": "MybatisEnumTypeHandler.java: 53\n\nMybatisEnumTypeHandler.java: 57\n\nMybatisEnumTypeHandler.java: 58\n\nMybatisEnumTypeHandler.java: 61\n\nMybatisEnumTypeHandler.java: 62\n\nMybatisEnumTypeHandler.java: 64\n\nMybatisEnumTypeHandler.java: 65\n\n"
                 }
             ],
