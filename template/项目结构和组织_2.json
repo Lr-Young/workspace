@@ -66,20 +66,38 @@
                     "place_holder": "modules",
                     "query": "请查找并提供项目的核心模块及其功能。ps:这里有点疑问，是否在代码地图做好之后，可以直接找到相应的总结信息，而不是分散的代码文件",
                     "example_ref": [
-                        "com.baomidou: 这个包通常包含 MyBatis-Plus 相关的代码，MyBatis-Plus 是一个 MyBatis 的增强工具。",
-                        "im.zhaojun: 这个包可能是项目的主要业务逻辑所在，包含了项目的核心功能和实现。",
-                        "springfox.documentation: 这个包通常用于 Springfox 的文档生成，Springfox 是一个用于生成 Swagger 文档的库。",
-                        "resources: 这个目录包含了项目的资源文件，包括配置文件、数据库迁移脚本、日志配置、静态资源和模板文件等。",
-                        "application-default.properties 和 application.properties: Spring Boot 的配置文件。",
-                        "banner.txt: Spring Boot 启动时显示的横幅。",
-                        "db/migration-mysql 和 db/migration-sqlite: 数据库迁移脚本，分别用于 MySQL 和 SQLite 数据库。",
-                        "logback-spring.xml: Logback 的日志配置文件。",
-                        "mapper/DownloadLogMapper.xml: MyBatis 的 XML 映射文件。",
-                        "META-INF: 包含项目的元数据文件。",
-                        "static: 包含静态资源文件，如 CSS、JavaScript 和图片等。",
-                        "templates: 包含模板文件，通常用于生成动态内容。",
-                        "target: 这个目录通常是 Maven 构建输出的目录，包含编译后的类文件和打包后的 JAR 文件等。",
-                        "template.json: 这个文件可能是项目的模板配置文件。"
+                        "核心模块：", 
+                        "包含项目的主要业务逻辑和配置文件。", 
+                        "目录：src/main/java/im/zhaojun/", 
+                        "配置模块：", 
+                        "包含项目的配置文件和资源文件。", 
+                        "目录：src/main/resources/", 
+                        "application-default.properties", 
+                        "application.properties", 
+                        "logback-spring.xml", 
+                        "banner.txt", 
+                        "数据库模块：", 
+                        "包含数据库迁移脚本和相关的 MyBatis 映射文件。", 
+                        "目录：src/main/resources/db/", 
+                        "migration-mysql/", 
+                        "migration-sqlite/", 
+                        "mapper/", 
+                        "静态资源模块：", 
+                        "包含静态资源文件和模板文件。", 
+                        "目录：src/main/resources/static/", 
+                        "templates/", 
+                        "依赖模块：", 
+                        "包含项目的依赖管理文件。", 
+                        "文件：pom.xml", 
+                        "文档模块：", 
+                        "包含项目的文档和说明文件。", 
+                        "文件：README.md", 
+                        "目录：.github/", 
+                        "ISSUE_TEMPLATE/", 
+                        "构建输出模块：", 
+                        "包含项目的构建输出文件。", 
+                        "目录：target/"
+
                     ]
                 }
             ]
@@ -101,7 +119,7 @@
             "refs": [
                 {
                     "place_holder": "documents",
-                    "query": "请查找并提供项目的相关文档，特别是README、设计文档或API文档。",
+                    "query": "请查找并提供项目的README文档。",
                     "example_ref": "README.md:16-21"
                 }
             ]

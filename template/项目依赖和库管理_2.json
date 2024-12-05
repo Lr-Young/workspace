@@ -36,11 +36,11 @@
             "refs": [
                 {
                     "place_holder": "core_dependencies",
-                    "query": "识别项目的核心依赖库，如Spring相关和数据库相关依赖",
+                    "query": "识别项目与图形用户界面相关的依赖库",
                     "example_ref": [
-                        "JetUML\\.project: 8-17",
-                        "JetUML\test\\org\\jetuml\\JavaFXLoader.java: 23-24",
-                        "JetUML\\.checkstyle"
+                        "JetUML\\src\\org\\jetuml\\gui\\DiagramTabToolBar.java: 40-54",
+                        "JetUML\\src\\org\\jetuml\\gui\\tips\\TipDialog.java: 33-48",
+                        "JetUML\\src\\org\\jetuml\\gui\\PropertySheet.java: 35-50"
                     ]
                 }
             ]
@@ -50,11 +50,9 @@
             "refs": [
                 {
                     "place_holder": "feature_dependencies",
-                    "query": "识别用于特定功能实现的依赖库，如数据库驱动、缓存、消息队列、HTTP客户端和Json处理",
+                    "query": "识别用户创建和编辑 UML 图的功能的依赖库",
                     "example_ref": [
-                        "JetUML\\.project: 19-22",
-                        "JetUML\test\\org\\jetuml\\JavaFXLoader.java: 23-24",
-                        "JetUML\\.checkstyle"
+                        "JetUML\\src\\org\\jetuml\\gui\\EditorFrame.java: 57-74"
                     ]
                 }
             ]
@@ -64,10 +62,9 @@
             "refs": [
                 {
                     "place_holder": "dependency_usage",
-                    "query": "识别用于提升开发效率的工具类库，如开发工具、日志工具和API文档生成工具",
+                    "query": "识别用于统一代码风格的工具类库",
                     "example_ref": [
                         "JetUML\\.checkstyle",
-                        "JetUML/src/org/jetuml/gui/tips/UserGuideGenerator.java",
                         "JetUML/style/Style.xml",
                         "JetUML/style/Formatter.xml"
                     ]

@@ -14,7 +14,7 @@
     },
     "steps": [
         {
-            "step": "1. 确定要查找的特定函数名称的实现位置，函数名称为：${function_define}",
+            "step": "1. 确定要查找的特定函数名称的实现位置，${function_define}",
             "refs": [
                 {
                     "place_holder": "{function_define}",

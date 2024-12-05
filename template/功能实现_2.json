@@ -25,7 +25,7 @@
             "refs": [
                 {
                     "place_holder": "function_description",
-                    "query": "请查找${function_name}功能的需求描述和定义部分。",
+                    "query": "请查找登录功能的需求描述和定义部分。",
                     "example_ref": [
                         "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\controller\\LoginController.java: 36-130"
                     ]
@@ -37,7 +37,7 @@
             "refs": [
                 {
                     "place_holder": "code",
-                    "query": "请查找实现${function_name}功能的相关代码，定位核心逻辑和功能模块的代码实现。",
+                    "query": "请查找实现登录功能的相关代码，定位核心逻辑和功能模块的代码实现。",
                     "example_ref": [
                         "zfile/src/main/java/im/zhaojun/zfile/module/storage/service/impl/GoogleDriveServiceImpl.java 第45行，第 123-125 行",
                         "zfile/src/main/resources/static/assets/OfficeViewer.e85f2f3b.js 第1行， 第 45-50 行",
@@ -55,7 +55,7 @@
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "query": "请查找${function_name}功能依赖的模块、服务或外部组件。",
+                    "query": "请查找登录功能依赖的模块、服务或外部组件。",
                     "example_ref":[
                         "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\controller\\LoginController.java: 3-25"
                     ]
@@ -67,7 +67,7 @@
             "refs": [
                 {
                     "place_holder": "configurations",
-                    "query": "请查找${function_name}功能相关的配置项，重点关注存储配置和外部服务设置。",
+                    "query": "请查找登录功能相关的配置项，重点关注存储配置和外部服务设置。",
                     "example_ref": [
                         "src/main/resources/application-default.properties: 37-38",
                         "src/main/resources/application.properties: 1, 26"
@@ -80,7 +80,7 @@
             "refs": [
                 {
                     "place_holder": "test_cases",
-                    "query": "请查找与${function_name}功能相关的测试用例，验证功能是否按预期实现。",
+                    "query": "请查找与登录功能相关的测试用例，验证功能是否按预期实现。",
                     "example_ref": "未找到测试用例文件"
                 }
             ]
@@ -90,7 +90,7 @@
             "refs": [
                 {
                     "place_holder": "performance_optimization",
-                    "query": "请分析${function_name}功能的性能瓶颈，评估潜在的优化方向。",
+                    "query": "请分析登录功能的性能瓶颈，评估潜在的优化方向。",
                     "example_ref": [
                         "此步骤不需要查询"
                     ]
@@ -102,7 +102,7 @@
             "refs": [
                 {
                     "place_holder": "documentation",
-                    "query": "请查找与${function_name}功能相关的文档、开发手册或代码注释，了解实现细节。",
+                    "query": "请查找与登录功能相关的文档、开发手册或代码注释，了解实现细节。",
                     "example_ref":[
                         "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\controller\\LoginController.java: 31-35, "
                     ]
@@ -114,7 +114,7 @@
             "refs": [
                 {
                     "place_holder": "version_control",
-                    "query": "请查找与${function_name}功能实现相关的Git提交记录，查看功能演变过程。",
+                    "query": "请查找与登录功能实现相关的Git提交记录，查看功能演变过程。",
                     "example_ref": "无"
                 }
             ]
