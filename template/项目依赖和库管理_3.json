@@ -40,7 +40,7 @@
                 {
                     
                     "place_holder": "core_dependencies",
-                    "query": "识别项目的核心依赖库，如Spring相关和数据库相关依赖",
+                    "query": "请识别并列举项目的核心依赖库，包括但不限于以下种类：\n1. Spring相关依赖库（如spring-core, spring-context, spring-web等）\n2. 数据库相关依赖库（如JDBC, Hibernate, MyBatis, JPA等）\n3. 日志相关依赖库（如Log4j, SLF4J, Logback等）\n4. 测试框架依赖库（如JUnit, TestNG, Mockito等）\n5. 构建工具依赖库（如Maven, Gradle, Ant等）\n6. 安全相关依赖库（如Spring Security, Apache Shiro等）\n7. Web开发相关依赖库（如Spring MVC, Jersey, Apache CXF等）\n8. 消息队列和异步处理依赖库（如ActiveMQ, Kafka, RabbitMQ等）\n9. 缓存相关依赖库（如Redis, Ehcache, Memcached等）\n10. 前端开发相关依赖库（如Thymeleaf, JSP, Velocity等）",
                     "example_ref": [
                         "pom.xml：58-91",
                         "mall-demo/pom.xml：19-31",
@@ -56,7 +56,7 @@
                 {
                 
                     "place_holder": "feature_dependencies",
-                    "query": "识别用于特定功能实现的依赖库，如数据库驱动、缓存、消息队列、HTTP客户端和Json处理",
+                    "query": "请识别并列举项目中用于实现特定功能的依赖库，以下是一些常见功能及相关依赖类型：\n1. 数据库驱动（如MySQL JDBC驱动、PostgreSQL驱动等）\n2. 缓存库（如Redis, Ehcache, Memcached等）\n3. 消息队列和异步处理库（如Kafka, RabbitMQ, ActiveMQ等）\n4. HTTP客户端库（如Apache HttpClient, OkHttp, RestTemplate等）\n5. JSON处理库（如Jackson, Gson, FastJSON等）\n6. 文件处理相关库（如Apache POI, Commons IO等）\n7. 搜索引擎库（如Elasticsearch, Apache Solr等）",
                     "example_ref": [
                         "pom.xml:93-202",
                         "mall-portal/pom.xml:20-49",
@@ -71,7 +71,7 @@
             "refs": [
                 {
                     "place_holder": "utility_dependencies",
-                    "query": "识别用于提升开发效率的工具类库，如开发工具、日志工具和API文档生成工具",
+                    "query": "请识别并列举项目中用于提升开发效率的工具类库，以下是一些常见的开发工具和库：\n1. 开发工具库（如Lombok, MapStruct, Apache Commons等）\n2. 日志工具库（如SLF4J, Logback, Log4j等）\n3. API文档生成工具（如Swagger, Springfox, OpenAPI等）\n4. 配置管理工具（如Spring Boot配置类, Apache Commons Configuration等）\n5. 测试工具库（如JUnit, TestNG, Mockito等）\n6. 性能监控和分析工具（如Prometheus, Micrometer等）",
                     "example_ref": [
                         "pom.xml:93-202"
                     ]
@@ -79,11 +79,11 @@
             ]
         },
         {
-            "step": "依赖使用情况分析",
+            "step": "分析各个依赖在项目中的实际使用情况，识别可能的无用依赖。",
             "refs": [
                 {
                     "place_holder": "utility_dependencies",
-                    "query": "分析各个依赖在项目中的实际使用情况，识别可能的无用依赖。",
+                    "query": "",
                     "example_ref": [
                         "## 1. 核心依赖",
                         "### `spring-boot-starter-web`",

@@ -14,7 +14,8 @@
                 {
                     "place_holder": "directory_structure",
                     "query": "请查找并提供项目的目录结构",
-                    "example_ref": [".gitignore",
+                    "example_ref": [
+                                    ".gitignore",
                                     "document/",
                                     "    axure/",
                                     "        [app-design.md](document/axure/app-design.md)",
@@ -76,7 +77,7 @@
                 {
                     "place_holder": "modules",
                     "query": "请查找并提供项目的核心模块及其功能",
-                    "example_ref": [
+                    "example_ref": [                    
                                     "核心模块包括：",
                                     "mall-admin: 后台管理系统模块，负责商品管理、订单管理、用户管理等功能。",
                                     "mall-common: 公共模块，提供通用的配置和工具类，供其他模块共享。",
