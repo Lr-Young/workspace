@@ -13,11 +13,11 @@
     },
     "steps": [
         {
-            "step": "1. 查找该局部变量或数据的出现位置，变量名称为：${var_name}",
+            "step": "1. 查找该局部变量或数据的出现位置，变量名称为：criteria",
             "refs": [
                 {
                     "place_holder": "var_name(此处为criteria)",
-                    "query": "请查找项目中所有与${var_name}相关的代码片段，包括其声明、赋值、传递等操作。",
+                    "query": "请查找项目中所有与criteria相关的代码片段，包括其声明、赋值、传递等操作。",
                     "example_ref": [
                         "mall-portal\\src\\main\\java\\com\\macro\\mall\\portal\\service\\impl\\PmsPortalProductServiceImpl.java: 48-59"
                     ]
@@ -25,11 +25,11 @@
             ]
         },
         {
-            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
+            "step": "2. 分析该局部变量或数据(criteria)的使用场景，包括使用次数和上下文",
             "refs": [
                 {
                     "place_holder": "var_name",
-                    "query": "请分析${var_name}变量在代码中出现的上下文，特别是它的使用次数、作用域以及它与其他变量的关系。",
+                    "query": "请分析criteria变量在代码中出现的上下文，特别是它的使用次数、作用域以及它与其他变量的关系。",
                     "example_ref": [
                         "该条不是查询请求"
                     ]

@@ -69,14 +69,16 @@
         ]
     },
     "steps": [
-        {
+        {   
+            "method": "2",
             "step": "1. 确定需要分析的代码段的位置，定位到特定的文件和代码行。",
             "answer": [
                 "文件：mall-portal/src/main/java/com/macro/mall/portal/service/impl/UmsMemberCouponServiceImpl.java",
                 "代码行：117-169"
             ]
         },
-        {
+        {   
+            "method": "2",
             "step": "2. 确认该代码段出现的变量与数据，理解数据从哪里来，经过哪些处理，以及最终的输出结果。其中变量包括： {var_names}",
             "answer": [
                 "变量：",
@@ -96,6 +98,7 @@
             ]
         },
         {
+            "method": "0",
             "step": "3. 阅读并理解代码段的业务逻辑。分析代码中的主要流程",
             "answer": [
                 "1. 获取当前时间：Date now = new Date();",

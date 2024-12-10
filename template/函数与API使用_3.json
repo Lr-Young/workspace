@@ -18,7 +18,7 @@
             "refs": [
                 {
                     "place_holder": "function_name",
-                    "query": "请确定${function_name}函数的实现位置。",
+                    "query": "请确定search(PmsPortalProductServiceImpl.java)函数的实现位置。",
                     "example_ref": ["mall-portal\\src\\main\\java\\com\\macro\\mall\\portal\\service\\impl\\PmsPortalProductServiceImpl.java: 27"]
                 }
             ]

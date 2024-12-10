@@ -22,7 +22,8 @@
         ]
     },
     "steps": [
-        {
+        {   
+            "method": "1",
             "step": "识别配置文件",
             "reason": "配置文件通常是项目参数化配置的入口，识别配置文件是分析全局变量和参数的第一步。",
             "refs": [
@@ -38,12 +39,13 @@
             ]
         },
         {
+            "method": "2",
             "step": "识别全局变量",
             "reason": "全局变量是项目中多个模块共享的重要参数，理解它们的定义和作用有助于优化配置管理。",
             "refs": [
                 {
                     "place_holder": "global_variables",
-                    "query": "请查找项目中定义的全局变量，例如常量类中的静态变量或配置类中的变量。",
+                    "query": "请查找项目中定义的常量类或配置类，特别是包含`public static final`变量的类，以及带有`@Value`注解或`@Configuration`注解的配置类中的静态变量。",
                     "example_ref": [
                         "src/main/java/im/zhaojun/zfile/module/config/mapper/SystemConfigMapper.java",
                         "src/main/java/im/zhaojun/zfile/module/config/constant/SystemConfigConstant.java",
@@ -56,13 +58,14 @@
                 }
             ]
         },
-        {
+        {   
+            "method": "2",
             "step": "分析配置参数",
             "reason": "详细分析配置参数的作用和来源，可以帮助开发人员理解配置的用途和适用场景。",
             "refs": [
                 {
                     "place_holder": "config_parameters",
-                    "query": "查找项目中的配置参数，主要包括系统配置参数、数据库配置、安全配置参数、环境相关配置和外部服务配置",
+                    "query": "请查找项目中配置参数和全局变量（`@Value`注解、`application.properties`中的值、环境变量）在`src/`目录下的具体模块和类中的使用情况，特别是关注`@Configuration`类和服务类中的引用",
                     "example_ref": [
                         "src/main/resources/application.properties",
                         "src/main/java/im/zhaojun/zfile/core/config/ZFileProperties.java",
@@ -77,7 +80,8 @@
                 }
             ]
         },
-        {
+        {   
+            "method": "2",
             "step": "配置管理方式",
             "reason": "了解项目中使用的配置管理方式可以帮助评估配置加载的效率和灵活性。",
             "refs": [
@@ -91,13 +95,14 @@
                 }
             ]
         },
-        {
+        {   
+            "method": "2",
             "step": "使用情况分析",
             "reason": "分析配置参数和全局变量的使用情况，可以发现潜在的冗余或未使用的配置，帮助优化代码结构。",
             "refs": [
                 {
                     "place_holder": "usage_analysis",
-                    "query": "请分析配置参数和全局变量在项目中的使用情况，确认它们在哪些模块或类中被引用。",
+                    "query": "请查找配置参数和全局变量在项目中的使用情况，确认它们在哪些模块或类中被引用。",
                     "example_ref": [
                         "SystemConfigService.java: 50-70",
                         "SiteController.java: 40-60",
@@ -108,6 +113,7 @@
             ]
         },
         {
+            "method": "0",
             "step": "总结与建议",
             "reason": "通过总结分析结果，帮助开发人员全面了解全局变量和配置的现状，并提出改进建议。",
             "refs": []

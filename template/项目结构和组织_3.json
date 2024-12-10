@@ -8,10 +8,11 @@
         "query": "这个项目的架构是什么样的？"
     },
     "steps": [
-        {
+        {   
+            "method": "1",
             "step": "分析项目的目录结构，项目代码的目录结构如下：${directory_structure}",
             "refs": [
-                {
+                {   
                     "place_holder": "directory_structure",
                     "query": "请查找并提供项目的目录结构",
                     "example_ref": [
@@ -71,7 +72,8 @@
                 }
             ]
         },
-        {
+        {   
+            "method": "1",
             "step": "分析项目的主要模块及其作用，核心模块包括：${modules}",
             "refs": [
                 {

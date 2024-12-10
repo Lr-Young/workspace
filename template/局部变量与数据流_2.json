@@ -13,11 +13,11 @@
     },
     "steps": [
         {
-            "step": "1. 查找该局部变量或数据的出现位置，${var_use}",
+            "step": "1. 查找该局部变量或数据的出现位置，verifyCodeCache",
             "refs": [
                 {
                     "place_holder": "{var_use}",
-                    "quary": "变量verifyCodeCache的出现位置",
+                    "query": "变量verifyCodeCache的出现位置",
                     "example_ref": "ImgVerifyCodeService.java: 27\nImgVerifyCodeService.java: 41\nImgVerifyCodeService.java: 62\n"
                 }
             ],
@@ -25,7 +25,7 @@
             "dependency":"无"
         },
         {
-            "step": "2. 分析该局部变量或数据的使用场景，包括使用次数和上下文",
+            "step": "2. 分析该局部变量(verifyCodeCache)的使用场景，包括使用次数和上下文",
             "refs": [],
             "reasonality":"明确变量在不同代码片段中的具体用途，尤其是与函数调用、条件判断或循环体等逻辑的关联。",
             "dependency": "{var_use}"

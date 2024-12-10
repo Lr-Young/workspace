@@ -15,17 +15,19 @@
     },
     "steps": [
         {
+            "method": "0",
             "step": "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
             "refs": [],
             "reasonality": "导入语句直接影响代码文件的功能边界。清晰列出这些导入能帮助开发者了解文件的功能范围和依赖外部的程度。",
             "dependency": "无"
         },
         {
+            "method": "2",
             "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "quary": "ImgVerifyCodeService.java中导入了哪些外部依赖库？",
+                    "query": "ImgVerifyCodeService.java中导入了哪些外部依赖库?",
                     "example_ref": [
                         "zfile\\src\\main\\java\\im\\zhaojun\\zfile\\module\\login\\service\\ImgVerifyCodeService.java: 3-7, 11-13"
                     ]
@@ -35,11 +37,12 @@
             "dependency": "无"
         },
         {
+            "method": "2",
             "step": "3. 分析每个导入的模块，找到相关代码实现.${modules}",
             "refs": [
                 {
                     "place_holder": "modules",
-                    "quary": "分析ImgVerifyCodeService中导入的内部模块的作用，找到repo中相关的代码实现",
+                    "query": "分析ImgVerifyCodeService中导入的内部模块的作用，找到repo中相关的代码实现",
                     "example_ref": [
                         "im.zhaojun.zfile.core.exception.LoginVerifyException.java: 8-14",
                         "im.zhaojun.zfile.module.login.model.result.LoginVerifyImgResult.java: 14-22"
@@ -50,6 +53,7 @@
             "dependency": "无"
         },
         {
+            "method": "0",
             "step": "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
             "refs": [],
             "reasonality":"业务逻辑是代码的核心功能。分析模块或库与业务逻辑的交互，可以确保依赖的使用方式符合设计目标，并优化数据流。",
@@ -59,6 +63,7 @@
             ]
         },
         {
+            "method": "0",
             "step": "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。",
             "refs": []
         }

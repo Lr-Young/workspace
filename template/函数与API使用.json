@@ -13,7 +13,8 @@
         "query": "函数findEnumValueFieldName作用是什么？"
     },
     "steps": [
-        {
+        {   
+            "method": "2",
             "step": "1. 确定要查找的特定函数名称的实现位置，${function_define}",
             "refs": [
                 {
@@ -26,18 +27,21 @@
             "dependency":"无"
         },
         {
+            "method": "0",
             "step": "2. 分析该函数的输入参数及其类型。",
             "refs": [],
             "reasonality":"输入参数决定了函数的预期输入范围，是理解函数行为和用途的关键。",
             "dependency":"无"
         },
         {
+            "method": "0",
             "step": "3. 分析该函数的输出结果及其类型. ",
             "refs": [],
             "reasonality":"输出结果定义了函数的最终用途，是函数功能的直接体现。",
             "dependency":"无"
         },
         {
+            "method": "0",
             "step": "4. 总结：根据以上分析步骤，生成关于该函数的详细报告，包括其实现位置、输入和输出信息",
             "refs": [],
             "dependency":[

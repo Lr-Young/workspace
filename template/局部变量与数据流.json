@@ -13,11 +13,11 @@
     },
     "steps": [
         {
-            "step": "1. 查找该局部变量或数据的出现位置. ${var_use}",
+            "step": "1. 查找该局部变量或数据的出现位置.enumClassType",
             "refs": [
                 {
                     "place_holder": "var_use",
-                    "quary": "变量enumClassType的出现位置",
+                    "query": "变量enumClassType的出现位置",
                     "example_ref": "MybatisEnumTypeHandler.java: 53\n\nMybatisEnumTypeHandler.java: 57\n\nMybatisEnumTypeHandler.java: 58\n\nMybatisEnumTypeHandler.java: 61\n\nMybatisEnumTypeHandler.java: 62\n\nMybatisEnumTypeHandler.java: 64\n\nMybatisEnumTypeHandler.java: 65\n\n"
                 }
             ],

@@ -15,6 +15,7 @@
     },
     "steps": [
         {
+            "method": "2",
             "step": "1. 确定文件中导入的所有模块或库，列出这些导入语句。",
             "refs": [
                 "import com.macro.mall.common.api.CommonResult;",
@@ -33,14 +34,12 @@
             ]
         },
         {
+            "method": "2",
             "step": "2. 分析每个导入的外部依赖库的功能和作用，理解它们在项目中的定位。${dependencies}",
             "refs": [
                 {
                     "place_holder": "dependencies",
-                    "query_type": "外部依赖库",
-                    "query_keys": [
-                        "dependency"
-                    ],
+                    "query": "OmsCartItemController.java导入了哪些外部依赖库",
                     "example_ref": [
                         "dependencies", [
                             {
@@ -73,46 +72,31 @@
             ]
         },
         {
+            "method": "2",
             "step": "3. 分析每个导入的模块，找到相关代码实现.${modules}",
             "refs": [
                 {
                     "place_holder": "modules",
-                    "query_type": "摘要信息",
-                    "query_keys": [
-                        "module"
-                    ],
-                    "example_ref": {
-                        "modules": [
-                    {
-                        "module": "com.macro.mall.common.api.CommonResult",
-                        "description": "用于封装API响应结果的通用类。"
-                    },
-                    {
-                        "module": "com.macro.mall.model.OmsCartItem",
-                        "description": "购物车商品的数据模型类。"
-                    },
-                    {
-                        "module": "com.macro.mall.portal.domain.CartProduct",
-                        "description": "购物车商品的详细信息类。"
-                    },
-                    {
-                        "module": "com.macro.mall.portal.domain.CartPromotionItem",
-                        "description": "带有促销信息的购物车商品类。"
-                    },
-                    {
-                        "module": "com.macro.mall.portal.service.OmsCartItemService",
-                        "description": "购物车相关的业务逻辑接口。"
-                    },
-                    {
-                        "module": "com.macro.mall.portal.service.UmsMemberService",
-                        "description": "会员相关的业务逻辑接口。"
-                    }
-                ]
-            }
+                    "query_type": "分析OmsCartItemController.java中导入的内部模块的作用，找到repo中相关的代码实现",
+                    "example_ref": [
+                        "com.macro.mall.common.api.CommonResult",
+           
+                         "com.macro.mall.model.OmsCartItem",
+    
+                         "com.macro.mall.portal.domain.CartProduct",
+         
+                         "com.macro.mall.portal.domain.CartPromotionItem",
+   
+                         "com.macro.mall.portal.service.OmsCartItemService",
+     
+                         "com.macro.mall.portal.service.UmsMemberService"
+
+                    ]
                 }
             ]
         },
         {
+            "method": "0",
             "step": "4. 确认这些模块或库如何与文件中的业务逻辑进行交互，尤其是它们如何影响数据流或程序执行。",
             "refs": [
                 "这些模块和库通过注入服务类（如OmsCartItemService和UmsMemberService）来处理购物车相关的业务逻辑。",
@@ -121,6 +105,7 @@
             ]
         },
         {
+            "method": "0",
             "step": "5. 总结：根据分析结果，概述这些导入的模块或库在文件中的具体作用，和它们与其他部分的关系。",
             "refs": [
                 
