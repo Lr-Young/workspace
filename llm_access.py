@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-API_KEY = 'sk-3359785840be415f8b75da9a52b713a3'  # 通义千问API key
+API_KEY = ''  # 通义千问API key
 
 
 def ask_llm(prompt: str, system_prompt: str = 'you are an experienced programmer') -> str:
